@@ -26,7 +26,7 @@ export default function Page() {
   return (
     <div className="min-h-screen bg-background">
       {/* Top bar */}
-      <header className="border-b border-border bg-card">
+      <header className="sticky top-0 z-10 border-b border-border bg-card">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-4 sm:px-6">
           <div className="flex size-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
             <ShieldCheck className="size-5" aria-hidden="true" />
