@@ -23,13 +23,27 @@ function MetaItem({
   )
 }
 
-export function MeetingCard({ meeting, index }: { meeting: MeetingMinute; index: number }) {
+export function MeetingCard({
+  meeting,
+  index,
+  highlighted = false,
+}: {
+  meeting: MeetingMinute
+  index: number
+  highlighted?: boolean
+}) {
   const [open, setOpen] = useState(false)
   const panelId = `meeting-panel-${meeting.id}`
   const previewLines = meeting.content.split("\n").filter(Boolean).slice(0, 2)
 
   return (
-    <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md">
+    <div
+      id={`meeting-${meeting.id}`}
+      className={cn(
+        "overflow-hidden rounded-xl border bg-card shadow-sm transition-all duration-300 hover:shadow-md",
+        highlighted ? "border-primary ring-2 ring-primary/40" : "border-border",
+      )}
+    >
       <button
         type="button"
         aria-expanded={open}

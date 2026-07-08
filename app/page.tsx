@@ -4,12 +4,13 @@ import { useMemo, useState } from "react"
 import { ShieldCheck, FileSearch, Inbox } from "lucide-react"
 import { SearchPanel } from "@/components/search-panel"
 import { MeetingCard } from "@/components/meeting-card"
-import { AnalysisSummary } from "@/components/analysis-summary"
+import { AnalysisResultView } from "@/components/analysis/analysis-result"
 import { findMeetingsByProject, analysisResults, projects } from "@/lib/data"
 
 export default function Page() {
   const [searchedCode, setSearchedCode] = useState<string | null>(null)
   const [showAnalysis, setShowAnalysis] = useState(false)
+  const [activeFactId, setActiveFactId] = useState<string | null>(null)
 
   const meetings = useMemo(
     () => (searchedCode ? findMeetingsByProject(searchedCode) : []),
@@ -18,9 +19,32 @@ export default function Page() {
   const project = projects.find((p) => p.code === searchedCode)
   const analysis = searchedCode ? analysisResults[searchedCode] : undefined
 
+  const activeMeetingId = useMemo(() => {
+    if (!activeFactId || !analysis) return null
+    return analysis.facts.find((f) => f.id === activeFactId)?.meetingId ?? null
+  }, [activeFactId, analysis])
+
   function handleSearch(code: string) {
     setSearchedCode(code)
     setShowAnalysis(false)
+    setActiveFactId(null)
+  }
+
+  function handleFactClick(id: string) {
+    setActiveFactId((prev) => {
+      const next = prev === id ? null : id
+      if (next && analysis) {
+        const meetingId = analysis.facts.find((f) => f.id === next)?.meetingId
+        if (meetingId) {
+          requestAnimationFrame(() => {
+            document
+              .getElementById(`meeting-${meetingId}`)
+              ?.scrollIntoView({ behavior: "smooth", block: "center" })
+          })
+        }
+      }
+      return next
+    })
   }
 
   return (
@@ -50,7 +74,12 @@ export default function Page() {
         {searchedCode ? (
           <div className="space-y-6">
             {showAnalysis && analysis && (
-              <AnalysisSummary result={analysis} projectCode={searchedCode} projectName={project?.name} />
+              <AnalysisResultView
+                result={analysis}
+                projectName={project?.name}
+                activeFactId={activeFactId}
+                onFactClick={handleFactClick}
+              />
             )}
 
             <section aria-label="회의록 목록">
@@ -73,7 +102,7 @@ export default function Page() {
 
               <div className="max-h-[70vh] space-y-3 overflow-y-auto pr-1">
                 {meetings.map((m, i) => (
-                  <MeetingCard key={m.id} meeting={m} index={i} />
+                  <MeetingCard key={m.id} meeting={m} index={i} highlighted={activeMeetingId === m.id} />
                 ))}
               </div>
             </section>
