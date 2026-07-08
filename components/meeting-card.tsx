@@ -103,7 +103,7 @@ export function MeetingCard({
             <span className="flex items-center gap-1.5">
               <Hash className="size-4 text-muted-foreground" aria-hidden="true" />
               <span className="sr-only">회의 ID: </span>
-              <span className="font-mono text-sm text-foreground">{meeting.id}</span>
+              <span className="text-sm text-foreground">{meeting.id}</span>
             </span>
           </div>
         </div>

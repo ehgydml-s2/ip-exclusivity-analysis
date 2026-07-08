@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react"
 import { Search, ScanSearch, AlertCircle, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { projectExists, findProjectsByType, type ProjectTypeFilter } from "@/lib/data"
+import { projectExists, findProjectsByType, countMeetingsByProject, type ProjectTypeFilter } from "@/lib/data"
 import { cn } from "@/lib/utils"
 
 type SearchMethod = "code" | "manual"
@@ -153,7 +153,7 @@ export function SearchPanel({
                     </option>
                     {filteredProjects.map((p) => (
                       <option key={p.code} value={p.code}>
-                        {`[${p.category}] ${p.code} — ${p.name}`}
+                        {`${p.code}(${countMeetingsByProject(p.code)})`}
                       </option>
                     ))}
                   </select>

@@ -159,7 +159,7 @@ export const meetingMinutes: MeetingMinute[] = [
     title: "베이스라인 확정 및 핵심 사양 최종 선택",
     date: "2020-08-18",
     companyS: `샘플 B-2 기반 최종 사양 확정 — 구리 제거율 200nm/분, Ra 0.75nm\nTSV 1000홀 이상 공정에서 균일도 ±5% 이내 검증 완료\n해당 사양을 HBM 양산 표준으로 채택, 월 공급량 500L 규모 예상\n배타적 공급 계약 협상 착수 제안 — 독점 기간 및 기술이전 범위 논의 필요`,
-    companyP: `최종 사양 베이스라인 합의 — 당사 제품명 'SolvHBM-Cu200' 부여\n본 조성에 대한 특허는 당사 단독 소유이며, 역설계 방지 조항 필수\n독점 공급 기간 최소 3년 요청, 기간 내 경쟁사 공급 전면 금지\n기술이전은 제조 공정 일부만 가능, 핵심 배합비는 비공개 유지`,
+    companyP: `최종 사양 베이스라인 합의 — 당사 제품명 'SolvHBM-Cu200' 부여\n본 조성에 대한 특허는 당사 단독 소유이며, ���설계 방지 조항 필수\n독점 공급 기간 최소 3년 요청, 기간 내 경쟁사 공급 전면 금지\n기술이전은 제조 공정 일부만 가능, 핵심 배합비는 비공개 유지`,
     articleUrl: "https://www.sedaily.com/article/13774334",
     scenarioNote: `[명확한 배타권 근거 시나리오 - 기술 제안형]\n목적: Company S의 독자적 기술 아이디어가 명확한 케이스\n- Company S: 분지형 부틸 리간드 구조 독자 제안 (회의록 02)\n- Company A: Company S 제안 기반 합성 및 구현\n→ 명확한 배타권 근거 존재\n→ Agent가 "배타권 귀속: Company S" 판정 기대`,
   },
@@ -232,7 +232,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "설비",
     title: "HBM4 베이스 다이 개선 방안 기술 논의",
     date: "2024-07-15",
-    companyS: `베이스 다이에 전력 관리 기능 통합 제안 - HBM 스택 전체 효율성 향상\nTSV 배치 최적화 필요성 제기 - 당사 HBM 구조 경험 바탕으로 레이아웃 가이드 제공\nA사 로직 공정 적용 시 신호 무결성 확보 방안 공동 검토 필요\n양사 기술 통합 시 예상되는 인터페이스 이슈 사전 논의`,
+    companyS: `베이스 다이에 전력 관리 기능 통합 제안 - HBM 스택 전체 효율성 향상\nTSV 배치 최적화 필요성 제기 - 당�� HBM 구조 경험 바탕으로 레이아웃 가이드 제공\nA사 로직 공정 적용 시 신호 무결성 확보 방안 공동 검토 필요\n양사 기술 통합 시 예상되는 인터페이스 이슈 사전 논의`,
     companyP: `베이스 다이에 신호 처리 로직 추가 제안 - GPU 연결 성능 향상\n당사 첨단 로직 공정(N3/N2급)으로 베이스 다이 집적도 향상 가능\nS사 제안 전력 관리 기능과 당사 신호 처리 로직 통합 검토 필요\nTSV 배치는 양사 공동으로 최적화 - 당사 CoWoS 경험도 반영`,
     articleUrl: "https://www.kedglobal.com/korean-chipmakers/newsView/ked202404190012",
     scenarioNote: `[모호한 기여도 판단 시나리오 - 공동 기술 통합형]\n목적: 양사가 각자 핵심 기술을 보유하고 공동으로 통합 개발, 기여도 경계 불명확\n- Company S (SK하이닉스): HBM 메모리 기술, 일부 베이스 다이 구조 제안\n- Company A (TSMC): 로직 공정 기술, 일부 베이스 다이 기능 제안\n→ 양측이 모두 핵심 아이디어 제시, 최종 성과는 통합 결과\n→ 누가 더 큰 기여를 했는지 불명확\n→ Agent가 "기여도 불명확, 공동 개발 성과, 추가 증거 필요" 판정 기대`,
@@ -292,7 +292,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "설비",
     title: "HBM4 양산 개시 및 협력 성과 공유",
     date: "2026-03-15",
-    companyS: `HBM4 양산 공식 개시 - S사+A사 공동 개발 베이스 다이 적용\n경쟁사 대비 전력 효율 20%, 대역폭 30% 향상 달성\n공동 성과 평가 베이스 다이 핵심 기능은 양사가 각각 기여하고 통합한 결과로 평가\n향후 차세대 제품(HBM5) 공동 개발 지속 협력 합의`,
+    companyS: `HBM4 양산 공식 개시 - S사+A사 공동 개발 베이스 다이 적용\n경쟁사 대비 전력 효율 20%, 대역폭 30% 향상 달성\n공동 성과 평가 베이스 다이 핵심 기능은 양사가 각각 기여���고 통합한 결과로 평가\n향후 차세대 제품(HBM5) 공동 개발 지속 협력 합의`,
     companyP: `HBM4 양산 성공 - A사+S사 전략적 협력의 성과\nAI 칩 시장에서 경쟁 우위 확보 - Nvidia 등 주요 고객사 긍정 평가\n공동 성과 평가 베이스 다이 기술은 양사 기술 시너지의 결과\n장기 파트너십 강화 - 차세대 제품 공동 개발 지속`,
     articleUrl: "https://www.kedglobal.com/korean-chipmakers/newsView/ked202404190012",
     scenarioNote: `[모호한 기여도 판단 시나리오 - 공동 기술 통합형]\n목적: 양사가 각자 핵심 기술을 보유하고 공동으로 통합 개발, 기여도 경계 불명확\n- Company S (SK하이닉스): HBM 메모리 기술, 일부 베이스 다이 구조 제안\n- Company A (TSMC): 로직 공정 기술, 일부 베이스 다이 기능 제안\n→ 양측이 모두 핵심 아이디어 제시, 최종 성과는 통합 결과\n→ 누가 더 큰 기여를 했는지 불명확\n→ Agent가 "기여도 불명확, 공동 개발 성과, 추가 증거 필요" 판정 기대`,
@@ -481,7 +481,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `S사 기술혁신기업 프로그램 7기 선정 - 코비스테크놀로지 하이브리드 웨이퍼 계측 장비 개발 과제 착수\n반도체 장비 국산화 전략의 일환으로 웨이퍼 계측 기술 자립화 필요\n최대 3년간 공동 기술개발, 무이자 자금 대출, 경영컨설팅 지원 제공\n기술혁신기업 프로그램 통해 지난해 850억원 사회적 가치 창출 실적`,
     companyP: `코비스테크놀로지는 광학 및 전기식 계측 기술을 보유한 정밀 계측 장비 전문 기업\n당사 독자 개발 하이브리드 계측 기술(광학+전기식 융합)로 국산화 목표 달성 자신\nS사 기술혁신기업 프로그램 선정에 감사하며, 3년 협력 기간 동안 최선\n초도 기술 사양 정의 회의 및 프로토타입 개발 일정 제시 예정`,
     articleUrl: "https://news.skhynix.co.kr/technology-innovation-7th-2/",
-    scenarioNote: `[명확한 독자 개발 시나리오 - 장비 국산화형]\n목적: Company A가 독자 기술로 장비 개발, Company S는 평가/피드백만 제공한 케이스\n- Company S: 사양 정의, 성능 평가, 피드백 제공 (일반적 수요자 역할)\n- Company A: 하이브리드 계측 기술 독자 개발 및 구현 (완전 독자 기술)\n→ Company A 독자 기술, Company S는 수요자 역할만\n→ Agent가 "배타권 없음, 일반 공급 계약" 판정 기대`,
+    scenarioNote: `[명확한 ���자 개발 시나리오 - 장비 국산화형]\n목적: Company A가 독자 기술로 장비 개발, Company S는 평가/피드백만 제공한 케이스\n- Company S: 사양 정의, 성능 평가, 피드백 제공 (���반적 수요자 역할)\n- Company A: 하이브리드 계측 기술 독자 개발 및 구현 (완전 독자 기술)\n→ Company A 독자 기술, Company S는 수요자 역할만\n→ Agent가 "배타권 없음, 일반 공급 계약" 판정 기대`,
   },
   {
     id: "HWM25E1_02",
@@ -541,7 +541,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `코비스테크놀로지 하이브리드 웨이퍼 계측 장비 국산화 성공 선언 - 기술혁신기업 7기 성과 확정\n2025년 하반기부터 S사 이천·청주 라인에 본격 공급 개시\n반도체 장비 국산화 비중 확대 및 공급망 안정성 강화 달성\n기술혁신기업 프로그램 통해 1~4기 기업 매출 358% 증가 실적 - 지속 가능한 동반성장 모델 확립`,
     companyP: `S사와의 하이브리드 계측 장비 공급 계약 체결 완료\n당사 독자 개발 기술로 국산화 달성 - 기술혁신기업 프로그램의 자금/경영 지원이 큰 도움\n국내 반도체 장비 산업 경쟁력 강화에 기여하며, 해외 시장 진출 기반 마련\nS사와의 장기 협력 관계 지속 및 차세대 계측 기술 독자 개발 지속 추진`,
     articleUrl: "https://news.skhynix.co.kr/technology-innovation-7th-2/",
-    scenarioNote: `[명확한 독자 개발 시나리오 - 장비 국산화형]\n목적: Company A가 독자 기술로 장비 개발, Company S는 평가/피드백만 제공한 케이스\n- Company S: 사양 정의, 성능 평가, 피드백 제공 (일반적 수요자 역할)\n- Company A: 하이브리드 계측 기술 독자 개발 및 구현 (완전 독자 기술)\n→ Company A 독자 기술, Company S는 수요자 역할만\n→ Agent가 "배타권 없음, 일반 공급 계약" 판정 기대`,
+    scenarioNote: `[명확한 독자 개발 시나리오 - 장비 국산화형]\n목적: Company A가 독자 기술로 장비 개발, Company S는 평가/피드백만 제공한 케이스\n- Company S: 사양 정의, 성능 평가, 피드백 제공 (일반적 수요자 역할)\n- Company A: 하이브리드 계측 기술 독자 개발 및 구현 (완전 독자 기술)\n→ Company A 독자 기술, Company S는 수요자 역할만\n→ Agent가 "배타권 없음, 일반 공��� 계약" 판정 기대`,
   },
 
   // ---- SCMP26E1 (소재) ----
@@ -603,7 +603,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `배타권 계약 체결\n당사가 제공한 Additive-X의 메커니즘 및 'Silica + Additive-X'의 최적 조성비는 당사의 배타적 권리 자산임. 따라서 A사은 본 기술이 적용된 Slurry 완제품 또는 동일 메커니즘을 가진 제품을 S사의 사전 서면 동의 없이 글로벌 경쟁사를 포함한 제3자에게 판매, 양도, 또는 기술 이전할 수 없음 (배타권 설정 기간: 양산 보급 후 최소 5년).`,
     companyP: `당사 고유의 Silica 입자 기술 자체를 타 제품에 활용하는 것은 제한이 없어야 한다는 전제하에, S사가 독자 개발하여 제공한 Additive-X 및 이를 통해 도출된 최종 혼합 Slurry 제품(Soul-S2)에 대한 S사 측의 배타적 사용 권리와 제3자 공급 금지 조항을 수용함. 상호 간 특허 유출 방지를 위한 보안 서약서를 갱신하겠음.`,
     articleUrl: "https://www.sedaily.com/article/13774334",
-    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨가제로 원천 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 → 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 기여\n→ Agent가 "배타권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기대`,
+    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨��제로 원천 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 �� 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 기여\n→ Agent가 "배타권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기대`,
   },
   {
     id: "SCMP26E1_06",
@@ -663,7 +663,7 @@ export const meetingMinutes: MeetingMinute[] = [
     title: "IP-B20 샘플 평가 결과 공유 및 노광 감도(Sensitivity) 개선 방안 논의",
     date: "2020-05-18",
     companyS: `S사 내부 평가 결과, 분지형 리간드 도입으로 박막 균일도는 30% 이상 개선되었으나, EUV 노광 에너지가 기존 유기물 PR 대비 높게 요구되는 '감도 저하' 현상이 관찰됨\n분지형 리간드의 두께가 Sn 코어의 EUV 반응을 일부 차단하는 것으로 분석됨\n2차 구조 개선 제안 감도를 올리기 위해 리간드 말단에 전자 흡수성(Electron-withdrawing)이 강한 불소(F) 또는 할로겐 원소를 부분 치환하는 구조 변경 제안\n2차 제안 구조(코드명: IP-B21-F) 샘플 합성 요청`,
-    companyP: `말단 할로겐 치환은 Sn-C 결합의 에너지를 약화시켜 EUV 광반응 속도를 획기적으로 올릴 수 있는 우수한 접근법\n삼성의 2차 제안 구조(코드명: IP-B21-F)에 대한 합성 가능성을 확인하고 6주 내로 샘플을 재공급하겠음\n본 구조 역시 삼성의 독자적 제안이므로 배타적 보호 필요함을 인정\nIP-B21-F는 삼성 전용 개발품으로 관리할 것`,
+    companyP: `말단 할로겐 치환은 Sn-C ���합의 에너지를 약화시켜 EUV 광반응 속도를 획기적으로 올릴 수 있는 우수한 접근법\n삼성의 2차 제안 구조(코드명: IP-B21-F)에 대한 합성 가능성을 확인하고 6주 내로 샘플을 재공급하겠음\n본 구조 역시 삼성의 독자적 제안이므로 배타적 보호 필요함을 인정\nIP-B21-F는 삼성 전용 개발품으로 관리할 것`,
     articleUrl: "https://www.etnews.com/20251205000260",
     scenarioNote: `[명확한 배타권 근거 시나리오 - 구조 최적화형]\n목적: Company S의 단계적 기술 개선 제안이 핵심 성과로 이어진 케이스\n- Company S: 분지형 리간드 제안 (회의록 02) → 말단 할로겐 치환 제안 (회의록 04)\n- Company A: 원천 Sn 기술 보유, Company S 제안 구조 합성\n→ 양산 성공의 결정적 기여는 Company S의 구조 제안\n→ Agent가 "배타권 귀속: Company S, 특정 구조체(IP-B21-F)에 한정" 판정 기대`,
   },
@@ -826,4 +826,8 @@ export function findMeetingsByProject(code: string): MeetingMinute[] {
 
 export function projectExists(code: string): boolean {
   return projectCodes.includes(code.trim())
+}
+
+export function countMeetingsByProject(code: string): number {
+  return meetingMinutes.filter((m) => m.projectCode === code).length
 }
