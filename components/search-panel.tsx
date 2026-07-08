@@ -149,7 +149,7 @@ export function SearchPanel({
                     )}
                   >
                     <option value="" disabled>
-                      {`과제코드를 선택하세요 (${filteredProjects.length}건)`}
+                      {`과제코드를 선택하세요`}
                     </option>
                     {filteredProjects.map((p) => (
                       <option key={p.code} value={p.code}>
