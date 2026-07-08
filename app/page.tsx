@@ -10,7 +10,6 @@ import { findMeetingsByProject, analysisResults, projects } from "@/lib/data"
 export default function Page() {
   const [searchedCode, setSearchedCode] = useState<string | null>(null)
   const [showAnalysis, setShowAnalysis] = useState(false)
-  const [activeFactId, setActiveFactId] = useState<string | null>(null)
 
   const meetings = useMemo(
     () => (searchedCode ? findMeetingsByProject(searchedCode) : []),
@@ -19,32 +18,9 @@ export default function Page() {
   const project = projects.find((p) => p.code === searchedCode)
   const analysis = searchedCode ? analysisResults[searchedCode] : undefined
 
-  const activeMeetingId = useMemo(() => {
-    if (!activeFactId || !analysis) return null
-    return analysis.facts.find((f) => f.id === activeFactId)?.meetingId ?? null
-  }, [activeFactId, analysis])
-
   function handleSearch(code: string) {
     setSearchedCode(code)
     setShowAnalysis(false)
-    setActiveFactId(null)
-  }
-
-  function handleFactClick(id: string) {
-    setActiveFactId((prev) => {
-      const next = prev === id ? null : id
-      if (next && analysis) {
-        const meetingId = analysis.facts.find((f) => f.id === next)?.meetingId
-        if (meetingId) {
-          requestAnimationFrame(() => {
-            document
-              .getElementById(`meeting-${meetingId}`)
-              ?.scrollIntoView({ behavior: "smooth", block: "center" })
-          })
-        }
-      }
-      return next
-    })
   }
 
   return (
@@ -74,38 +50,46 @@ export default function Page() {
         {searchedCode ? (
           <div className="space-y-6">
             {showAnalysis && analysis && (
-              <AnalysisResultView
-                result={analysis}
-                projectName={project?.name}
-                activeFactId={activeFactId}
-                onFactClick={handleFactClick}
-              />
+              <AnalysisResultView result={analysis} projectName={project?.name} />
             )}
 
-            <section aria-label="회의록 목록">
-              <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <FileSearch className="size-4 text-primary" aria-hidden="true" />
-                  <h2 className="text-sm font-semibold tracking-tight text-foreground">
-                    회의록 목록
-                    <span className="ml-2 rounded-full bg-secondary px-2 py-0.5 text-xs font-normal text-muted-foreground">
-                      {meetings.length}건
-                    </span>
-                  </h2>
-                </div>
-                {project && (
-                  <p className="text-xs text-muted-foreground">
-                    {project.code} · {project.name}
-                  </p>
-                )}
+            {showAnalysis && !analysis && (
+              <div className="rounded-2xl border border-dashed border-primary/30 bg-primary/5 px-6 py-10 text-center">
+                <p className="text-sm font-medium text-foreground">
+                  이 과제의 배타성 분석 결과는 준비 중입니다
+                </p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {project ? `${project.code} · ${project.name}` : ""} 회의록 데이터를 기반으로 한 분석 리포트가 곧 제공됩니다.
+                </p>
               </div>
+            )}
 
-              <div className="max-h-[70vh] space-y-3 overflow-y-auto pr-1">
-                {meetings.map((m, i) => (
-                  <MeetingCard key={m.id} meeting={m} index={i} highlighted={activeMeetingId === m.id} />
-                ))}
-              </div>
-            </section>
+            {!showAnalysis && (
+              <section aria-label="회의록 목록">
+                <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <FileSearch className="size-4 text-primary" aria-hidden="true" />
+                    <h2 className="text-sm font-semibold tracking-tight text-foreground">
+                      회의록 목록
+                      <span className="ml-2 rounded-full bg-secondary px-2 py-0.5 text-xs font-normal text-muted-foreground">
+                        {meetings.length}건
+                      </span>
+                    </h2>
+                  </div>
+                  {project && (
+                    <p className="text-xs text-muted-foreground">
+                      {project.code} · {project.name}
+                    </p>
+                  )}
+                </div>
+
+                <div className="max-h-[70vh] space-y-3 overflow-y-auto pr-1">
+                  {meetings.map((m, i) => (
+                    <MeetingCard key={m.id} meeting={m} index={i} />
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
         ) : (
           <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card/50 px-6 py-20 text-center">

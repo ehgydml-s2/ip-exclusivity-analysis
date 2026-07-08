@@ -17,7 +17,7 @@ export function ConfidenceBadge({ value }: { value: Confidence }) {
 
 const holderLabel: Record<ExclusivityHolder, string> = {
   "Company S": "Company S",
-  Partner: "Partner",
+  "Company P": "Company P",
   Joint: "Joint",
   Unclear: "Unclear",
 }
@@ -26,7 +26,7 @@ export function HolderBadge({ value }: { value: ExclusivityHolder }) {
   const style =
     value === "Company S"
       ? "bg-primary/10 text-primary ring-primary/20"
-      : value === "Partner"
+      : value === "Company P"
         ? "bg-chart-5/10 text-chart-5 ring-chart-5/20"
         : value === "Joint"
           ? "bg-chart-2/15 text-chart-2 ring-chart-2/25"
@@ -40,7 +40,7 @@ export function HolderBadge({ value }: { value: ExclusivityHolder }) {
 
 export function GradeBadge({ value }: { value: FinalGrade }) {
   const style =
-    value === "A2"
+    value === "A1" || value === "A2"
       ? "bg-primary text-primary-foreground ring-primary"
       : value === "B"
         ? "bg-chart-4/20 text-chart-4 ring-chart-4/30"

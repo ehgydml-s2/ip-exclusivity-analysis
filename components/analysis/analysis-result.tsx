@@ -7,7 +7,6 @@ import {
   FolderKanban,
   Tag,
   ShieldCheck,
-  ListChecks,
   CheckSquare,
   Scale,
   AlertTriangle,
@@ -17,6 +16,7 @@ import type { AnalysisResult } from "@/lib/data"
 import { ConfidenceBadge } from "./badges"
 import { JudgementCard } from "./judgement-card"
 import { buildReportText } from "./report"
+import { FactMapProvider, FactText } from "./fact-ref"
 
 function SummaryStat({
   icon: Icon,
@@ -50,16 +50,11 @@ function SectionHeading({ icon: Icon, title }: { icon: React.ElementType; title:
 export function AnalysisResultView({
   result,
   projectName,
-  activeFactId,
-  onFactClick,
 }: {
   result: AnalysisResult
   projectName?: string
-  activeFactId: string | null
-  onFactClick: (id: string) => void
 }) {
-  const { conclusion, legal_perspective: legal } = result
-  const activeFact = activeFactId ? result.facts.find((f) => f.id === activeFactId) : undefined
+  const { overall_conclusion: conclusion, legal_perspective: legal } = result
 
   function handleExport() {
     const text = buildReportText(result, projectName)
@@ -76,6 +71,7 @@ export function AnalysisResultView({
   }
 
   return (
+    <FactMapProvider facts={result.facts}>
     <section
       aria-label="AI 배타성 분석 결과"
       className="overflow-hidden rounded-2xl border border-primary/20 bg-card shadow-lg ring-1 ring-primary/5"
@@ -101,17 +97,14 @@ export function AnalysisResultView({
 
       <div className="space-y-8 p-6">
         {/* 1. Project Summary Header */}
-        <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-5">
-          <SummaryStat icon={FolderKanban} label="과제코드">
-            {result.project_code}
-          </SummaryStat>
+        <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
           <SummaryStat icon={Tag} label="과제유형">
             {result.project_type}
           </SummaryStat>
-          <SummaryStat icon={ShieldCheck} label="전체 배타성 판단">
-            {conclusion.overall_exclusivity_status}
+          <SummaryStat icon={FolderKanban} label="과제코드">
+            {result.project_code}
           </SummaryStat>
-          <SummaryStat icon={ShieldCheck} label="전체 신뢰도">
+          <SummaryStat icon={ShieldCheck} label="신뢰도">
             <ConfidenceBadge value={conclusion.confidence_level} />
           </SummaryStat>
           <SummaryStat icon={Clock} label="분석 소요시간">
@@ -119,47 +112,36 @@ export function AnalysisResultView({
           </SummaryStat>
         </div>
 
-        {/* Active fact highlight banner */}
-        {activeFact && (
-          <div
-            className="flex items-start gap-2.5 rounded-xl border border-primary/30 bg-primary/5 p-3.5"
-            role="status"
-          >
-            <span className="shrink-0 rounded-md bg-primary px-2 py-1 font-mono text-xs font-bold text-primary-foreground">
-              {activeFact.id}
-            </span>
-            <div className="min-w-0">
-              <p className="text-sm leading-relaxed text-foreground">{activeFact.text}</p>
-              {activeFact.meetingId && (
-                <p className="mt-1 text-xs text-primary">아래 회의록 {activeFact.meetingId} 항목이 강조되었습니다.</p>
-              )}
-            </div>
-          </div>
-        )}
-
         {/* 2. Overall Conclusion Card */}
         <div className="rounded-2xl border border-primary/20 bg-primary/[0.03] p-5">
-          <SectionHeading icon={ShieldCheck} title="종합 결론" />
+          <SectionHeading icon={ShieldCheck} title="종합 판단 (전체 배타성 판단)" />
           <div className="mb-4 flex flex-wrap items-center gap-3">
             <span className="rounded-lg bg-primary px-3 py-1.5 text-sm font-semibold text-primary-foreground">
-              {conclusion.overall_exclusivity_status}
+              {conclusion.overall_exclusivity_assessment}
             </span>
             <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              전체 신뢰도 <ConfidenceBadge value={conclusion.confidence_level} />
+              신뢰도 <ConfidenceBadge value={conclusion.confidence_level} />
             </span>
           </div>
+
+          <p className="mb-5 rounded-xl border border-primary/15 bg-card p-4 text-sm leading-relaxed text-foreground">
+            {conclusion.summary}
+          </p>
 
           <div className="grid gap-4 md:grid-cols-2">
             <div>
               <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                <ListChecks className="size-3.5 text-primary" aria-hidden="true" />
-                핵심 Findings
+                <AlertTriangle className="size-3.5 text-destructive" aria-hidden="true" />
+                핵심 리스크
               </h4>
               <ul className="space-y-1.5">
-                {conclusion.key_findings.map((f, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm leading-relaxed text-foreground">
-                    <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
-                    {f}
+                {conclusion.key_risks.map((r, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-2 rounded-lg border border-destructive/20 bg-destructive/5 p-2.5 text-sm leading-relaxed text-foreground"
+                  >
+                    <AlertTriangle className="mt-0.5 size-4 shrink-0 text-destructive" aria-hidden="true" />
+                    {r}
                   </li>
                 ))}
               </ul>
@@ -167,10 +149,10 @@ export function AnalysisResultView({
             <div>
               <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                 <CheckSquare className="size-3.5 text-primary" aria-hidden="true" />
-                Action Items
+                권고 사항
               </h4>
               <ul className="space-y-1.5">
-                {conclusion.action_items.map((a, i) => (
+                {conclusion.recommendations.map((a, i) => (
                   <li
                     key={i}
                     className="flex items-start gap-2 rounded-lg border border-border bg-card p-2.5 text-sm leading-relaxed text-foreground"
@@ -189,12 +171,7 @@ export function AnalysisResultView({
           <SectionHeading icon={ClipboardList} title={`판단 그룹 (${result.judgements.length})`} />
           <div className="space-y-3">
             {result.judgements.map((j) => (
-              <JudgementCard
-                key={j.group_id}
-                judgement={j}
-                activeFactId={activeFactId}
-                onFactClick={onFactClick}
-              />
+              <JudgementCard key={j.group_id} judgement={j} />
             ))}
           </div>
         </div>
@@ -202,64 +179,74 @@ export function AnalysisResultView({
         {/* 4. Legal Perspective Summary */}
         <div className="rounded-2xl border border-border bg-secondary/30 p-5">
           <SectionHeading icon={Scale} title="법률 관점 종합" />
-          <p className="mb-4 text-sm leading-relaxed text-foreground">{legal.overall_analysis}</p>
+          <FactText className="mb-5 block text-sm leading-relaxed text-foreground">
+            {legal.overall_legal_analysis}
+          </FactText>
+
+          <div className="mb-5">
+            <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+              <Scale className="size-3.5 text-primary" aria-hidden="true" />
+              적용 법령
+            </h4>
+            <div className="space-y-2.5">
+              {legal.applicable_laws.map((law) => (
+                <div key={law.law_id} className="rounded-lg border border-border bg-card p-3.5">
+                  <div className="mb-1.5 flex flex-wrap items-center gap-2">
+                    <span className="rounded-md bg-primary/10 px-2 py-0.5 font-mono text-xs font-bold text-primary">
+                      {law.law_id}
+                    </span>
+                    <span className="text-sm font-semibold text-foreground">{law.law_name}</span>
+                  </div>
+                  <p className="mb-1.5 text-xs leading-relaxed text-muted-foreground">{law.relevance}</p>
+                  <FactText className="block rounded-md border-l-2 border-primary/30 bg-secondary/40 py-1.5 pl-3 pr-2 text-sm leading-relaxed text-foreground">
+                    {law.application_to_project}
+                  </FactText>
+                </div>
+              ))}
+            </div>
+          </div>
 
           <div className="grid gap-4 md:grid-cols-2">
             <div>
-              <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                공통 법률 이슈
+              <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                <AlertTriangle className="size-3.5 text-destructive" aria-hidden="true" />
+                Risk Factors
               </h4>
               <ul className="space-y-1.5">
-                {legal.common_legal_issues.map((c, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm leading-relaxed text-foreground">
-                    <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-chart-5" aria-hidden="true" />
-                    {c}
+                {legal.risk_factors.map((r, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-2 rounded-lg border border-destructive/20 bg-destructive/5 p-2.5 text-sm leading-relaxed text-foreground"
+                  >
+                    <AlertTriangle className="mt-0.5 size-4 shrink-0 text-destructive" aria-hidden="true" />
+                    {r}
                   </li>
                 ))}
               </ul>
             </div>
             <div>
               <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                <AlertTriangle className="size-3.5 text-destructive" aria-hidden="true" />
-                Risk Assessment
+                <ClipboardList className="size-3.5 text-primary" aria-hidden="true" />
+                권고 조치
               </h4>
-              <div className="mb-2 flex flex-wrap items-center gap-1.5">
-                <span className="text-xs text-muted-foreground">High Risk:</span>
-                {legal.risk_assessment.high_risk_groups.map((g) => (
-                  <span
-                    key={g}
-                    className="rounded-md bg-destructive/10 px-2 py-0.5 font-mono text-xs font-semibold text-destructive ring-1 ring-destructive/20"
+              <ol className="space-y-2">
+                {legal.recommended_actions.map((s, i) => (
+                  <li
+                    key={i}
+                    className="flex items-start gap-3 rounded-lg border border-border bg-card p-3 text-sm leading-relaxed text-foreground"
                   >
-                    {g}
-                  </span>
+                    <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">
+                      {i + 1}
+                    </span>
+                    {s}
+                  </li>
                 ))}
-              </div>
-              <p className="rounded-lg border border-destructive/20 bg-destructive/5 p-3 text-sm leading-relaxed text-foreground">
-                {legal.risk_assessment.risk_summary}
-              </p>
+              </ol>
             </div>
-          </div>
-
-          <div className="mt-4">
-            <h4 className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-              Strategic Recommendations
-            </h4>
-            <ol className="space-y-2">
-              {legal.strategic_recommendations.map((s, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-3 rounded-lg border border-border bg-card p-3 text-sm leading-relaxed text-foreground"
-                >
-                  <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">
-                    {i + 1}
-                  </span>
-                  {s}
-                </li>
-              ))}
-            </ol>
           </div>
         </div>
       </div>
     </section>
+    </FactMapProvider>
   )
 }
