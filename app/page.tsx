@@ -49,7 +49,9 @@ export default function Page() {
         {/* Result Area */}
         {searchedCode ? (
           <div className="space-y-6">
-            {showAnalysis && analysis && <AnalysisSummary result={analysis} />}
+            {showAnalysis && analysis && (
+              <AnalysisSummary result={analysis} projectCode={searchedCode} projectName={project?.name} />
+            )}
 
             <section aria-label="회의록 목록">
               <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
