@@ -58,6 +58,7 @@ export function AnalysisResultView({
 }) {
   const [conclusionExpanded, setConclusionExpanded] = useState(true)
   const [judgementsExpanded, setJudgementsExpanded] = useState(true)
+  const [legalExpanded, setLegalExpanded] = useState(true)
   const { overall_conclusion: conclusion, legal_perspective: legal } = result
 
   function handleExport() {
@@ -117,7 +118,7 @@ export function AnalysisResultView({
         </div>
 
         {/* 2. Overall Conclusion Card */}
-        <div className="rounded-2xl border border-primary/20 bg-primary/[0.03] p-5">
+        <div className="rounded-2xl border border-border bg-secondary/30 p-5">
           <button
             type="button"
             onClick={() => setConclusionExpanded(!conclusionExpanded)}
@@ -191,7 +192,7 @@ export function AnalysisResultView({
         </div>
 
         {/* 3. Judgement Group Cards */}
-        <div>
+        <div className="rounded-2xl border border-border bg-secondary/30 p-5">
           <button
             type="button"
             onClick={() => setJudgementsExpanded(!judgementsExpanded)}
@@ -222,12 +223,30 @@ export function AnalysisResultView({
 
         {/* 4. Legal Perspective Summary */}
         <div className="rounded-2xl border border-border bg-secondary/30 p-5">
-          <SectionHeading icon={Scale} title="법률 관점 종합" />
-          <FactText className="mb-5 block text-sm leading-relaxed text-foreground">
-            {legal.overall_legal_analysis}
-          </FactText>
+          <button
+            type="button"
+            onClick={() => setLegalExpanded(!legalExpanded)}
+            className="mb-4 flex w-full items-center justify-between gap-2 hover:opacity-70"
+          >
+            <div className="flex items-center gap-2">
+              <Scale className="size-4 text-primary" aria-hidden="true" />
+              <h2 className="text-base font-semibold text-foreground">법률 관점 종합</h2>
+            </div>
+            <ChevronDown
+              className={`size-4 text-muted-foreground transition-transform duration-200 ${
+                legalExpanded ? "rotate-180" : ""
+              }`}
+              aria-hidden="true"
+            />
+          </button>
 
-          <div className="mb-5">
+          {legalExpanded && (
+            <div className="space-y-5">
+              <FactText className="block text-sm leading-relaxed text-foreground">
+                {legal.overall_legal_analysis}
+              </FactText>
+
+              <div>
             <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               <Scale className="size-3.5 text-primary" aria-hidden="true" />
               적용 법령
@@ -288,6 +307,8 @@ export function AnalysisResultView({
               </ol>
             </div>
           </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
