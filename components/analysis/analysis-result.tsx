@@ -16,6 +16,7 @@ import type { AnalysisResult } from "@/lib/data"
 import { ConfidenceBadge } from "./badges"
 import { JudgementCard } from "./judgement-card"
 import { buildReportText } from "./report"
+import { FactMapProvider, FactText } from "./fact-ref"
 
 function SummaryStat({
   icon: Icon,
@@ -49,16 +50,11 @@ function SectionHeading({ icon: Icon, title }: { icon: React.ElementType; title:
 export function AnalysisResultView({
   result,
   projectName,
-  activeFactId,
-  onFactClick,
 }: {
   result: AnalysisResult
   projectName?: string
-  activeFactId: string | null
-  onFactClick: (id: string) => void
 }) {
   const { overall_conclusion: conclusion, legal_perspective: legal } = result
-  const activeFact = activeFactId ? result.facts.find((f) => f.id === activeFactId) : undefined
 
   function handleExport() {
     const text = buildReportText(result, projectName)
@@ -75,6 +71,7 @@ export function AnalysisResultView({
   }
 
   return (
+    <FactMapProvider facts={result.facts}>
     <section
       aria-label="AI 배타성 분석 결과"
       className="overflow-hidden rounded-2xl border border-primary/20 bg-card shadow-lg ring-1 ring-primary/5"
@@ -114,24 +111,6 @@ export function AnalysisResultView({
             {result.elapsed_time.toFixed(1)}초
           </SummaryStat>
         </div>
-
-        {/* Active fact highlight banner */}
-        {activeFact && (
-          <div
-            className="flex items-start gap-2.5 rounded-xl border border-primary/30 bg-primary/5 p-3.5"
-            role="status"
-          >
-            <span className="shrink-0 rounded-md bg-primary px-2 py-1 font-mono text-xs font-bold text-primary-foreground">
-              {activeFact.id}
-            </span>
-            <div className="min-w-0">
-              <p className="text-sm leading-relaxed text-foreground">{activeFact.text}</p>
-              {activeFact.meetingId && (
-                <p className="mt-1 text-xs text-primary">아래 회의록 {activeFact.meetingId} 항목이 강조되었습니다.</p>
-              )}
-            </div>
-          </div>
-        )}
 
         {/* 2. Overall Conclusion Card */}
         <div className="rounded-2xl border border-primary/20 bg-primary/[0.03] p-5">
@@ -192,12 +171,7 @@ export function AnalysisResultView({
           <SectionHeading icon={ClipboardList} title={`판단 그룹 (${result.judgements.length})`} />
           <div className="space-y-3">
             {result.judgements.map((j) => (
-              <JudgementCard
-                key={j.group_id}
-                judgement={j}
-                activeFactId={activeFactId}
-                onFactClick={onFactClick}
-              />
+              <JudgementCard key={j.group_id} judgement={j} />
             ))}
           </div>
         </div>
@@ -205,7 +179,9 @@ export function AnalysisResultView({
         {/* 4. Legal Perspective Summary */}
         <div className="rounded-2xl border border-border bg-secondary/30 p-5">
           <SectionHeading icon={Scale} title="법률 관점 종합" />
-          <p className="mb-5 text-sm leading-relaxed text-foreground">{legal.overall_legal_analysis}</p>
+          <FactText className="mb-5 block text-sm leading-relaxed text-foreground">
+            {legal.overall_legal_analysis}
+          </FactText>
 
           <div className="mb-5">
             <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
@@ -222,9 +198,9 @@ export function AnalysisResultView({
                     <span className="text-sm font-semibold text-foreground">{law.law_name}</span>
                   </div>
                   <p className="mb-1.5 text-xs leading-relaxed text-muted-foreground">{law.relevance}</p>
-                  <p className="rounded-md border-l-2 border-primary/30 bg-secondary/40 py-1.5 pl-3 pr-2 text-sm leading-relaxed text-foreground">
+                  <FactText className="block rounded-md border-l-2 border-primary/30 bg-secondary/40 py-1.5 pl-3 pr-2 text-sm leading-relaxed text-foreground">
                     {law.application_to_project}
-                  </p>
+                  </FactText>
                 </div>
               ))}
             </div>
@@ -271,5 +247,6 @@ export function AnalysisResultView({
         </div>
       </div>
     </section>
+    </FactMapProvider>
   )
 }

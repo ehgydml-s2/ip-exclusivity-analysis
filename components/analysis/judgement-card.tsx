@@ -15,6 +15,7 @@ import {
 import type { Judgement } from "@/lib/data"
 import { cn } from "@/lib/utils"
 import { ConfidenceBadge, HolderBadge, GradeBadge } from "./badges"
+import { FactRef, FactText } from "./fact-ref"
 
 type Tab = "reasoning" | "legal" | "grade"
 
@@ -51,15 +52,7 @@ function KeyValueRow({ label, value }: { label: string; value: string }) {
   )
 }
 
-export function JudgementCard({
-  judgement,
-  activeFactId,
-  onFactClick,
-}: {
-  judgement: Judgement
-  activeFactId: string | null
-  onFactClick: (id: string) => void
-}) {
+export function JudgementCard({ judgement }: { judgement: Judgement }) {
   const [open, setOpen] = useState(false)
   const [tab, setTab] = useState<Tab>("reasoning")
   const panelId = `judgement-${judgement.group_id}`
@@ -140,45 +133,33 @@ export function JudgementCard({
               <div className="space-y-5">
                 <div>
                   <SectionTitle icon={Scale}>판단 근거</SectionTitle>
-                  <p className="text-sm leading-relaxed text-foreground">{judgement.reasoning}</p>
+                  <FactText className="text-sm leading-relaxed text-foreground">{judgement.reasoning}</FactText>
                 </div>
 
                 <div>
                   <SectionTitle icon={FileText}>Supporting Facts</SectionTitle>
+                  <p className="mb-2 text-xs text-muted-foreground">
+                    각 근거에 마우스를 올리면 회의록 원문과 상세 내용을 확인할 수 있습니다.
+                  </p>
                   <div className="flex flex-wrap gap-1.5">
-                    {judgement.supporting_facts.map((fid) => {
-                      const active = activeFactId === fid
-                      return (
-                        <button
-                          key={fid}
-                          type="button"
-                          onClick={() => onFactClick(fid)}
-                          className={cn(
-                            "rounded-md border px-2 py-1 font-mono text-xs font-semibold transition-colors",
-                            active
-                              ? "border-primary bg-primary text-primary-foreground"
-                              : "border-primary/30 bg-primary/5 text-primary hover:bg-primary/10",
-                          )}
-                        >
-                          [{fid}]
-                        </button>
-                      )
-                    })}
+                    {judgement.supporting_facts.map((fid) => (
+                      <FactRef key={fid} id={fid} />
+                    ))}
                   </div>
                 </div>
 
                 <div>
                   <SectionTitle icon={MessageSquareWarning}>반론 가능성</SectionTitle>
-                  <p className="rounded-lg border border-chart-4/30 bg-chart-4/5 p-3 text-sm leading-relaxed text-foreground">
+                  <FactText className="block rounded-lg border border-chart-4/30 bg-chart-4/5 p-3 text-sm leading-relaxed text-foreground">
                     {judgement.counter_arguments}
-                  </p>
+                  </FactText>
                 </div>
 
                 <div>
                   <SectionTitle icon={Lightbulb}>추천 대응</SectionTitle>
-                  <p className="rounded-lg border border-primary/20 bg-primary/5 p-3 text-sm leading-relaxed text-foreground">
+                  <FactText className="block rounded-lg border border-primary/20 bg-primary/5 p-3 text-sm leading-relaxed text-foreground">
                     {judgement.recommendation}
-                  </p>
+                  </FactText>
                 </div>
               </div>
             )}
@@ -209,7 +190,9 @@ export function JudgementCard({
                     <KeyValueRow label="집행 리스크" value={contract.enforcement_risk} />
                     <div className="flex flex-col gap-0.5 rounded-lg border border-border bg-secondary/40 p-3 sm:col-span-1">
                       <span className="text-xs text-muted-foreground">조항 요약</span>
-                      <span className="text-sm leading-relaxed text-foreground">{contract.clause_summary}</span>
+                      <FactText className="text-sm leading-relaxed text-foreground">
+                        {contract.clause_summary}
+                      </FactText>
                     </div>
                   </div>
                 </div>
@@ -217,11 +200,15 @@ export function JudgementCard({
                 <div className="grid gap-2.5 sm:grid-cols-2">
                   <div className="rounded-lg border border-border bg-card p-3">
                     <SectionTitle icon={Scale}>발명자 판단</SectionTitle>
-                    <p className="text-sm leading-relaxed text-foreground">{legal.inventorship_analysis}</p>
+                    <FactText className="text-sm leading-relaxed text-foreground">
+                      {legal.inventorship_analysis}
+                    </FactText>
                   </div>
                   <div className="rounded-lg border border-border bg-card p-3">
                     <SectionTitle icon={Award}>기여도 분석</SectionTitle>
-                    <p className="text-sm leading-relaxed text-foreground">{legal.contribution_analysis}</p>
+                    <FactText className="text-sm leading-relaxed text-foreground">
+                      {legal.contribution_analysis}
+                    </FactText>
                   </div>
                 </div>
 
