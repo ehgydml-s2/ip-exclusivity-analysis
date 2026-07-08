@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import {
   Sparkles,
   Download,
@@ -11,6 +12,7 @@ import {
   Scale,
   AlertTriangle,
   ClipboardList,
+  ChevronDown,
 } from "lucide-react"
 import type { AnalysisResult } from "@/lib/data"
 import { ConfidenceBadge } from "./badges"
@@ -54,6 +56,7 @@ export function AnalysisResultView({
   result: AnalysisResult
   projectName?: string
 }) {
+  const [conclusionExpanded, setConclusionExpanded] = useState(true)
   const { overall_conclusion: conclusion, legal_perspective: legal } = result
 
   function handleExport() {
@@ -114,56 +117,76 @@ export function AnalysisResultView({
 
         {/* 2. Overall Conclusion Card */}
         <div className="rounded-2xl border border-primary/20 bg-primary/[0.03] p-5">
-          <SectionHeading icon={ShieldCheck} title="종합 판단 (전체 배타성 판단)" />
-          <div className="mb-4 flex flex-wrap items-center gap-3">
-            <span className="rounded-lg bg-primary px-3 py-1.5 text-sm font-semibold text-primary-foreground">
-              {conclusion.overall_exclusivity_assessment}
-            </span>
-            <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              신뢰도 <ConfidenceBadge value={conclusion.confidence_level} />
-            </span>
-          </div>
-
-          <p className="mb-5 rounded-xl border border-primary/15 bg-card p-4 text-sm leading-relaxed text-foreground">
-            {conclusion.summary}
-          </p>
-
-          <div className="grid gap-4 md:grid-cols-2">
-            <div>
-              <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                <AlertTriangle className="size-3.5 text-destructive" aria-hidden="true" />
-                핵심 리스크
-              </h4>
-              <ul className="space-y-1.5">
-                {conclusion.key_risks.map((r, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-2 rounded-lg border border-destructive/20 bg-destructive/5 p-2.5 text-sm leading-relaxed text-foreground"
-                  >
-                    <AlertTriangle className="mt-0.5 size-4 shrink-0 text-destructive" aria-hidden="true" />
-                    {r}
-                  </li>
-                ))}
-              </ul>
+          <button
+            type="button"
+            onClick={() => setConclusionExpanded(!conclusionExpanded)}
+            className="mb-4 flex w-full items-center justify-between gap-2 hover:opacity-70"
+          >
+            <div className="flex items-center gap-2">
+              <ShieldCheck className="size-4 text-primary" aria-hidden="true" />
+              <h2 className="text-base font-semibold text-foreground">종합 판단 (전체 배타성 판단)</h2>
             </div>
-            <div>
-              <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                <CheckSquare className="size-3.5 text-primary" aria-hidden="true" />
-                권고 사항
-              </h4>
-              <ul className="space-y-1.5">
-                {conclusion.recommendations.map((a, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-2 rounded-lg border border-border bg-card p-2.5 text-sm leading-relaxed text-foreground"
-                  >
-                    <CheckSquare className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
-                    {a}
-                  </li>
-                ))}
-              </ul>
+            <ChevronDown
+              className={`size-4 text-muted-foreground transition-transform duration-200 ${
+                conclusionExpanded ? "rotate-180" : ""
+              }`}
+              aria-hidden="true"
+            />
+          </button>
+
+          {conclusionExpanded && (
+            <div className="space-y-4">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="rounded-lg bg-primary px-3 py-1.5 text-sm font-semibold text-primary-foreground">
+                  {conclusion.overall_exclusivity_assessment}
+                </span>
+                <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                  신뢰도 <ConfidenceBadge value={conclusion.confidence_level} />
+                </span>
+              </div>
+
+              <p className="rounded-xl border border-primary/15 bg-card p-4 text-sm leading-relaxed text-foreground">
+                {conclusion.summary}
+              </p>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                <div>
+                  <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    <AlertTriangle className="size-3.5 text-destructive" aria-hidden="true" />
+                    핵심 리스크
+                  </h4>
+                  <ul className="space-y-1.5">
+                    {conclusion.key_risks.map((r, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2 rounded-lg border border-destructive/20 bg-destructive/5 p-2.5 text-sm leading-relaxed text-foreground"
+                      >
+                        <AlertTriangle className="mt-0.5 size-4 shrink-0 text-destructive" aria-hidden="true" />
+                        {r}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    <CheckSquare className="size-3.5 text-primary" aria-hidden="true" />
+                    권고 사항
+                  </h4>
+                  <ul className="space-y-1.5">
+                    {conclusion.recommendations.map((a, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2 rounded-lg border border-border bg-card p-2.5 text-sm leading-relaxed text-foreground"
+                      >
+                        <CheckSquare className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
+                        {a}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* 3. Judgement Group Cards */}
