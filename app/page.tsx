@@ -40,11 +40,23 @@ export default function Page() {
 
       <main className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:px-6">
         {/* Search Area */}
-        <SearchPanel
-          onSearch={handleSearch}
-          onAnalyze={() => setShowAnalysis(true)}
-          analysisEnabled={searchedCode !== null}
-        />
+        {!showAnalysis ? (
+          <SearchPanel
+            onSearch={handleSearch}
+            onAnalyze={() => setShowAnalysis(true)}
+            analysisEnabled={searchedCode !== null}
+          />
+        ) : (
+          <section className="rounded-2xl border border-border bg-card p-6">
+            <button
+              type="button"
+              onClick={() => setShowAnalysis(false)}
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 font-medium text-primary-foreground transition-colors hover:opacity-90"
+            >
+              ← 다른 과제 분석하기
+            </button>
+          </section>
+        )}
 
         {/* Result Area */}
         {searchedCode ? (
