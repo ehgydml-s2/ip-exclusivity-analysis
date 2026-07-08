@@ -158,7 +158,7 @@ export function SearchPanel({
                       const hasAnalysis = PROJECTS_WITH_ANALYSIS.includes(p.code)
                       return (
                         <option key={p.code} value={p.code} className={hasAnalysis ? "font-bold" : ""}>
-                          {`${hasAnalysis ? "** " : ""}${p.code}(${countMeetingsByProject(p.code)})${hasAnalysis ? " **" : ""}`}
+                          {`${hasAnalysis ? "" : ""}${p.code}(${countMeetingsByProject(p.code)})${hasAnalysis ? "" : ""}`}
                         </option>
                       )
                     })}
