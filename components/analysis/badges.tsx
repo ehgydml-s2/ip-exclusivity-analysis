@@ -23,8 +23,8 @@ export function ConfidenceBadge({ value }: { value: Confidence }) {
         {value}
       </span>
       <div className="group relative inline-flex">
-        <Info className="size-3.5 text-muted-foreground opacity-60 transition-opacity group-hover:opacity-100" aria-hidden="true" />
-        <div className="pointer-events-none absolute bottom-full right-0 mb-2 w-48 rounded-lg border border-border bg-popover p-2.5 text-xs leading-relaxed text-popover-foreground shadow-lg opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100">
+        <Info className="size-3.5 text-muted-foreground opacity-60 transition-opacity group-hover:opacity-100 cursor-help" aria-hidden="true" />
+        <div className="pointer-events-none fixed bottom-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 rounded-lg border border-border bg-popover p-2.5 text-xs leading-relaxed text-popover-foreground shadow-lg opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 z-50">
           <div className="font-semibold text-primary mb-1.5">[신뢰도 분류]</div>
           <ul className="space-y-1">
             <li><strong>High:</strong> 명확한 증거와 일관된 Timeline</li>
@@ -80,8 +80,8 @@ export function GradeBadge({ value }: { value: FinalGrade }) {
         {value}
       </span>
       <div className="group relative inline-flex">
-        <Info className="size-3.5 text-muted-foreground opacity-60 transition-opacity group-hover:opacity-100" aria-hidden="true" />
-        <div className="pointer-events-none absolute bottom-full right-0 mb-2 w-56 rounded-lg border border-border bg-popover p-2.5 text-xs leading-relaxed text-popover-foreground shadow-lg opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 z-50">
+        <Info className="size-3.5 text-muted-foreground opacity-60 transition-opacity group-hover:opacity-100 cursor-help" aria-hidden="true" />
+        <div className="pointer-events-none fixed bottom-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 rounded-lg border border-border bg-popover p-2.5 text-xs leading-relaxed text-popover-foreground shadow-lg opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 z-50">
           <div className="font-semibold text-primary mb-1.5">[최종 등급 산정 가이드라인]</div>
           <ul className="space-y-1.5">
             <li><strong>A1:</strong> 기술 효과 1등급 + 고/대 조합 (단, System/설비 레벨 또는 최소 부품 Module 3개 이상 확보 시)</li>
