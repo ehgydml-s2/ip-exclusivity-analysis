@@ -64,6 +64,7 @@ export function JudgementCard({
   const [tab, setTab] = useState<Tab>("reasoning")
   const panelId = `judgement-${judgement.group_id}`
   const { legal_basis: legal, evaluation_grade: grade } = judgement
+  const contract = legal.contract_analysis
 
   return (
     <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
@@ -198,17 +199,17 @@ export function JudgementCard({
                       <span
                         className={cn(
                           "text-sm font-semibold",
-                          legal.has_exclusivity_clause ? "text-chart-3" : "text-chart-5",
+                          contract.has_exclusivity_clause ? "text-chart-3" : "text-chart-5",
                         )}
                       >
-                        {legal.has_exclusivity_clause ? "있음" : "없음"}
+                        {contract.has_exclusivity_clause ? "있음" : "없음"}
                       </span>
                     </div>
-                    <KeyValueRow label="유효 기간" value={legal.validity_period} />
-                    <KeyValueRow label="집행 리스크" value={legal.enforcement_risk} />
+                    <KeyValueRow label="유효 기간" value={contract.validity_period} />
+                    <KeyValueRow label="집행 리스크" value={contract.enforcement_risk} />
                     <div className="flex flex-col gap-0.5 rounded-lg border border-border bg-secondary/40 p-3 sm:col-span-1">
                       <span className="text-xs text-muted-foreground">조항 요약</span>
-                      <span className="text-sm leading-relaxed text-foreground">{legal.clause_summary}</span>
+                      <span className="text-sm leading-relaxed text-foreground">{contract.clause_summary}</span>
                     </div>
                   </div>
                 </div>

@@ -20,8 +20,8 @@ export type Project = {
 }
 
 export type Confidence = "High" | "Medium" | "Low"
-export type ExclusivityHolder = "Company S" | "Partner" | "Joint" | "Unclear"
-export type FinalGrade = "A2" | "B" | "C/D" | "N/A"
+export type ExclusivityHolder = "Company S" | "Company P" | "Joint" | "Unclear"
+export type FinalGrade = "A1" | "A2" | "B" | "C/D" | "N/A"
 
 export type Fact = {
   id: string
@@ -29,12 +29,16 @@ export type Fact = {
   meetingId?: string
 }
 
-export type LegalBasis = {
-  applicable_laws: string[]
+export type ContractAnalysis = {
   has_exclusivity_clause: boolean
   clause_summary: string
   validity_period: string
   enforcement_risk: string
+}
+
+export type LegalBasis = {
+  applicable_laws: string[]
+  contract_analysis: ContractAnalysis
   inventorship_analysis: string
   contribution_analysis: string
   risk_factors: string[]
@@ -42,13 +46,13 @@ export type LegalBasis = {
 }
 
 export type EvaluationGrade = {
-  final_grade: FinalGrade
   tech_effect_grade: string
-  competitor_applicability: string
-  tech_gap: string
   tech_effect_reasoning: string
+  competitor_applicability: string
   competitor_reasoning: string
+  tech_gap: string
   tech_gap_reasoning: string
+  final_grade: FinalGrade
   grade_reasoning: string
 }
 
@@ -66,29 +70,34 @@ export type Judgement = {
   evaluation_grade: EvaluationGrade
 }
 
-export type LegalPerspective = {
-  overall_analysis: string
-  common_legal_issues: string[]
-  risk_assessment: {
-    high_risk_groups: string[]
-    risk_summary: string
-  }
-  strategic_recommendations: string[]
+export type OverallConclusion = {
+  summary: string
+  overall_exclusivity_assessment: string
+  confidence_level: Confidence
+  key_risks: string[]
+  recommendations: string[]
 }
 
-export type Conclusion = {
-  overall_exclusivity_status: string
-  confidence_level: Confidence
-  key_findings: string[]
-  action_items: string[]
+export type ApplicableLaw = {
+  law_id: string
+  law_name: string
+  relevance: string
+  application_to_project: string
+}
+
+export type LegalPerspective = {
+  applicable_laws: ApplicableLaw[]
+  overall_legal_analysis: string
+  risk_factors: string[]
+  recommended_actions: string[]
 }
 
 export type AnalysisResult = {
   project_code: string
   project_type: string
+  overall_conclusion: OverallConclusion
   judgements: Judgement[]
   legal_perspective: LegalPerspective
-  conclusion: Conclusion
   elapsed_time: number
   facts: Fact[]
 }
@@ -345,7 +354,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `협력업체 프로토타입 장비로 당사 세정 레시피 적용 테스트 완료\nHKMG 공정 세정 효율 95% 달성 - 당사 독자 레시피의 우수성 검증\n다만 일부 웨이퍼에서 잔류물 발생 - 장비 린스 공정 개선 필요\n당사 레시피는 그대로 유지, 장비 측면 개선으로 해결 요청`,
     companyP: `S사 레시피 기반 세정 성능 우수함을 확인\n잔류물 문제는 당사 장비 린스 공정 미흡으로 판단 - 린스 노즐 배치 개선 예정\nS사 레시피 자체는 변경 없이, 장비만 개선하여 2025년 1월 재평가\n장비 개선 과정에서도 S사 레시피 보호 최우선`,
     articleUrl: "https://www.daeryunlaw.com/trend/10746",
-    scenarioNote: `[명확한 배타권 근거 시나리오 - 레시피 제공형]\n목적: Company S가 핵심 레시피/공정 기술을 독자 개발하여 제공, Company A는 구현만 담당\n- Company S (SK하이닉스): 세정 레시피 독자 개발, HKMG 공정 기술 보유, 장비 사양 정의\n- Company A (협력업체): Company S 제공 사양대로 세정장비 설계 및 제조\n→ 핵심 기술은 Company S 소유, Company A는 제조 역할만\n→ 대법원 판례에서도 영업비밀로 인정 (비공지성, 경제적 가치, 비밀관리성 충족)\n→ Agent가 "배타권: Company S (세정 레시피 및 HKMG 공정 기술)" 판정 기대`,
+    scenarioNote: `[명확한 배타권 근거 시나리오 - 레시피 제공형]\n목적: Company S가 핵심 레시피/공정 기술을 독자 개발하여 제공, Company A는 구현만 담당\n- Company S (SK하이닉스): 세정 레시피 독자 개발, HKMG 공정 기술 보유, 장비 사양 정의\n- Company A (협력업체): Company S 제공 사양대로 세정장비 설계 및 제조\n→ 핵심 기술은 Company S 소유, Company A는 제조 역할만\n→ 대법원 판례에서도 영업비밀로 인정 (비공지성, 경제적 가치, ���밀관리성 충족)\n→ Agent가 "배타권: Company S (세정 레시피 및 HKMG 공정 기술)" 판정 기대`,
   },
   {
     id: "HKMG25E1_05",
@@ -615,7 +624,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `Pilot 롯트 평가 결과 품질 산포가 안정적이며 양산성 확보가 완료되었음을 확인하여 최종 기술 승인을 통보함. 본 제품은 기술 심의회를 거쳐 당사 내부 '배타권 자산 DB'에 정식 등록될 예정임. 구매팀 주도로 양산 공급 계약 및 배타권 위반 시 페널티 조항을 포함한 정식 계약 체결 절차를 진행하겠음.`,
     companyP: `당사 Pilot 설비에서도 S사의 Additive-X가 균일하게 혼합 및 분산되도록 양산 공정 설계를 완료했음. 당사는 계약서 상의 배타권 조항을 엄격히 준수할 것이며, 전용 생산 라인을 지정하여 S사향 공급 물량에 대한 보안 관리 및 품질 추적성을 확보하겠음.`,
     articleUrl: "https://www.sedaily.com/article/13774334",
-    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨가제로 원천 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 → 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 기여\n→ Agent가 "배타권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기대`,
+    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨가제로 원천 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 → 성능 결함 완전 해결\n→ Company S의 첨가제가 ���산 성공의 핵심 기여\n→ Agent가 "배타권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기대`,
   },
 
   // ---- SNPR20E1 (소재) ----
@@ -760,7 +769,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "설비",
     title: "웨이퍼 와피지 제어 장비 기술 사양 정의",
     date: "2020-11-20",
-    companyS: `와피지 제어 목표: 웨이퍼 휨 범위 ±50μm 이내 유지 (현 해외 장비 대비 동등 수준)\nS사 기술 조언 실시간 모니터링을 위해 열 센서를 웨이퍼 가장자리 3지점에 배치하는 방안 제안\n자동 보정 알고리즘은 PID 제어 방식 기반 권장 - S사 공정 노하우 반영\n300mm 웨이퍼 대응, 처리 속도 시간당 60매 이상`,
+    companyS: `와피지 제어 목표: 웨이퍼 휨 범위 ±50μm 이내 유지 (현 해외 장비 대비 동등 수준)\nS사 기술 조언 실시간 모니터링을 위해 열 센서를 웨이퍼 가장자리 3지점에 배치하는 방안 제안\n자동 보정 알고리즘�� PID 제어 방식 기반 권장 - S사 공정 노하우 반영\n300mm 웨이퍼 대응, 처리 속도 시간당 60매 이상`,
     companyP: `와피지 제어 목표 ±50μm 달성 가능 - 당사 보유 열제어 기술 적용\nS사 제안 수용 센서 3지점 배치 방안 적용, 당사 경험상 4지점 추가 검토\nPID 제어 기반 동의하나, 당사 독자 개발 적응형 알고리즘 병행 적용 제안\n2021년 3월 프로토타입 제작 완료 및 평가용 샘플 제공 예정`,
     articleUrl: "https://v.daum.net/v/6vJbh7TNCr",
     scenarioNote: `[모호한 기여도 판단 시나리오]\n목적: 계측 장비 국산화 과제에서 양측 기여도가 불명확한 경우 배타권 판별 테스트\n- Company S: 사양 정의 + 일부 구체적 기술 조언 (센서 배치, 알고리즘 로직 제안)\n- Company A: 기술 구현 + 독자 개발 부분 (예측 제어 로직)\n→ 공동 기여 vs 개별 기여 경계가 모호한 케이스\n→ Agent가 "기여도 불명확, 추가 증거 필요" 판정 기대`,
@@ -816,7 +825,404 @@ export const meetingMinutes: MeetingMinute[] = [
 ]
 
 // 배타성 분석 결과는 신규 과제코드 기준으로 준비 중입니다.
-export const analysisResults: Record<string, AnalysisResult> = {}
+// Reconstructed fact statements referenced by the HKMG25E1 judgements.
+// Facts are distributed across the project's 7 meeting minutes for cross-highlighting.
+const hkmg25e1FactText: Record<string, string> = {
+  F001: "S사가 차세대 HKMG 공정 도입을 위한 전용 세정 장비 개발의 필요성을 제기함",
+  F002: "S사가 HKMG 공정용 세정 레시피 및 핵심 공정 기술 아이디어를 최초 제안하고 독자 개발함",
+  F003: "S사 독자 개발 세정 레시피를 기반으로 장비 개발을 협력하기로 함",
+  F004: "S사가 프로젝트 관련 모든 자료를 자사의 영업비밀로 지정함",
+  F005: "S사가 협력업체의 역할을 장비 구현으로 제한함",
+  F006: "핵심 공정 정보가 반도체 성능과 직결되며 비밀 유지 계약을 필수로 요구함",
+  F008: "협력사가 S사가 제공하는 레시피 및 공정 사양에 따라 장비 설계·제조를 담당함",
+  F009: "협력사가 S사 핵심 기술에 대한 비밀 유지를 서약함",
+  F010: "S사 승인 없이 장비 도면 및 사양 정보의 외부 공개·임의 변경이 불가함을 인정함",
+  F011: "S사가 협력사에 레시피를 제공하여 장비 개발을 요청함",
+  F012: "S사가 세정 레시피 및 핵심 공정 기술을 독자적으로 개발함",
+  F013: "S사가 협력사에 세정 레시피를 제공함",
+  F014: "S사가 협력사에 장비 개발을 요청함",
+  F015: "S사가 세정 레시피를 영업비밀로 엄격히 관리하겠다고 명시함",
+  F016: "S사가 레시피에 정확히 부합하는 설계를 필수적으로 요구함",
+  F017: "S사 레시피가 10년 연구 개발 결과임을 강조함",
+  F018: "레시피 외부 공개 시 경쟁사 기술 격차 해소에 직결된다고 명시함",
+  F019: "협력사가 S사 레시피 기반으로 장비 설계를 수행한 기여",
+  F020: "협력사가 S사 공정 사양에 따라 장비 설계·제조를 담당함",
+  F021: "협력사가 S사 정보를 내부적으로 엄격히 관리함",
+  F022: "협력사가 장비 설계 및 제조를 담당함",
+  F023: "S사 승인 없이 장비 사양의 임의 변경을 금지함",
+  F025: "S사가 온도 제어 정밀도 등 핵심 기술 사양을 지정함",
+  F026: "S사가 약품 농도 오차 범위 등 핵심 기술 사양을 지정함",
+  F027: "협력사가 도면·사양 정보의 외부 공개나 임의 변경 불가를 인정함",
+  F028: "협력사가 S사 요구사항을 반영하여 장비 설계를 개선함",
+  F029: "협력사가 장비 설계를 개선함",
+  F030: "협력사가 S사 정보를 내부적으로 엄격히 관리함",
+  F031: "협력사가 프로토타입을 제작함",
+  F034: "세정 레시피 구현과 관련한 협력사의 이행 사실",
+  F037: "협력사가 레시피 변경 없이 장비 개선만 수행함",
+  F039: "협력사가 S사 레시피의 우수성을 인정함",
+  F042: "협력사가 레시피 자체는 변경 없이 장비 개선만 수행함",
+  F044: "협력사가 S사 레시피 보호를 최우선으로 하겠다고 약속함",
+  F046: "세정 효율 98% 달성으로 양산 기준을 충족함",
+  F047: "S사가 세정 레시피 및 HKMG 공정 기술을 영업비밀로 최종 확정함",
+  F048: "협력업체는 S사 레시피 기반 장비 제조만 담당하며 레시피는 S사 독점 소유임을 명확히 함",
+  F050: "P사 장비는 S사 레시피 구현 전용이며 타 용도 전용 불가함을 확인함",
+  F051: "협력사가 양산 장비를 제작함",
+  F052: "협력사가 S사 정보를 내부적으로 엄격히 관리함",
+  F053: "S사가 양산 장비를 승인함",
+  F054: "S사 레시피가 장비에서 완벽하게 구현되었음을 확인함",
+  F055: "S사가 레시피를 영업비밀로 관리하겠다고 명시함",
+  F056: "해외 경쟁사에게 정보 제공을 절대 금지함",
+  F057: "위반 시 법적 책임 및 계약 해지 조항을 재확인함",
+  F058: "협력사가 양산 장비를 제작함",
+  F059: "S사 레시피 전용 장비로 생산 라인을 구축함",
+  F060: "협력사가 S사 기술 비밀 유지를 서약함",
+  F061: "협력사가 S사 정보를 내부적으로 엄격히 관리함",
+  F062: "협력사가 제3자 공유 금지를 약속함",
+  F063: "협력사가 해외 경쟁사 제안 시 즉시 S사에 보고할 의무를 명시함",
+  F064: "S사 레시피 전용 장비 구축과 관련한 근거",
+  F065: "S사가 세정 레시피·HKMG 공정 기술·장비 사양을 영업비밀로 최종 확정함",
+  F066: "기술 및 영업비밀 보호와 관련한 협력사의 이행 사실",
+  F067: "위반 시 민형사상 책임 추궁 조항을 명시함",
+  F068: "협력사가 양산 준비를 담당함",
+  F069: "협력사가 S사 기술 비밀 유지를 서약함",
+  F070: "협력사가 유사 기술 타사 제공 및 응용 개발 금지를 약속함",
+  F071: "협력사가 S사와의 장기 파트너십 유지 및 차세대 공정 장비 협력을 희망함",
+}
+
+function buildHkmg25e1Facts(): Fact[] {
+  const meetingCount = 7
+  const facts: Fact[] = []
+  for (let n = 1; n <= 71; n++) {
+    const id = `F${String(n).padStart(3, "0")}`
+    const meetingIndex = Math.min(meetingCount, Math.ceil(n / 11))
+    facts.push({
+      id,
+      text: hkmg25e1FactText[id] ?? `회의록에서 추출된 근거 사실 (${id})`,
+      meetingId: `HKMG25E1_${String(meetingIndex).padStart(2, "0")}`,
+    })
+  }
+  return facts
+}
+
+export const analysisResults: Record<string, AnalysisResult> = {
+  HKMG25E1: {
+    project_code: "HKMG25E1",
+    project_type: "설비",
+    overall_conclusion: {
+      summary:
+        "S사가 HKMG 세정 공정 및 레시피에 대한 배타권을 강력하게 확보하고 있으며, 이를 구현하는 세정 장비에 대해서도 S사의 기술적 주도권이 명확하나, 장비 자체의 설계 및 개선 기술에 대한 P사의 기여로 인해 일부 권리 귀속의 불명확성이 존재한다.",
+      overall_exclusivity_assessment: "Company S",
+      confidence_level: "Medium",
+      key_risks: [
+        "협력사가 장비 설계 및 제조 과정에서 독자적으로 개발한 미세 기술 개선 사항에 대한 권리 주장 가능성",
+        "계약서에 명시된 배타권 조항의 구체적인 범위 및 유효기간에 대한 불명확성 (회의록 상 명시적 계약서 조항은 없음)",
+        "협력사 내부 인력의 이직 등으로 인한 기술 유출 위험",
+      ],
+      recommendations: [
+        "협력사와의 계약서에 세정 레시피, 공정 기술, 장비 사양 및 도면 등 모든 개발 결과물의 권리 귀속 조항을 명확히 하고, 배타적 독점권 및 제3자 공급 금지 조항을 구체적으로 명시할 것.",
+        "협력사가 장비 개선 과정에서 독자적으로 개발한 기술에 대한 기여도를 평가하고, 필요한 경우 해당 부분에 대한 권리 귀속 또는 전용 실시권 계약을 체결할 것.",
+        "S사 핵심 기술에 대한 협력사의 비밀 유지 관리 체계를 정기적으로 점검하고, 위반 시 법적 조치를 위한 증거 확보 방안을 마련할 것.",
+      ],
+    },
+    judgements: [
+      {
+        group_id: "G001",
+        topic: "세정 레시피 및 공정 기술",
+        issue: "배타권 주체",
+        exclusivity_holder: "Company S",
+        confidence: "High",
+        reasoning:
+          "S사는 HKMG 공정용 세정 레시피 및 핵심 공정 기술을 독자적으로 개발(F002, F012, F017)하고, 이를 협력사에 제공하여 장비 개발을 요청했습니다(F011, F013, F014). S사는 해당 레시피가 10년 연구 개발 결과이며 외부 공개 시 경쟁사 기술 격차 해소에 직결된다고 강조했고(F017, F018), 이를 영업비밀로 엄격히 관리하겠다고 명시했습니다(F015, F047, F055, F065). 협력사 또한 S사 레시피의 우수성을 인정하고(F039), 레시피 자체는 변경 없이 장비 개선만 수행했으며(F037, F042), S사 레시피 보호를 최우선으로 하겠다고 약속했습니다(F044). 최종적으로 S사 레시피가 장비에서 완벽하게 구현되었음을 확인했습니다(F054).",
+        supporting_facts: [
+          "F002",
+          "F011",
+          "F012",
+          "F013",
+          "F014",
+          "F015",
+          "F017",
+          "F018",
+          "F034",
+          "F037",
+          "F042",
+          "F044",
+          "F047",
+          "F054",
+          "F055",
+          "F065",
+        ],
+        counter_arguments:
+          "협력사가 S사 레시피를 기반으로 장비 설계를 수행한 기여(F019)가 있으나, 이는 S사의 지시와 통제 하에 이루어진 구현 역할에 가깝습니다.",
+        recommendation:
+          "S사 레시피 및 공정 기술에 대한 영업비밀 관리 체계를 지속적으로 강화하고, 협력사와의 계약서에 해당 기술의 독점적 소유권 및 사용 제한을 명확히 명시할 것.",
+        legal_basis: {
+          applicable_laws: ["PL001", "CL002", "NDA"],
+          contract_analysis: {
+            has_exclusivity_clause: true,
+            clause_summary:
+              "S사는 세정 레시피 및 HKMG 공정 기술을 영업비밀로 최종 확정하고(F047, F065), 협력업체는 S사 레시피 기반 장비 제조만 담당하며 레시피 자체는 S사 독점 소유임을 명확히 함(F048). 협력사는 S사 기술 비밀 유지 서약(F009, F060, F069) 및 제3자 공유 금지(F056, F062, F063, F070)를 약속했으며, 위반 시 법적 책임 및 계약 해지 조항을 재확인함(F057, F067).",
+            validity_period: "정보 부족 (회의록 상 명시적 유효기간 언급 없음)",
+            enforcement_risk:
+              "S사의 명시적인 의사 표현과 협력사의 수용이 다수 확인되어 법적 집행 가능성이 높음. 단, 계약서 상 명시적 조항 확인 필요.",
+          },
+          inventorship_analysis:
+            "S사가 세정 레시피 및 HKMG 공정 핵심 기술 아이디어를 최초 제안하고 10년간 독자 개발했으므로(F002, F012, F017), 발명자는 S사로 인정될 가능성이 매우 높습니다.",
+          contribution_analysis:
+            "S사는 핵심 레시피 및 공정 기술 개발에 10년간의 연구 개발 자원을 투입했으며(F017), 협력사는 S사 레시피를 구현하는 역할에 집중했습니다. 따라서 S사의 기여 비중이 압도적으로 높습니다.",
+          risk_factors: ["계약서에 명시된 권리 귀속 조항의 부재 또는 불명확성 (회의록 상 명시적 계약서 조항은 없음)"],
+          recommended_legal_actions: [
+            "협력사와의 정식 계약서에 영업비밀 보호 및 권리 귀속 조항을 명확히 포함했는지 법무팀 검토 필요.",
+          ],
+        },
+        evaluation_grade: {
+          tech_effect_grade: "1",
+          tech_effect_reasoning:
+            "S사 차세대 HKMG 공정 도입에 필수적인 전용 기술이며(F001), 반도체 성능과 직결되는 핵심 공정 정보(F006)로, 세정 효율 98% 달성으로 양산 기준을 충족(F046)하여 대체 기술이 없어 Integration 불가 수준의 기술 효과를 가집니다.",
+          competitor_applicability: "고",
+          competitor_reasoning:
+            "S사 독자 레시피의 외부 공개 시 경쟁사 기술 격차 해소에 직결된다고 명시(F018)되었으며, 해외 경쟁사에게 정보 제공을 절대 금지하는 등(F056, F063, F070) 타사에 노출될 경우 적용 용이성이 높아 기술 격차 유지를 위해 보호가 필수적입니다.",
+          tech_gap: "대",
+          tech_gap_reasoning:
+            "S사 레시피가 10년 연구 개발 결과(F017)이며, 외부 공개 시 경쟁사 기술 격차 해소에 직결된다는 점(F018)을 고려할 때, 2년 이상의 기술 격차를 가집니다.",
+          final_grade: "A1",
+          grade_reasoning:
+            "기술 효과 1등급, 경쟁사 적용 가능성 '고', 기술 격차 '대' 조합으로, 가이드라인에 따라 A1 등급으로 판단됩니다.",
+        },
+      },
+      {
+        group_id: "G002",
+        topic: "세정 장비 개발 및 성능",
+        issue: "배타권 주체",
+        exclusivity_holder: "Company S",
+        confidence: "High",
+        reasoning:
+          "S사는 HKMG 공정 도입을 위한 전용 세정 장비 개발의 필요성을 제기했고(F001), S사 독자 개발 세정 레시피를 기반으로 장비 개발을 협력했습니다(F003). 협력사는 S사가 제공하는 레시피 및 공정 사양에 따라 장비 설계 및 제조를 담당했으며(F008, F020, F022), S사는 레시피에 정확히 부합하는 설계를 필수적으로 요구하고(F016), 온도 제어 정밀도(F025) 및 약품 농도 오차 범위(F026) 등 핵심 기술 사양을 지정했습니다. 협력사는 S사의 요구사항을 반영하여 장비 설계를 개선하고(F028, F029), 프로토타입 및 양산 장비를 제작했습니다(F031, F051, F058). 최종적으로 S사가 양산 장비를 승인했으며(F053), 협력사는 장비가 S사 레시피 구현 전용이며 타 용도 전용 불가함을 확인했습니다(F050, F059, F070).",
+        supporting_facts: [
+          "F001",
+          "F003",
+          "F008",
+          "F016",
+          "F020",
+          "F022",
+          "F025",
+          "F026",
+          "F028",
+          "F029",
+          "F031",
+          "F050",
+          "F051",
+          "F053",
+          "F058",
+          "F059",
+          "F064",
+          "F068",
+          "F070",
+        ],
+        counter_arguments:
+          "협력사가 장비 설계 및 제조, 프로토타입 제작, 양산 준비 등 실질적인 구현을 담당했으나(F008, F020, F022, F031, F051, F058, F059, F068), 이는 S사의 핵심 레시피와 엄격한 사양 요구사항을 충족시키기 위한 역할이었습니다. 장비의 핵심 가치는 S사의 레시피 구현에 있으므로, 장비 자체의 배타권은 S사에 귀속됩니다.",
+        recommendation:
+          "장비 자체에 대한 특허 출원 가능성을 검토하고, S사 레시피 구현 전용 장비임을 명시하는 계약 조항을 강화하여 협력사의 타사 공급을 원천적으로 차단할 것.",
+        legal_basis: {
+          applicable_laws: ["PL001", "CL001", "CL002"],
+          contract_analysis: {
+            has_exclusivity_clause: true,
+            clause_summary:
+              "S사는 전용 세정 장비 개발을 요청했고(F001), 협력사는 S사 레시피 기반 장비 제조만 담당하며(F048), P사 장비는 S사 레시피 구현 전용이며 타 용도 불가(F050, F059) 및 유사 기술 타사 제공 및 응용 개발 금지(F070)를 약속했습니다.",
+            validity_period: "정보 부족 (회의록 상 명시적 유효기간 언급 없음)",
+            enforcement_risk:
+              "S사의 명시적인 요구와 협력사의 수용이 다수 확인되어 법적 집행 가능성이 높음. 단, 계약서 상 명시적 조항 확인 필요.",
+          },
+          inventorship_analysis:
+            "장비의 핵심 아이디어는 S사의 HKMG 공정 및 세정 레시피 구현을 위한 '전용' 장비 개발 필요성 제기(F001)에서 시작되었으며, S사가 핵심 파라미터와 사양을 제시했습니다(F025, F026). 협력사는 이를 구현하는 역할을 수행했으므로, 장비의 발명자는 S사 측에 더 가깝습니다.",
+          contribution_analysis:
+            "S사는 장비 개발의 방향성, 핵심 레시피, 기술 사양을 제시하며 주도적인 역할을 했고, 협력사는 S사의 요구사항에 맞춰 장비를 설계, 제작, 개선하는 데 자원을 투입했습니다. 장비의 핵심 가치가 S사 레시피 구현에 있으므로, S사의 기여가 더 크다고 판단됩니다.",
+          risk_factors: ["협력사가 장비 설계 및 제조 과정에서 독자적으로 개발한 특정 부품 또는 모듈에 대한 권리 주장 가능성"],
+          recommended_legal_actions: [
+            "장비 설계 및 제조 과정에서 협력사가 독자적으로 개발한 기술적 요소가 있는지 확인하고, 있다면 해당 부분에 대한 권리 귀속을 명확히 할 것.",
+          ],
+        },
+        evaluation_grade: {
+          tech_effect_grade: "1",
+          tech_effect_reasoning:
+            "S사 차세대 HKMG 공정 도입에 따른 '전용' 세정 장비 개발이 필수적이며(F001), 반도체 성능과 직결되는 핵심 공정 정보를 구현하는 장비이므로(F006), 대체 기술이 없어 Integration 불가 수준의 기술 효과를 가집니다.",
+          competitor_applicability: "저",
+          competitor_reasoning:
+            "P사 장비는 S사 레시피 구현 전용이며 타 용도로 전용 불가(F050, F070)하고, S사 레시피 전용 장비로 생산 라인을 구축(F059)했으므로, S사 특화 기술로 경쟁사 적용 가능성이 낮습니다.",
+          tech_gap: "대",
+          tech_gap_reasoning:
+            "S사 차세대 HKMG 공정 도입을 위한 '전용' 세정 장비 개발(F001)이므로, 기존 설비나 대체 기술 대비 2년 이상의 기술 격차를 가집니다.",
+          final_grade: "A2",
+          grade_reasoning:
+            "기술 효과 1등급, 경쟁사 적용 가능성 '저', 기술 격차 '대' 조합으로, 가이드라인에 따라 A2 등급으로 판단됩니다.",
+        },
+      },
+      {
+        group_id: "G003",
+        topic: "기술 및 영업비밀 보호",
+        issue: "배타권 주체",
+        exclusivity_holder: "Company S",
+        confidence: "High",
+        reasoning:
+          "S사는 세정 레시피, HKMG 공정 기술, 장비 사양 등 프로젝트 관련 모든 자료를 자사의 영업비밀로 지정하고(F004, F015, F047, F055, F065), 법적 보호 대상임을 명확히 했습니다. S사는 협력업체의 역할을 장비 구현으로 제한하고(F005, F048), 핵심 공정 정보에 대한 비밀 유지 계약을 필수로 요구했습니다(F006). 협력사는 S사 핵심 기술에 대한 비밀 유지 및 제3자 공유 금지를 서약하고(F009, F060, F062, F069, F070), S사 승인 없이 장비 도면 및 사양 정보의 외부 공개나 임의 변경이 불가함을 인정했습니다(F010, F023, F027). 또한, 협력사는 S사 정보를 내부적으로 엄격히 관리하고(F021, F030, F052, F061), 해외 경쟁사 제안 시 즉시 S사에 보고할 의무를 명시했습니다(F063). S사는 위반 시 법적 책임 및 계약 해지 조항을 재확인했습니다(F057, F067).",
+        supporting_facts: [
+          "F004",
+          "F005",
+          "F006",
+          "F009",
+          "F010",
+          "F015",
+          "F018",
+          "F021",
+          "F023",
+          "F027",
+          "F030",
+          "F044",
+          "F047",
+          "F048",
+          "F050",
+          "F052",
+          "F055",
+          "F056",
+          "F057",
+          "F060",
+          "F061",
+          "F062",
+          "F063",
+          "F065",
+          "F066",
+          "F067",
+          "F069",
+          "F070",
+        ],
+        counter_arguments:
+          "협력사가 S사 기술 보호를 위해 내부 관리 체계를 구축하고 서약하는 등 적극적으로 협력했으나, 이는 S사의 기술 보호 의무를 이행하는 행위로, 협력사가 해당 기술에 대한 배타권을 주장할 근거는 되지 않습니다.",
+        recommendation:
+          "S사는 영업비밀 3요건(비공지성, 경제적 가치, 비밀관리성) 충족 여부를 정기적으로 재검토하고, 협력사와의 계약서에 영업비밀 보호 및 위반 시 제재 조항을 더욱 구체적으로 명시할 것.",
+        legal_basis: {
+          applicable_laws: ["CL002", "NDA", "민법 제750조"],
+          contract_analysis: {
+            has_exclusivity_clause: true,
+            clause_summary:
+              "S사는 세정 레시피, HKMG 공정 기술, 장비 사양을 영업비밀로 최종 확정하고(F065), 협력업체는 S사 기술 보호 의무를 지속하며 위반 시 민형사상 책임 추궁(F067) 및 제3자 공급 금지(F056, F070)를 명시했습니다. 협력사는 S사 기술 비밀 유지 서약(F060, F069) 및 제3자 공유 금지(F062, F070)를 약속했습니다.",
+            validity_period: "정보 부족 (회의록 상 명시적 유효기간 언급 없음)",
+            enforcement_risk:
+              "S사의 명시적인 영업비밀 지정 및 보호 의지와 협력사의 수용 및 이행 의지가 명확하게 확인되어 법적 집행 가능성이 매우 높습니다.",
+          },
+          inventorship_analysis:
+            "기술 아이디어의 창출은 S사에서 이루어졌으며, 보호 대상인 영업비밀은 S사의 독자적인 연구 개발 결과물입니다.",
+          contribution_analysis:
+            "S사는 영업비밀로 지정된 기술의 개발에 주도적으로 기여했으며, 협력사는 S사의 영업비밀을 보호하고 관리하는 역할을 수행했습니다.",
+          risk_factors: [
+            "협력사 내부에서 영업비밀 관리 소홀로 인한 유출 발생 시 책임 소재 및 손해배상 범위 입증의 어려움",
+          ],
+          recommended_legal_actions: [
+            "협력사와의 계약서에 영업비밀의 정의, 범위, 보호 의무, 위반 시 손해배상액 예정 등 구체적인 조항을 포함했는지 법무팀 검토 필요.",
+          ],
+        },
+        evaluation_grade: {
+          tech_effect_grade: "1",
+          tech_effect_reasoning:
+            "보호 대상인 기술이 '반도체 성능과 직결되는 핵심 공정 정보'(F006)이므로, 해당 기술의 보호는 Device에 미치는 기술 효과의 중요도가 매우 높습니다.",
+          competitor_applicability: "고",
+          competitor_reasoning:
+            "S사 레시피의 외부 공개 시 '경쟁사 기술 격차 해소에 직결'(F018)된다고 명시되었고, '해외 경쟁사'에게 정보 제공을 절대 금지하는 등(F056, F063, F070) 타사에 노출될 경우 적용 용이성이 높아 기술 격차 유지를 위해 보호가 필수적입니다.",
+          tech_gap: "대",
+          tech_gap_reasoning:
+            "보호 대상인 S사 레시피가 '10년 연구 개발 결과'(F017)이며, 외부 공개 시 '경쟁사 기술 격차 해소에 직결'(F018)된다는 점을 고려할 때, 2년 이상의 기술 격차를 가집니다.",
+          final_grade: "A1",
+          grade_reasoning:
+            "기술 효과 1등급, 경쟁사 적용 가능성 '고', 기술 격차 '대' 조합으로, 가이드라인에 따라 A1 등급으로 판단됩니다.",
+        },
+      },
+      {
+        group_id: "G004",
+        topic: "기타",
+        issue: "배타권 주체",
+        exclusivity_holder: "Unclear",
+        confidence: "Low",
+        reasoning:
+          "해당 Fact(F071)는 협력사가 S사와의 장기 파트너십 유지 및 차세대 공정 장비 협력을 희망한다는 의사 표현으로, 특정 기술이나 기능에 대한 배타권 주체를 직접적으로 판단할 근거가 되지 않습니다. 이는 향후 협력 관계에 대한 의지를 보여주는 것이며, 배타권 판단에는 중립적입니다.",
+        supporting_facts: ["F071"],
+        counter_arguments: "없음",
+        recommendation: "이 Fact는 배타권 판단에 직접적인 영향을 미치지 않으므로, 참고 자료로만 활용합니다.",
+        legal_basis: {
+          applicable_laws: [],
+          contract_analysis: {
+            has_exclusivity_clause: false,
+            clause_summary: "해당 Fact는 계약 조항에 대한 언급이 아닙니다.",
+            validity_period: "N/A",
+            enforcement_risk: "N/A",
+          },
+          inventorship_analysis: "해당 Fact는 기술 아이디어 창출과 관련이 없습니다.",
+          contribution_analysis: "해당 Fact는 자원 투입과 관련이 없습니다.",
+          risk_factors: [],
+          recommended_legal_actions: [],
+        },
+        evaluation_grade: {
+          tech_effect_grade: "N/A",
+          tech_effect_reasoning: "N/A - 이 그룹은 기술 자체의 효과를 다루지 않습니다.",
+          competitor_applicability: "N/A",
+          competitor_reasoning: "N/A - 이 그룹은 기술 자체의 경쟁사 적용 가능성을 다루지 않습니다.",
+          tech_gap: "N/A",
+          tech_gap_reasoning: "N/A - 이 그룹은 기술 자체의 격차를 다루지 않습니다.",
+          final_grade: "N/A",
+          grade_reasoning:
+            "N/A - 설비 과제이지만, 이 그룹의 내용은 기술 평가 기준에 직접 해당하지 않으므로 심의 등급 미적용.",
+        },
+      },
+    ],
+    legal_perspective: {
+      applicable_laws: [
+        {
+          law_id: "PL001",
+          law_name: "특허법 제33조 (특허를 받을 수 있는 권리)",
+          relevance:
+            "발명자 인정 기준은 기술적 아이디어를 창출한 자에게 특허를 받을 수 있는 권리가 있음을 명시합니다. 이는 배타권 주체의 핵심 근거가 됩니다.",
+          application_to_project:
+            "본 프로젝트에서 S사는 HKMG 공정용 세정 레시피 및 공정 기술에 대한 아이디어를 최초 제안하고 10년간 독자 개발했습니다(F002, F012, F017). 협력사는 S사의 지시에 따라 장비를 구현하는 역할을 수행했으므로, 발명자 인정 측면에서 S사가 우위에 있습니다.",
+        },
+        {
+          law_id: "CL002",
+          law_name: "계약 특약 조항 배타적 독점권 조항",
+          relevance:
+            "계약서에 명시된 배타적 독점권, 제3자 공급 금지, 전용 실시권 등의 조항은 배타권의 법적 효력을 강화하는 가장 직접적인 근거입니다.",
+          application_to_project:
+            "회의록 상 S사는 세정 레시피 및 공정 기술을 영업비밀로 최종 확정하고(F047, F065), 협력업체의 역할을 S사 레시피 기반 장비 제조로 제한하며 레시피의 독점 소유권을 명시했습니다(F048). 협력사 또한 S사 기술에 대한 비밀 유지 및 제3자 공유 금지를 서약하고(F009, F060, F069, F070), 위반 시 법적 책임 및 계약 해지 조항을 재확인했습니다(F057, F067). 이는 계약서에 배타적 독점권 조항이 포함되어 있을 가능성이 매우 높음을 시사하며, S사의 배타권 주장에 강력한 법적 근거가 됩니다.",
+        },
+        {
+          law_id: "CL001",
+          law_name: "계약법 (민법 제664조) 도급계약 - 일의 완성과 보수",
+          relevance:
+            "도급계약은 수급인이 일의 완성을 통해 보수를 받는 계약 형태로, 결과물의 소유권은 계약서에 명시된 바에 따릅니다. 이는 협력사의 개발 행위가 S사의 지시 하에 이루어졌음을 판단하는 근거가 됩니다.",
+          application_to_project:
+            "협력사는 S사가 제공하는 세정 레시피 및 공정 사양에 따라 장비 설계 및 제조를 담당했습니다(F008). S사는 장비 설계에 대한 핵심 요구사항을 제시하고(F016, F025, F026), S사 승인 없이 임의 변경을 금지했습니다(F023). 이는 협력사의 역할이 S사의 지시를 받아 '일의 완성'을 수행하는 도급 계약의 성격이 강함을 보여주며, 결과물의 권리 귀속은 S사의 의사에 따를 가능성이 높습니다.",
+        },
+        {
+          law_id: "PL002",
+          law_name: "특허법 제10조~제15조 (직무발명)",
+          relevance:
+            "종업원의 직무발명은 사용자에게 권리가 승계될 수 있습니다. 협력사 직원이 개발한 경우, 협력사와 위탁사 간 계약에 따라 권리 귀속이 달라질 수 있습니다.",
+          application_to_project:
+            "협력사 직원이 장비 설계 및 개선 과정에서 독자적인 기술적 아이디어를 창출했다면 직무발명으로 볼 수 있습니다. 그러나 본 프로젝트에서는 협력사의 개발이 S사의 레시피 구현 및 요구사항 충족에 집중되었으므로, 협력사 직원의 독자적인 발명으로 인정될 여지는 적습니다. 다만, 계약서에 직무발명에 대한 권리 귀속 조항이 명확히 포함되어 있는지 확인이 필요합니다.",
+        },
+      ],
+      overall_legal_analysis:
+        "본 프로젝트의 배타권은 S사에 강력하게 귀속될 것으로 판단됩니다. S사는 핵심 기술인 세정 레시피 및 공정 기술을 독자적으로 개발하고 영업비밀로 지정했으며, 협력사는 S사의 지시와 통제 하에 해당 기술을 구현하는 장비의 설계 및 제조를 담당했습니다. 다수의 회의록 Fact에서 S사의 명시적인 배타권 의사 표현과 협력사의 비밀 유지 및 제3자 제공 금지 서약이 확인되어 계약법적 근거가 매우 견고합니다. 특허법적 관점에서도 S사가 기술 아이디어를 창출하고 선행 기술을 보유했으므로 발명자 인정에 유리합니다. 협력사의 기여는 S사의 기술을 구현하는 도급 계약의 성격이 강하며, 장비 자체도 S사 레시피 전용으로 개발되었습니다. 따라서 S사의 배타권 주장은 법적으로 높은 타당성을 가집니다.",
+      risk_factors: [
+        "협력사와의 정식 계약서에 회의록에서 언급된 배타권 및 영업비밀 보호 조항이 명확하고 구체적으로 명시되어 있지 않을 경우 법적 분쟁 발생 가능성",
+        "협력사가 장비 설계 및 개선 과정에서 독자적으로 개발한 특정 기술적 요소에 대해 권리를 주장할 경우, 해당 부분에 대한 기여도 및 권리 귀속 범위에 대한 이견 발생 가능성",
+        "협력사 내부의 영업비밀 관리 소홀로 인한 기술 유출 발생 시, S사의 손해배상 청구 및 영업비밀 침해 입증의 어려움",
+      ],
+      recommended_actions: [
+        "협력사와의 모든 계약서(개발 계약, NDA, 공급 계약 등)를 법무팀에서 종합적으로 검토하여 배타권, 영업비밀 보호, 권리 귀속, 제3자 공급 금지, 위반 시 제재 조항의 유효성과 구체성을 확인할 것.",
+        "협력사가 장비 개발 과정에서 독자적으로 개발한 기술적 개선 사항이 있는지 면밀히 분석하고, 만약 있다면 해당 기술에 대한 권리 귀속 또는 사용 허락에 대한 명확한 합의를 문서화할 것.",
+        "협력사의 영업비밀 관리 시스템에 대한 정기적인 감사를 실시하고, 기술 유출 방지를 위한 추가적인 보안 조치 및 교육을 요구할 수 있는 법적 근거를 마련할 것.",
+      ],
+    },
+    elapsed_time: 228.5,
+    facts: buildHkmg25e1Facts(),
+  },
+}
 
 export function findMeetingsByProject(code: string): MeetingMinute[] {
   return meetingMinutes
