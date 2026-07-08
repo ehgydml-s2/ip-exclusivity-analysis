@@ -1,4 +1,6 @@
-import { Sparkles, ShieldCheck, Target, ListChecks, GitBranch, ChevronRight } from "lucide-react"
+"use client"
+
+import { Sparkles, ShieldCheck, Target, ListChecks, GitBranch, ChevronRight, Download } from "lucide-react"
 import type { AnalysisResult, EvidenceItem, ExclusivityLikelihood, Attribution } from "@/lib/data"
 import { cn } from "@/lib/utils"
 
@@ -48,7 +50,61 @@ function BlockHeader({ icon: Icon, title }: { icon: React.ElementType; title: st
   )
 }
 
-export function AnalysisSummary({ result }: { result: AnalysisResult }) {
+function buildReportText(result: AnalysisResult, projectCode?: string, projectName?: string) {
+  const line = "=".repeat(52)
+  const parts: string[] = []
+  parts.push(line)
+  parts.push("AI 배타성 분석 요약 보고서")
+  parts.push("회의록 기반 자동 분석 결과 · AI-generated")
+  parts.push(line)
+  parts.push("")
+  if (projectCode) parts.push(`과제코드 : ${projectCode}`)
+  if (projectName) parts.push(`과제명   : ${projectName}`)
+  parts.push(`추출일시 : ${new Date().toLocaleString("ko-KR")}`)
+  parts.push("")
+  parts.push("[ 종합 판단 ]")
+  parts.push(`- 배타권 주장 가능성 : ${result.likelihood}`)
+  parts.push(`- 예상 귀속 주체     : ${result.attribution}`)
+  parts.push("")
+  parts.push(result.summary)
+  parts.push("")
+  parts.push("[ 핵심 근거 ]")
+  result.evidence.forEach((ev, i) => {
+    parts.push(`${i + 1}. (${ev.actor}) ${ev.text}`)
+  })
+  parts.push("")
+  parts.push("[ 타임라인 요약 ]")
+  result.timeline.forEach((step, i) => {
+    parts.push(`STEP ${i + 1}. ${step.label} — ${step.detail}`)
+  })
+  parts.push("")
+  parts.push(line)
+  return parts.join("\n")
+}
+
+export function AnalysisSummary({
+  result,
+  projectCode,
+  projectName,
+}: {
+  result: AnalysisResult
+  projectCode?: string
+  projectName?: string
+}) {
+  function handleExport() {
+    const text = buildReportText(result, projectCode, projectName)
+    const blob = new Blob([text], { type: "text/plain;charset=utf-8" })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement("a")
+    const stamp = new Date().toISOString().slice(0, 10)
+    a.href = url
+    a.download = `배타성분석_${projectCode ?? "결과"}_${stamp}.txt`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  }
+
   return (
     <section
       aria-label="AI 분석 요약"
@@ -59,10 +115,18 @@ export function AnalysisSummary({ result }: { result: AnalysisResult }) {
         <div className="flex size-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
           <Sparkles className="size-5" aria-hidden="true" />
         </div>
-        <div>
+        <div className="min-w-0 flex-1">
           <h2 className="text-base font-semibold text-foreground">AI 배타성 분석 요약</h2>
           <p className="text-xs text-muted-foreground">회의록 기반 자동 분석 결과 · AI-generated</p>
         </div>
+        <button
+          type="button"
+          onClick={handleExport}
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-primary/30 bg-card px-3 py-2 text-xs font-medium text-primary shadow-sm transition-colors hover:bg-primary hover:text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        >
+          <Download className="size-4" aria-hidden="true" />
+          파일로 추출
+        </button>
       </div>
 
       <div className="space-y-8 p-6">
