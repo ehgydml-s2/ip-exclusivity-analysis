@@ -6,9 +6,12 @@ export type MeetingMinute = {
   content: string
 }
 
+export type ProjectCategory = "소재" | "설비"
+
 export type Project = {
   code: string
   name: string
+  category: ProjectCategory
 }
 
 export type Confidence = "High" | "Medium" | "Low"
@@ -86,12 +89,19 @@ export type AnalysisResult = {
 }
 
 export const projects: Project[] = [
-  { code: "PJT-2024-RF-0012", name: "차세대 RF Front-End 전력 최적화" },
-  { code: "PJT-2024-MEM-0088", name: "저전력 DRAM 리프레시 알고리즘" },
-  { code: "PJT-2023-DISP-0203", name: "OLED 구동 IC 휘도 보상 기술" },
+  { code: "PJT-2024-RF-0012", name: "차세대 RF Front-End 전력 최적화", category: "설비" },
+  { code: "PJT-2024-MEM-0088", name: "저전력 DRAM 리프레시 알고리즘", category: "소재" },
+  { code: "PJT-2023-DISP-0203", name: "OLED 구동 IC 휘도 보상 기술", category: "설비" },
 ]
 
 export const projectCodes = projects.map((p) => p.code)
+
+export type ProjectTypeFilter = "전체" | ProjectCategory
+
+export function findProjectsByType(type: ProjectTypeFilter): Project[] {
+  if (type === "전체") return projects
+  return projects.filter((p) => p.category === type)
+}
 
 export const meetingMinutes: MeetingMinute[] = [
   // ---- PJT-2024-RF-0012 ----
@@ -167,7 +177,7 @@ export const meetingMinutes: MeetingMinute[] = [
     date: "2023-11-02",
     participants: ["윤서연 (삼성 디스플레이)", "강태오 (협력사 C)", "최민석 (삼성 검증)"],
     content:
-      "협력사 C의 룩업테이블 방식이 삼성 대안 대비 화질 균일도에서 우수함을 확인함. 삼성은 자체 대안을 철회하고 협력사 방식을 기준으로 진행하기로 함.\n\n핵심 보상 알고리즘의 원 제안자가 협력사임이 회의록상 명확히 기록됨.",
+      "협력사 C의 룩업테이블 방식이 삼성 대안 대비 화질 균일도에서 우수함을 확인함. 삼성은 자체 대안을 철회하고 협력사 방식을 기준으로 진행하기로 함.\n\n핵심 보상 알고리즘의 원 제안자가 협력사임�� 회의록상 명확히 기록됨.",
   },
 ]
 
@@ -285,7 +295,7 @@ export const analysisResults: Record<string, AnalysisResult> = {
         "삼성 단독 명의 핵심 특허를 최우선 출원",
         "협력사 기여 범위 확인서를 확보하여 공동발명 리스크 차단",
         "공급 제한 조항을 경쟁법 관점에서 재설계",
-        "후속 개량 발명에 대한 포트폴리오 출원 전략 수립",
+        "후�� 개량 발명에 대한 포트폴리오 출원 전략 수립",
       ],
     },
     conclusion: {
