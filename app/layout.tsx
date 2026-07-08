@@ -48,6 +48,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className={`bg-background ${notoSansKr.variable} ${geistMono.variable}`}>
+      <head>
+        <meta charSet="utf-8" />
+      </head>
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
