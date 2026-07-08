@@ -100,15 +100,12 @@ export function AnalysisResultView({
 
       <div className="space-y-8 p-6">
         {/* 1. Project Summary Header */}
-        <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-5">
-          <SummaryStat icon={FolderKanban} label="과제코드">
-            {result.project_code}
-          </SummaryStat>
+        <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
           <SummaryStat icon={Tag} label="과제유형">
             {result.project_type}
           </SummaryStat>
-          <SummaryStat icon={ShieldCheck} label="전체 배타성 판단">
-            {conclusion.overall_exclusivity_assessment}
+          <SummaryStat icon={FolderKanban} label="과제코드">
+            {result.project_code}
           </SummaryStat>
           <SummaryStat icon={ShieldCheck} label="신뢰도">
             <ConfidenceBadge value={conclusion.confidence_level} />
