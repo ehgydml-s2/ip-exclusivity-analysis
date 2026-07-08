@@ -3,10 +3,13 @@
 import { useMemo, useState } from "react"
 import { Search, ScanSearch, AlertCircle, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { projectExists, findProjectsByType, countMeetingsByProject, type ProjectTypeFilter } from "@/lib/data"
+import { projectExists, findProjectsByType, countMeetingsByProject, analysisResults, type ProjectTypeFilter } from "@/lib/data"
 import { cn } from "@/lib/utils"
 
 type SearchMethod = "code" | "manual"
+
+// 배타성 분석 메타데이터를 가진 과제 코드 리스트
+const PROJECTS_WITH_ANALYSIS = Object.keys(analysisResults)
 
 const TYPE_OPTIONS: ProjectTypeFilter[] = ["전체", "소재", "설비"]
 
@@ -151,11 +154,14 @@ export function SearchPanel({
                     <option value="" disabled>
                       {`과제코드를 선택하세요`}
                     </option>
-                    {filteredProjects.map((p) => (
-                      <option key={p.code} value={p.code}>
-                        {`${p.code}(${countMeetingsByProject(p.code)})`}
-                      </option>
-                    ))}
+                    {filteredProjects.map((p) => {
+                      const hasAnalysis = PROJECTS_WITH_ANALYSIS.includes(p.code)
+                      return (
+                        <option key={p.code} value={p.code} className={hasAnalysis ? "font-bold" : ""}>
+                          {`${hasAnalysis ? "** " : ""}${p.code}(${countMeetingsByProject(p.code)})${hasAnalysis ? " **" : ""}`}
+                        </option>
+                      )
+                    })}
                   </select>
                   <ChevronDown
                     className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
@@ -188,26 +194,29 @@ export function SearchPanel({
                     className="absolute z-20 mt-1.5 w-full overflow-hidden rounded-lg border border-border bg-popover shadow-lg"
                     role="listbox"
                   >
-                    {suggestions.map((p) => (
-                      <li key={p.code} role="option" aria-selected={manualCode.trim() === p.code}>
-                        <button
-                          type="button"
-                          onMouseDown={(e) => {
-                            e.preventDefault()
-                            setManualCode(p.code)
-                            setShowSuggestions(false)
-                            setError(null)
-                          }}
-                          className="flex w-full items-center gap-2 px-3.5 py-2.5 text-left text-sm transition-colors hover:bg-accent/50"
-                        >
-                          <span className="rounded bg-secondary px-1.5 py-0.5 text-[0.7rem] font-medium text-secondary-foreground">
-                            {p.category}
-                          </span>
-                          <span className="font-medium text-foreground">{p.code}</span>
-                          <span className="truncate text-xs text-muted-foreground">{p.name}</span>
-                        </button>
-                      </li>
-                    ))}
+                    {suggestions.map((p) => {
+                      const hasAnalysis = PROJECTS_WITH_ANALYSIS.includes(p.code)
+                      return (
+                        <li key={p.code} role="option" aria-selected={manualCode.trim() === p.code}>
+                          <button
+                            type="button"
+                            onMouseDown={(e) => {
+                              e.preventDefault()
+                              setManualCode(p.code)
+                              setShowSuggestions(false)
+                              setError(null)
+                            }}
+                            className="flex w-full items-center gap-2 px-3.5 py-2.5 text-left text-sm transition-colors hover:bg-accent/50"
+                          >
+                            <span className="rounded bg-secondary px-1.5 py-0.5 text-[0.7rem] font-medium text-secondary-foreground">
+                              {p.category}
+                            </span>
+                            <span className={cn("text-foreground", hasAnalysis && "font-bold")}>{p.code}</span>
+                            <span className="truncate text-xs text-muted-foreground">{p.name}</span>
+                          </button>
+                        </li>
+                      )
+                    })}
                   </ul>
                 )}
               </div>

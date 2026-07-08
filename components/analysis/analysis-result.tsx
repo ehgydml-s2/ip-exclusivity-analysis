@@ -107,7 +107,7 @@ export function AnalysisResultView({
             {result.project_type}
           </SummaryStat>
           <SummaryStat icon={FolderKanban} label="과제코드">
-            {result.project_code}
+            <span className="font-bold">{result.project_code}</span>
           </SummaryStat>
           <SummaryStat icon={ShieldCheck} label="신뢰도">
             <ConfidenceBadge value={conclusion.confidence_level} />
