@@ -1,0 +1,145 @@
+import { Sparkles, ShieldCheck, Target, ListChecks, GitBranch, ChevronRight } from "lucide-react"
+import type { AnalysisResult, EvidenceItem, ExclusivityLikelihood, Attribution } from "@/lib/data"
+import { cn } from "@/lib/utils"
+
+function likelihoodStyle(v: ExclusivityLikelihood) {
+  switch (v) {
+    case "High":
+      return "bg-primary text-primary-foreground"
+    case "Medium":
+      return "bg-chart-4/20 text-chart-4 ring-1 ring-chart-4/30"
+    case "Low":
+      return "bg-muted text-muted-foreground ring-1 ring-border"
+  }
+}
+
+function attributionStyle(v: Attribution) {
+  switch (v) {
+    case "삼성":
+      return "bg-primary/10 text-primary ring-1 ring-primary/20"
+    case "협력사":
+      return "bg-chart-5/10 text-chart-5 ring-1 ring-chart-5/20"
+    case "공동 기여":
+      return "bg-chart-3/15 text-chart-3 ring-1 ring-chart-3/25"
+    case "판단 보류":
+      return "bg-muted text-muted-foreground ring-1 ring-border"
+  }
+}
+
+function actorDot(actor: EvidenceItem["actor"]) {
+  switch (actor) {
+    case "삼성":
+      return "bg-primary"
+    case "협력사":
+      return "bg-chart-5"
+    case "공동":
+      return "bg-chart-3"
+    default:
+      return "bg-muted-foreground"
+  }
+}
+
+function BlockHeader({ icon: Icon, title }: { icon: React.ElementType; title: string }) {
+  return (
+    <div className="mb-3 flex items-center gap-2">
+      <Icon className="size-4 text-primary" aria-hidden="true" />
+      <h3 className="text-sm font-semibold tracking-tight text-foreground">{title}</h3>
+    </div>
+  )
+}
+
+export function AnalysisSummary({ result }: { result: AnalysisResult }) {
+  return (
+    <section
+      aria-label="AI 분석 요약"
+      className="overflow-hidden rounded-2xl border border-primary/20 bg-card shadow-lg ring-1 ring-primary/5"
+    >
+      {/* Header */}
+      <div className="flex items-center gap-3 border-b border-primary/15 bg-primary/5 px-6 py-4">
+        <div className="flex size-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+          <Sparkles className="size-5" aria-hidden="true" />
+        </div>
+        <div>
+          <h2 className="text-base font-semibold text-foreground">AI 배타성 분석 요약</h2>
+          <p className="text-xs text-muted-foreground">회의록 기반 자동 분석 결과 · AI-generated</p>
+        </div>
+      </div>
+
+      <div className="space-y-8 p-6">
+        {/* 1. Overall Result */}
+        <div>
+          <BlockHeader icon={ShieldCheck} title="종합 판단" />
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div className="rounded-xl border border-border bg-secondary/40 p-4">
+              <p className="mb-2 flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+                <ShieldCheck className="size-3.5" aria-hidden="true" /> 배타권 주장 가능성
+              </p>
+              <span
+                className={cn(
+                  "inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold",
+                  likelihoodStyle(result.likelihood),
+                )}
+              >
+                {result.likelihood}
+              </span>
+            </div>
+            <div className="rounded-xl border border-border bg-secondary/40 p-4">
+              <p className="mb-2 flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
+                <Target className="size-3.5" aria-hidden="true" /> 예상 귀속 주체
+              </p>
+              <span
+                className={cn(
+                  "inline-flex items-center rounded-full px-3 py-1 text-sm font-semibold",
+                  attributionStyle(result.attribution),
+                )}
+              >
+                {result.attribution}
+              </span>
+            </div>
+          </div>
+          <p className="mt-4 rounded-lg bg-accent/40 p-4 text-sm leading-relaxed text-foreground">
+            {result.summary}
+          </p>
+        </div>
+
+        {/* 2. Key Evidence */}
+        <div>
+          <BlockHeader icon={ListChecks} title="핵심 근거" />
+          <ul className="grid gap-2.5 sm:grid-cols-2">
+            {result.evidence.map((ev, i) => (
+              <li
+                key={i}
+                className="flex items-start gap-3 rounded-xl border border-border bg-card p-3.5 shadow-sm"
+              >
+                <span className={cn("mt-1.5 size-2 shrink-0 rounded-full", actorDot(ev.actor))} aria-hidden="true" />
+                <span className="text-sm leading-relaxed text-foreground">{ev.text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* 3. Timeline */}
+        <div>
+          <BlockHeader icon={GitBranch} title="타임라인 요약" />
+          <ol className="flex flex-col gap-2 md:flex-row md:items-center">
+            {result.timeline.map((step, i) => (
+              <li key={i} className="flex flex-col items-center gap-2 md:flex-1 md:flex-row">
+                <div className="w-full flex-1 rounded-xl border border-border bg-secondary/40 p-3.5 text-center">
+                  <span className="mb-1 block text-[0.7rem] font-medium text-primary">STEP {i + 1}</span>
+                  <span className="block text-sm font-semibold text-foreground">{step.label}</span>
+                  <span className="mt-1 block text-xs text-muted-foreground">{step.detail}</span>
+                </div>
+                {i < result.timeline.length - 1 && (
+                  <ChevronRight
+                    className="size-5 shrink-0 rotate-90 text-primary/50 md:rotate-0"
+                    aria-hidden="true"
+                  />
+                )}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    </section>
+  )
+}
