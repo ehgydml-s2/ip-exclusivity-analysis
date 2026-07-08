@@ -82,6 +82,17 @@ export default function Page() {
               />
             )}
 
+            {showAnalysis && !analysis && (
+              <div className="rounded-2xl border border-dashed border-primary/30 bg-primary/5 px-6 py-10 text-center">
+                <p className="text-sm font-medium text-foreground">
+                  이 과제의 배타성 분석 결과는 준비 중입니다
+                </p>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {project ? `${project.code} · ${project.name}` : ""} 회의록 데이터를 기반으로 한 분석 리포트가 곧 제공됩니다.
+                </p>
+              </div>
+            )}
+
             <section aria-label="회의록 목록">
               <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
