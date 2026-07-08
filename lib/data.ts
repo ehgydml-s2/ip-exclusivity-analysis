@@ -2,6 +2,7 @@ import hkmg25e1FactRecords from "./hkmg25e1-facts.json"
 import hbm20c01FactRecords from "./hbm20c01-facts.json"
 import hsp20e1FactRecords from "./hsp20e1-facts.json"
 import scmp26e1FactRecords from "./scmp26e1-facts.json"
+import snpr20e1FactRecords from "./snpr20e1-facts.json"
 
 export type MeetingMinute = {
   id: string
@@ -173,7 +174,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `개선 샘플 B-2의 표면 거칠기 0.75nm 달성 — 목표 충족\n구리 제거율 분당 195nm로 소폭 하락, 목표 범위 내 조정 필요\nHBM 12단 적층 공정에서의 안정성 추가 검증 요청\n양산 적용 전 최종 사양 확정을 위한 베이스라인 설정 제안`,
     companyP: `제거율 상향 조정 가능 — 분산제 농도 2% 증가로 200nm 달성 예상\n12단 적층 공정 대응을 위한 장기 안정성 데이터 제공 (3개월 에이징 테스트)\n베이스라인 확정 시 해당 조성에 대한 배타적 공급 계약 체결 희망\n경쟁사(S사 등) 공급 제한 조건 사전 협의 필요`,
     articleUrl: "https://www.sedaily.com/article/13774334",
-    scenarioNote: `[명확한 배타권 근거 시나리오 - 기술 제안형]\n목적: Company S의 독자적 기술 아이디어가 명확한 케이스\n- Company S: 분지형 부틸 리간드 구조 독자 제안 (회의록 02)\n- Company A: Company S 제안 기반 합성 및 구현\n→ 명확한 배타권 근거 존재\n→ Agent가 "배타권 귀�����: Company S" 판정 기대`,
+    scenarioNote: `[명확한 배타권 근거 시나리오 - 기술 제안형]\n목적: Company S의 독자적 기술 아이디어가 명확한 케이스\n- Company S: 분지형 부틸 리간드 구조 독자 제안 (회의록 02)\n- Company A: Company S 제안 기반 합성 및 구현\n→ 명확한 배타권 근거 존재\n→ Agent가 "배타권 귀�������: Company S" 판정 기대`,
   },
   {
     id: "HBM20C01_04",
@@ -502,7 +503,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "설비",
     title: "기술혁신기업 7기 선정 및 하이브리드 웨이퍼 계측 장비 개발 킥오프",
     date: "2023-07-25",
-    companyS: `S사 기술혁신기업 프로그램 7기 선정 - 코비스테���놀로지 하이브리드 웨��퍼 계측 장비 개발 과제 착수\n반도체 장비 국산화 전략의 일환으로 웨이퍼 계측 기술 자립화 필요\n최대 3년간 공동 기술개발, 무이��� 자금 대출, 경영컨설팅 ��원 제공\n기술혁신기업 프로그램 통해 지난해 850억원 사회적 가치 창출 실적`,
+    companyS: `S사 기술혁신기업 프로그램 7�� 선정 - 코비스테���놀로지 하이브리드 웨��퍼 계측 장비 개발 과제 착수\n반도체 장비 국산화 전략의 일환으로 웨이퍼 계측 기술 자립화 필요\n최대 3년�� 공동 기술개발, 무이��� 자금 대출, 경영컨설팅 ��원 제공\n기술혁신기업 프로그램 통해 지난해 850억원 사회적 가치 창출 실적`,
     companyP: `코비스테크놀로지는 광학 및 전기식 계측 기술을 보유한 ���밀 계측 장비 전문 기업\n당사 독자 개발 하이브리드 계측 기술(광학+전기식 융합)로 국산화 목표 달성 자신\nS사 기술혁신기업 프로그램 선정에 ���사하며, 3��� 협력 기간 동안 최선\n초도 기술 사양 정의 회의 및 프로토타입 개발 일정 제시 예정`,
     articleUrl: "https://news.skhynix.co.kr/technology-innovation-7th-2/",
     scenarioNote: `[명확한 ���자 개발 시나리오 - 장비 국산화형]\n목적: Company A가 독자 기술로 장비 개발, Company S는 평가/피드백만 제공한 케이스\n- Company S: 사양 정의, 성능 평가, 피드백 제공 (���반적 수요자 역할)\n- Company A: 하이브리드 계측 기술 독자 개발 및 구현 (완전 독자 기술)\n→ Company A 독자 기술, Company S는 수요자 역할만\n→ Agent가 "배타권 없음, 일반 공급 계약" 판정 기대`,
@@ -562,7 +563,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "설비",
     title: "하이브리드 웨이퍼 계측 장비 국산화 완료 및 공급 계약 체결",
     date: "2025-07-30",
-    companyS: `코비스테크놀로지 하이브리드 웨이퍼 계측 장비 국산화 성공 선언 - 기술혁신기업 7기 성과 확정\n2025년 하반기부터 S사 이천·청주 라인에 본격 공급 개시\n반도체 장비 국산화 비중 확대 및 공급망 안정성 강화 달성\n기술혁신기업 프로그램 통해 1~4기 기업 매출 358% 증가 실적 - 지속 가능한 동반성장 모델 확립`,
+    companyS: `코비스테크놀로지 하이브리드 웨이퍼 계측 장비 국산화 성공 선언 - 기술혁신기업 7기 성과 확정\n2025년 하반기부터 S사 이천·청주 라인에 본격 공급 개시\n반도체 장비 국산화 비중 확대 및 공급망 안정성 강화 달성\n기술혁신기업 프로그램 통해 1~4기 기업 매출 358% 증가 실적 - 지속 가능한 동반성장 ���델 확립`,
     companyP: `S사와의 하이브리드 계측 장��� 공급 계약 체결 완료\n당사 독자 개발 기술로 국산화 달성 - 기술혁신기업 프로그램의 자금/경영 지원이 큰 도움\n국내 반도체 장비 산업 경쟁력 강화에 기여하며, 해외 시장 진출 기반 마련\nS사와의 장기 협력 관계 지속 및 차세대 계측 기술 독자 개발 지속 추진`,
     articleUrl: "https://news.skhynix.co.kr/technology-innovation-7th-2/",
     scenarioNote: `[명확한 독자 개발 시나리오 - 장비 국산화형]\n목적: Company A가 독자 기술로 장비 개발, Company S는 평가/피드백만 제공한 케이스\n- Company S: 사양 정의, 성능 평가, 피드백 제공 (일반적 수요자 역할)\n- Company A: 하이브리드 계측 기술 독자 개발 및 구현 (완전 독자 기술)\n→ Company A 독자 기술, Company S는 수요자 역할만\n→ Agent가 "배타권 없음, 일반 공��� 계약" 판정 기대`,
@@ -624,7 +625,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "소재",
     title: "공동 개발 기술의 권리 관계 설정 및 배타권 협의 완료",
     date: "2026-01-13",
-    companyS: `배타권 계약 체결\n당사가 제공한 Additive-X의 메커니즘 및 'Silica + Additive-X'의 최적 조성비는 당사의 배타적 권리 자산임. 따라서 A사��� 본 ��술이 적용된 Slurry 완제품 또는 동일 메커니즘을 가진 제품을 S사의 사전 서면 동의 없이 글로벌 경쟁사를 포함한 제3자에게 판매, 양도, 또는 기술 이전할 수 없�� (배타권 ��정 기간: 양산 보급 후 최소 5년).`,
+    companyS: `배타권 계약 체결\n당사가 제공한 Additive-X의 메커니즘 및 'Silica + Additive-X'�� 최적 조성비는 당사의 배타적 권리 자산임. 따라서 A사��� 본 ��술이 적용된 Slurry 완제품 또는 동일 메커니즘을 가진 제품을 S사의 사전 서면 동의 ��이 글로벌 경쟁사를 포함한 제3자에게 판매, 양도, 또는 기술 이전할 수 없�� (배타권 ��정 기간: 양산 보급 후 최소 5년).`,
     companyP: `당사 고유의 Silica 입자 기술 자체를 타 제품에 활용하는 것은 제한이 없어야 한다는 전제하에, S사가 독자 개발하여 제공한 Additive-X 및 이를 통해 도출된 최종 혼합 Slurry 제품(Soul-S2)에 대한 S사 측의 배타적 사용 권리와 제3자 공급 금지 조항을 수용함. 상호 간 특허 유출 ��지를 위한 보안 서약서를 갱신하겠음.`,
     articleUrl: "https://www.sedaily.com/article/13774334",
     scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨��제로 원천 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 �� 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 기여\n→ Agent가 "배타권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기대`,
@@ -636,7 +637,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "소재",
     title: "양산 보급화 테스트 및 Pilot 생산 라인 검증",
     date: "2026-03-04",
-    companyS: `Pilot 롯트 평가 결과 품질 산포가 안정적이며 양산성 확보가 완료되었음을 확인하여 최종 기술 승인을 통보함. 본 제품은 기술 심의회를 거쳐 당사 내부 '배타권 자산 DB'에 정식 등록될 예정임. 구매팀 주도로 양산 공급 계약 및 배타권 위반 시 페널티 조항�� 포함한 정식 계약 체결 절차를 진행��겠음.`,
+    companyS: `Pilot 롯트 평가 결과 품질 산포가 안정적이며 양산성 확보가 완료되었음을 확인하여 최종 기술 승인을 통보함. 본 제품은 기술 심의회를 거쳐 당사 내부 '배타권 자산 DB'에 정식 등록될 예정임. 구매팀 주도로 양산 공급 계약 ��� 배타권 위반 시 페널티 조항�� 포함한 정식 계약 체결 절차를 진행��겠음.`,
     companyP: `당사 Pilot 설비에서도 S사의 Additive-X가 균일하게 혼합 및 분산되도록 양산 공정 설계를 완료했음. 당사는 계약서 상의 배타권 조항을 엄격히 준수할 것���며, 전용 생산 라인을 지정하여 S사향 공급 물량에 대한 보안 관리 및 품질 추적성을 확보하겠음.`,
     articleUrl: "https://www.sedaily.com/article/13774334",
     scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨가제로 원천 기술의 결함을 해결하여 배타��� 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 → 성능 결함 완전 해결\n→ Company S의 첨가제가 ���산 성공의 핵심 기여\n→ Agent가 "배타권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기대`,
@@ -806,7 +807,7 @@ export const meetingMinutes: MeetingMinute[] = [
     numId: 112,
     projectCode: "WPC22E1",
     projectType: "설비",
-    title: "개선 프로토타입 성능 검증 및 피드백 반영 확인",
+    title: "개선 프로토타입 성능 검증 ��� 피드백 반영 확인",
     date: "2021-08-25",
     companyS: `개선 프로토타입 와피지 제어 성능 ±48μm 달성 - 목표치 초과 달성\n공동 개발 성과 S사가 제안한 예측 제어 로직 구조와 A사 머신러닝 알고리즘이 결합되어 우수한 성능 도출\n처리 속도 시간당 62매 - 목표 대비 103% 달성\n양산 라인 적합성 평가 단계 진입 가능 - 장기 안정성 및 내구성 검증 필요`,
     companyP: `개선 프로토타입 성능 목표 초과 달성 - S사의 기술 조언에 감사\n기여도 언급 예측 제어 로직 아이디어는 S사 제안, 구현 알고리즘은 당사 독자 개발\n양산 라인 적합성 평가를 위한 장기 운영 테스트 준��� 완료\n2022년 상반기 양산형 장비 제작 완료 목표`,
@@ -912,6 +913,21 @@ function buildHsp20e1Facts(): Fact[] {
 
 function buildScmp26e1Facts(): Fact[] {
   return (scmp26e1FactRecords as RawFactRecord[]).map((r) => ({
+    id: r.FACT_ID,
+    text: r.FACT,
+    originalText: r.ORIGINAL_TEXT,
+    speaker: normalizeSpeaker(r.SPEAKER),
+    factType: r.FACT_TYPE,
+    claimDirection: normalizeClaim(r.CLAIM_DIRECTION),
+    reason: r.REASON,
+    meetingId: r.MEETING_ID,
+    meetingTitle: r.MEETING_TITLE,
+    meetingDate: r.MEETING_DATE?.slice(0, 10),
+  }))
+}
+
+function buildSnpr20e1Facts(): Fact[] {
+  return (snpr20e1FactRecords as RawFactRecord[]).map((r) => ({
     id: r.FACT_ID,
     text: r.FACT,
     originalText: r.ORIGINAL_TEXT,
@@ -1042,7 +1058,7 @@ export const analysisResults: Record<string, AnalysisResult> = {
         counter_arguments:
           "협력사가 장비 설계 및 제조, 프로토타입 제작, 양산 준비 등 실질적인 구현을 담당했으나(F008, F020, F022, F031, F051, F058, F059, F068), 이는 S사의 핵심 레시피와 엄격한 사양 요구사항을 충족시키기 위한 역할이었습니다. 장비의 핵심 가치는 S사의 레시피 구현에 있으므로, 장비 자체의 배타권은 S사에 귀속됩니다.",
         recommendation:
-          "장비 자체에 대한 특허 출원 가능성을 검토하고, S사 레시�� 구현 전용 장비임을 명시하는 계약 조��을 강화하여 협력사의 타사 공급을 원천적으로 차단할 것.",
+          "장비 자체��� 대한 특허 출원 가능성을 검토하고, S사 레시�� 구현 전용 장비임을 명시하는 계약 조��을 강화하여 협력사의 타사 공급을 원천적으로 차단할 것.",
         legal_basis: {
           applicable_laws: ["PL001", "CL001", "CL002"],
           contract_analysis: {
@@ -1208,7 +1224,7 @@ export const analysisResults: Record<string, AnalysisResult> = {
           relevance:
             "계약서에 명시된 배타적 독점권, 제3자 공급 금지, 전용 실시권 등의 조항은 배타권의 법적 효력을 강화하는 가장 직접적인 근거입니다.",
           application_to_project:
-            "회의록 상 S사는 세정 레시피 및 공정 기술을 영업비밀로 최종 확정하고(F047, F065), 협력업체의 역할을 S사 레시피 기반 장비 제조로 제한하며 레시피의 독점 소유권을 명시했습니다(F048). 협력사 또한 S사 기술에 대한 비밀 유지 및 제3자 공유 금지를 서약하고(F009, F060, F069, F070), 위반 시 법적 책임 및 계약 해지 조항을 재확���했습니다(F057, F067). 이는 계약서에 배타적 독점권 조항이 포함되어 있을 가능성이 매우 높음을 시사하며, S사의 배타권 주장에 강력한 법적 근거가 됩니다.",
+            "회의록 상 S사는 세정 레시피 및 공정 기술을 영업비밀로 최종 확정하고(F047, F065), 협력업체의 역할을 S사 레시피 기반 장비 제조로 제한하며 레시피의 독점 소유권을 명시했습니다(F048). 협력사 또한 S사 기술에 대한 ��밀 유지 및 제3자 공유 금지를 서약하고(F009, F060, F069, F070), 위반 시 법적 책임 및 계약 해지 조항을 재확���했습니다(F057, F067). 이는 계약서에 배타적 독점권 조항이 포함되어 있을 가능성이 매우 높음을 시사하며, S사의 배타권 주장에 강력한 법적 근거가 됩니다.",
         },
         {
           law_id: "CL001",
@@ -1325,7 +1341,7 @@ export const analysisResults: Record<string, AnalysisResult> = {
       overall_exclusivity_assessment: "Partner",
       confidence_level: "High",
       key_risks: [
-        "S사가 기술이전 받은 최종 혼합 공정만으로 유사 기술을 개발하거나, P사의 핵심 배���비를 우회하여 개발할 경우 P사의 배타권 침해 가능��이 발생할 수 있습니다.",
+        "S사가 기술이전 받은 최��� 혼합 공정만으로 유사 기술을 개발하거나, P사의 핵심 배���비를 우회하여 개발할 경우 P사의 배타권 침해 가능��이 발생할 수 있습니다.",
         "P사가 해외 시장에서 S사의 경쟁사에 기술을 공급할 경우, S사의 독점적 지위가 약화될 수 있습니다.",
         "계약 해지 시 위약금 면제 조건이 P사의 재정적 리스크를 줄여 S사의 협상력을 제한할 수 있습니다."
       ],
@@ -1342,7 +1358,7 @@ export const analysisResults: Record<string, AnalysisResult> = {
         issue: "개발 주체 및 기술 소유권",
         exclusivity_holder: "Partner",
         confidence: "High",
-        reasoning: "P사는 TSV 공정 특화 슬러리 조성에 대한 독점적 기술 노하우를 10년간 축적해왔으며, S사의 구체적인 요청에 따라 개선 버전 개발에 착수하고 기술적 해결책을 제시하는 등 실제 개발을 주도했습니다.",
+        reasoning: "P사는 TSV 공정 특화 슬러리 조성에 대한 독점적 기술 노하우를 10년간 축적해왔으며, S사의 구체적인 요청에 따라 개선 버전 개발에 착수하고 기술적 해결책을 제시하는 등 실제 개발을 ��도했습니다.",
         supporting_facts: ["F005", "F006", "F012", "F022", "F081"],
         counter_arguments: "S사가 초기 기술 아이디어를 ��안하고 구체적인 개선 방향을 제시했으며, 차세대 기술 공동 개발을 제안한 점은 S사의 기여로 볼 수 있습니다.",
         recommendation: "현재 개발된 CMP 슬러리 기술에 대한 P사의 특허 및 노하우 범위를 명확히 하고, 차세대 공동 개발 계약 시 권리 귀속 조항을 상세히 명시해야 합니다.",
@@ -1417,7 +1433,7 @@ export const analysisResults: Record<string, AnalysisResult> = {
         issue: "개발 주체",
         exclusivity_holder: "Company S",
         confidence: "High",
-        reasoning: "S사는 차세대 공정 요구사항을 제시하고(F001), P사 원천 기술의 한계(F009, F012, F013)를 진단한 후, 'Additive-X'라는 고유의 기술 아이디어를 제안했습니다(F014). 이 Additive-X는 P사 Silica 포뮬러의 치명적 결함(겔��� 현상)을 해결하고 성능을 획기적으로 개선하는 데 결정적인 역할을 했음이 P사에 의해 확인되었습니다(F016). S사는 Additive-X 기술 및 최적 배합비가 S사 주도로 도출된 결과임을 명시했고(F020), P사도 S사가 독자 개발한 Additive-X 및 최종 혼합 Slurry 제품(Soul-S2)에 대한 S사의 배타적 사용 권리를 수용했습니다(F029, F030). 이는 S사가 핵심 기술 아이디어를 제안하고 개발을 주도하여 최종 제품의 성능을 결정적으로 개선했음을 명확히 보여줍니다.",
+        reasoning: "S사는 차세대 공정 요구사항을 제시하고(F001), P사 원천 기술의 한계(F009, F012, F013)를 진단한 후, 'Additive-X'라는 고유의 기술 아이디어를 ��안했습니다(F014). 이 Additive-X는 P사 Silica 포뮬러의 치명적 결함(겔��� 현상)을 해결하고 성능을 획기적으로 개선하는 데 결정적인 역할을 했음이 P사에 의해 확인되었습니다(F016). S사는 Additive-X 기술 및 최적 배합비가 S사 주도로 도출된 결과임을 명시했고(F020), P사도 S사가 독자 개발한 Additive-X 및 최종 혼합 Slurry 제품(Soul-S2)에 대한 S사의 배타적 사용 권리를 수용했습니다(F029, F030). 이는 S사가 핵심 기술 아이디어를 제안하고 개발을 주도하여 최종 제품의 성능을 결정적으로 개선했음을 명확히 보여줍니다.",
         supporting_facts: ["F001", "F003", "F004", "F007", "F008", "F009", "F010", "F012", "F013", "F014", "F015", "F016", "F018", "F020", "F021"],
         counter_arguments: "P사가 자사의 Silica 제조 원천 기술이 시너지를 냈다고 주장했으나(F023), S사의 Additive-X 없이는 양산 적용이 불가했음을 인정하고 S사의 배타적 권리를 수용했으므로 반박 가능성은 낮습니다.",
         recommendation: "Additive-X의 기술적 메커니즘 및 최적 배합비에 대한 S사의 특허 출원 현황을 확인하고, P사와의 계약서에 해당 기술의 권리 귀속이 명확히 명시되었는지 재검토해야 합니다.",
@@ -1464,7 +1480,7 @@ export const analysisResults: Record<string, AnalysisResult> = {
             enforcement_risk: "P사가 S사 Additive-X의 성능 개선 효과를 명시적으로 인정했으므로, 해당 기술에 대한 S사의 배타권 주장은 강력한 법적 근거를 가집니다."
           },
           inventorship_analysis: "S사가 CMP 공정의 핵심 문제점을 진단하고(F008), 이를 해결할 Additive-X 아이디어를 제안하여(F014) 성능 개선을 이끌었으므로, 해당 기술의 발명자로 인정될 가능성이 높습니다.",
-          contribution_analysis: "S사는 공정 요구사항 제시, 문제점 진단, 핵심 기술 아이디어 제공 및 성능 개선 검증에 주도적으로 기여했습니다. P사는 초기 샘플 제공 및 S사 기술 적용 후 성능 확인에 기여했습니다.",
+          contribution_analysis: "S사는 공정 요구사항 제시, 문제점 진단, 핵심 기술 아이디어 제공 및 성능 개선 검증에 주도적으로 기여했습니다. P사는 초기 샘�� 제공 및 S사 기술 적용 후 성능 확인에 기여했습니다.",
           risk_factors: ["P사의 초기 샘플 개발 및 평가 참여가 공동 개발로 해석될 여지"],
           recommended_legal_actions: ["S사 Additive-X가 CMP 공정 성능 개선에 미친 결정적 영향에 대��� 기술 보고서 및 평가 데이터를 법적 증거로 확보"]
         },
@@ -1595,6 +1611,278 @@ export const analysisResults: Record<string, AnalysisResult> = {
     },
     elapsed_time: 177.88,
     facts: buildScmp26e1Facts(),
+  },
+  SNPR20E1: {
+    project_code: "SNPR20E1",
+    project_type: "소재",
+    overall_conclusion: {
+      summary: "본 프로젝트는 S사의 차세대 EUV D램 공정에 적용 가능한 Sn 무기물 PR 개발을 성공적으로 완료했습니다. 협력사(인프리아)가 Sn 코어 원천 기술을 보유하고 있었으나, S사가 제안한 '분지형 할로겐 말단 치환 리간드 구조 및 이를 통한 Defect 제어 기술'이 양산 성공의 결정적 계기가 되었으며, 이에 대해 S사가 배타적 권리를 확보하는 것으로 합의되었습니다. 최종적으로 S사는 해당 핵심 기술에 대한 배타적 사용 권리를 가지며, P사는 S사 전용으로 제품을 생산 및 공급하게 됩니다.",
+      overall_exclusivity_assessment: "Company S",
+      confidence_level: "High",
+      key_risks: [
+        "S사의 배타권 범위(IP-B21-F 구조체 및 유도체 일체)와 P사의 원천 기술 간의 경계 해석에 대한 잠재적 분쟁 가능성",
+        "P사가 S사 전용으로 개발한 현상액, 고순도 정제 라인 등 공정 기술에 대한 권리 귀속 및 제3자 활용 가능성 불명확",
+        "P사의 5년간 경쟁사 공급 금지 조항 준수 여부 모니터링 및 위반 시 제재의 실효성 확보"
+      ],
+      recommendations: [
+        "최종 계약서에 S사의 배타권이 적용되는 기술 범위(IP-B21-F 구조체 및 유도체 일체)를 화학 구조식, 특허 청구항 등 구체적인 형태로 명확히 명시하고, 유효기간 및 위반 시 제재 조항을 상세히 규정할 것.",
+        "P사가 개발한 전용 현상액, 고순도 정제 라인 등 공정 기술에 대한 권리 귀속 및 사용 허락 범위에 대해 명확한 조항을 포함할 것.",
+        "P사의 직무발명 규정 및 관련 보상 체계가 S사와의 계약 내용과 상충되지 않는지 확인하고, 필요한 경우 P사와의 협의를 통해 법적 리스크를 최소화할 것."
+      ]
+    },
+    judgements: [
+      {
+        group_id: "G001",
+        topic: "Sn 무기물 PR 소재 기술",
+        issue: "원천 기술 보유 및 초기 검토 주체",
+        exclusivity_holder: "Partner",
+        confidence: "Medium",
+        reasoning: "COMPANY_P(인프리아)는 Sn 원천 기술과 1세대 샘플을 이미 보유하고 있음을 명확히 밝혔습니다(F007). COMPANY_S는 차세대 EUV 공정 적용을 위해 이 소재의 기본 물성 검토를 요청하고(F001), 높은 흡수율을 확인했으나 균일도 문제를 인지하는 등(F003) 초기 평가 및 개선 필요성을 제기했습니다. IP-B20 샘플은 S사의 아이디어와 P사의 원천 기술이 결합된 것으로 언급되었으나(F021), 'Sn 무기물 PR 소재 기술' 자체의 근본적인 원천은 P사에 있습니다.",
+        supporting_facts: ["F007", "F010", "F011", "F082", "F087"],
+        counter_arguments: "COMPANY_S가 차세대 공정 적용을 위해 해당 소재의 물성 검토를 요청하고 초기 문제점을 파악하는 등 개발의 시작점을 제공했습니다(F001, F003).",
+        recommendation: "P사의 'Sn 원천 기술'의 정확한 범위와 S사가 기여한 '특정 구조'와의 경계를 계약서에 명확히 정의하여, 향후 원천 기술 사용에 대한 로열티 또는 라이선스 문제가 발생하지 않도록 해야 합니다.",
+        legal_basis: {
+          applicable_laws: ["PL001", "CL002"],
+          contract_analysis: {
+            has_exclusivity_clause: true,
+            clause_summary: "P사는 Sn 원천 기술이 독점 특허이며 제3자 이전 불가하다고 명시(F010, F011). S사는 P사의 Sn 코어 원천 특허를 존중한다고 밝힘(F082).",
+            validity_period: "N/A",
+            enforcement_risk: "P사의 원천 기술에 대한 독점권은 강력하나, S사의 특정 구조에 대한 배타권과 충돌하지 않도록 범위 명확화 필요."
+          },
+          inventorship_analysis: "P사가 Sn Oxide 클러스터 원천 기술을 보유하고 있었으므로, 해당 원천 기술의 발명자는 P사로 판단됩니다.",
+          contribution_analysis: "P사가 기존에 보유한 원천 기술이므로, 해당 기술 개발에 대한 자원 투입은 P사에 있습니다.",
+          risk_factors: ["S사가 P사의 원천 기술을 활용하여 개발한 제품에 대한 권리 범위가 불명확할 경우, P사가 원천 기술에 대한 권리를 주장할 수 있음."],
+          recommended_legal_actions: ["P사의 원천 기술 특허 목록 및 청구항을 면밀히 검토하여 S사의 배타권이 미치는 범위와 중첩되지 않도록 계약서에 명시할 것."]
+        },
+        evaluation_grade: {
+          tech_effect_grade: "N/A",
+          tech_effect_reasoning: "N/A - 소재 과제",
+          competitor_applicability: "N/A",
+          competitor_reasoning: "N/A - 소재 과제",
+          tech_gap: "N/A",
+          tech_gap_reasoning: "N/A - 소재 과제",
+          final_grade: "N/A",
+          grade_reasoning: "N/A - 소재 과제는 심의 등급 미적용"
+        }
+      },
+      {
+        group_id: "G002",
+        topic: "PR 구조 및 합성 최적화",
+        issue: "핵심 리간드 구조 아이디어 제안 및 최적화 주체",
+        exclusivity_holder: "Company S",
+        confidence: "High",
+        reasoning: "COMPANY_S는 코팅 균일도 개선을 위한 유기 리간드 구조 최적화(F006) 및 분지형 부틸 계열 리간드 구조 도입(F013), 감도 개선을 위한 할로겐 원소 치환 구조 변경(F036) 등 핵심적인 기술 아이디어를 지속적으로 제안했습니다. P사는 이 구조들이 자사에서 시도하지 않은 새로운 구조임을 인정하고(F017, F018), S사의 제안을 바탕으로 샘플 합성을 수행했습니다(F019, F039). 특히, P사는 S사의 제안이 독자적이며 배타적 보호가 필요함을 인정하고(F040), S사가 제안하고 공동 최적화한 '특정 분지형 리간드 구조체(IP-B21-F 계열)'에 한해 S사에 독점적인 권리를 부여하는 방향으로 계약서 초안을 검토하겠다고 밝혔습니다(F088).",
+        supporting_facts: ["F006", "F013", "F015", "F017", "F036", "F037", "F040", "F083", "F088"],
+        counter_arguments: "COMPANY_P가 S사의 제안을 바탕으로 실제 샘플 합성을 수행했습니다(F019, F039).",
+        recommendation: "S사의 배타권이 적용되는 '특정 분지형 리간드 구조체(IP-B21-F 계열)'의 화학적 정의 및 유도체 범위를 계약서에 명확히 명시하여, 향후 P사가 유사 구조를 개발하여 제3자에게 공급하는 것을 방지해야 합니다.",
+        legal_basis: {
+          applicable_laws: ["PL001", "CL002", "PL002"],
+          contract_analysis: {
+            has_exclusivity_clause: true,
+            clause_summary: "P사가 S사의 독자적 제안임을 인정하고 배타적 보호 필요성을 인정(F040). P사가 특정 리간드 구조체에 S사 독점권 부여 검토(F088).",
+            validity_period: "5년 (F090)",
+            enforcement_risk: "P사가 S사의 독점적 권리를 인정하고 계약서에 반영하기로 합의했으므로, 법적 집행 가능성이 높습니다."
+          },
+          inventorship_analysis: "S사가 '분지형 할로겐 말단 치환 리간드 구조'에 대한 독자적인 아이디어를 제안하고 개발을 주도했으므로, 해당 구조의 발명자는 S사로 인정될 가능성이 높습니다 (PL001).",
+          contribution_analysis: "S사가 핵심 아이디어를 제안하고 개발 방향을 설정했으며, P사는 S사의 제안을 바탕으로 실제 합성을 수행했습니다. 아이디어 기여는 S사가, 구현 기여는 P사가 더 큽니다.",
+          risk_factors: ["P사 직원이 S사의 아이디어를 구현하는 과정에서 발생한 직무발명에 대한 권리 귀속 문제 (PL002)."],
+          recommended_legal_actions: ["S사와 P사 간의 계약서에 직무발명에 대한 권리 귀속 조항을 명확히 하고, S사의 아이디어를 구현하는 과정에서 발생한 발명에 대한 권리가 S사에 귀속되도록 할 것."]
+        },
+        evaluation_grade: {
+          tech_effect_grade: "N/A",
+          tech_effect_reasoning: "N/A - 소재 과제",
+          competitor_applicability: "N/A",
+          competitor_reasoning: "N/A - 소재 과제",
+          tech_gap: "N/A",
+          tech_gap_reasoning: "N/A - 소재 과제",
+          final_grade: "N/A",
+          grade_reasoning: "N/A - 소재 과제는 심의 등급 미적용"
+        }
+      },
+      {
+        group_id: "G003",
+        topic: "PR 공정 및 품질 관리",
+        issue: "공정 최적화 및 품질 관리 기술 개발 주체",
+        exclusivity_holder: "Joint",
+        confidence: "Medium",
+        reasoning: "COMPANY_S는 스핀 코팅 균일도(F003), 박막 도포 결함(F005), 감도 저하(F034), 스컴 발생(F045), 패턴 붕괴 및 마이크로 브릿지 결함(F053) 등 공정 및 품질 관련 문제점을 지속적으로 발견하고 분석하며 개선 방향을 제시했습니다(F014, F046, F054, F055, F056). COMPANY_P는 S사의 요구에 따라 전용 현상액을 추가 개발하고(F050, F051), 고순도 정제 라인을 신설하는 등(F058, F061) 상당한 자원 투입과 개발 노력을 기울였습니다. P사는 삼성과의 협력 덕분에 Defect 문제를 해결했다고 인정했으며(F067), 세계 최초 양산 라인 적용 성과를 강조했습니다(F096). 이는 S사의 요구와 평가를 바탕으로 P사가 구체적인 공정 및 품질 관리 기술을 개발하고 구현한 공동의 결과로 판단됩니다.",
+        supporting_facts: ["F003", "F005", "F034", "F045", "F053", "F055", "F056", "F058", "F061", "F067", "F096"],
+        counter_arguments: "S사가 공정 문제점을 발견하고 해결 방향을 제시하는 등 주도적인 역할을 수행했으며(F003, F005, F014, F034, F045, F046, F054, F055, F056), S사의 제안 구조가 파일럿 수율 기준을 만족했습니다(F065).",
+        recommendation: "전용 현상액 조성물, 고순도 정제 라인 구축 기술 등 P사가 S사의 요구에 맞춰 개발한 공정 및 품질 관리 기술에 대한 권리 귀속을 계약서에 명확히 정의해야 합니다. S사의 독점적 사용을 보장하되, P사의 개발 기여를 인정하는 방향으로 공동 소유 또는 S사 전용 실시권 부여 등을 고려할 수 있습니다.",
+        legal_basis: {
+          applicable_laws: ["PL001", "CL001", "PL002", "CV001"],
+          contract_analysis: {
+            has_exclusivity_clause: true,
+            clause_summary: "S사가 IP-B21-F 전용 현상액 개발을 요청하고(F047), P사는 이를 삼성 배타적 공급 대상으로 관리하겠다고 밝힘(F052). P사는 정제 라인 투자를 진행하며 삼성 제안 구조의 배타적 가치를 인정(F060).",
+            validity_period: "N/A",
+            enforcement_risk: "공정 기술 자체에 대한 명시적인 배타권 조항은 부족하며, 주로 제품 공급에 대한 배타적 관리 의사 표현이 많습니다. 공정 기술에 대한 권리 귀속을 명확히 해야 합니다."
+          },
+          inventorship_analysis: "S사가 문제점을 분석하고 개선 방향을 제시하는 아이디어 기여를 했고, P사가 이를 구현하기 위한 구체적인 공정 기술을 개발했으므로, 해당 공정 기술의 발명자는 공동으로 인정될 가능성이 높습니다 (PL001).",
+          contribution_analysis: "S사는 문제 정의, 개선 방향 제시, 평가 및 검증(S사 파일럿 라인 투입, F063)에 기여했고, P사는 전용 현상액 개발, 고순도 정제 라인 신설(F058, F061) 등 자원(설비, 비용) 투입 및 구현에 크게 기여했습니다.",
+          risk_factors: ["P사가 개발한 공정 기술(예: 칼럼 크로마토그래피를 이용한 고순도 정제 라인)에 대해 P사가 독자적인 권리를 주장할 수 있음.", "정제 공정 강화로 인한 비용 증가분 협의(F062)가 권리 귀속과 연계될 수 있음."],
+          recommended_legal_actions: ["공정 기술에 대한 권리 귀속 조항을 계약서에 명확히 포함하고, S사의 독점적 사용을 보장하는 전용 실시권 또는 공동 소유를 검토할 것."]
+        },
+        evaluation_grade: {
+          tech_effect_grade: "N/A",
+          tech_effect_reasoning: "N/A - 소재 과제",
+          competitor_applicability: "N/A",
+          competitor_reasoning: "N/A - 소재 과제",
+          tech_gap: "N/A",
+          tech_gap_reasoning: "N/A - 소재 과제",
+          final_grade: "N/A",
+          grade_reasoning: "N/A - 소재 과제는 심의 등급 미적용"
+        }
+      },
+      {
+        group_id: "G004",
+        topic: "PR 안정성 및 보관 기술",
+        issue: "안정성 확보 기술 개발 주체",
+        exclusivity_holder: "Joint",
+        confidence: "Medium",
+        reasoning: "COMPANY_S는 양산화를 위한 안정성 검증 단계 진입을 판단하고(F066), 항산화 안정제 첨가(F072), 특수 차광 및 내벽 코팅 전용 캔 개발(F073), 6개월 이상 보존 기간 보장(F074) 등 구체적인 요구사항과 목표를 제시했습니다. COMPANY_P는 S사의 지적에 동의하고(F075), 겔화 억제제 최적 배합비를 도출하며(F077), A사 보유 특수 테프론 코팅 용기를 적용하여(F076) S사의 요구를 충족시키고 6개월 이상 보존 기간을 보장하겠다고 결정했습니다(F078). 이는 S사의 요구사항을 바탕으로 P사가 구체적인 기술 개발 및 구현을 수행한 공동의 결과로 판단됩니다.",
+        supporting_facts: ["F072", "F073", "F074", "F075", "F076", "F077", "F078"],
+        counter_arguments: "S사가 안정성 확보의 필요성을 제기하고 구체적인 요구사항을 제시했습니다(F066, F072, F073, F074).",
+        recommendation: "겔화 억제제 배합비, 전용 캔의 코팅 기술 등 P사가 개발하거나 적용한 안정성 및 보관 기술에 대한 권리 귀속을 계약서에 명확히 해야 합니다. 특히 '전용 캔'의 경우, A사의 기존 기술 활용 여부와 S사 전용으로의 개량 여부를 확인하여 권리 범위를 설정해야 합니다.",
+        legal_basis: {
+          applicable_laws: ["PL001", "CL001", "CV001"],
+          contract_analysis: {
+            has_exclusivity_clause: false,
+            clause_summary: "명시적인 배타권 조항은 없으나, S사가 '전용 캔' 개발을 요구(F073)하고 P사가 이를 수용하여 A사 보유 기술을 적용(F076)하는 등 S사 맞춤형 개발이 진행됨.",
+            validity_period: "N/A",
+            enforcement_risk: "배타권 조항이 명시되지 않아 향후 P사가 개발한 안정제 또는 용기 기술을 제3자에게 제공할 가능성이 있습니다."
+          },
+          inventorship_analysis: "S사가 문제 정의 및 요구사항을 제시했고, P사가 겔화 억제제 배합비 도출 등 구체적인 기술 개발을 수행했으므로, 해당 기술의 발명자는 공동으로 인정될 가능성이 높습니다 (PL001).",
+          contribution_analysis: "S사는 요구사항 정의에 기여했고, P사는 겔화 억제제 개발 및 용기 적용 등 구현에 기여했습니다.",
+          risk_factors: ["P사가 개발한 겔화 억제제 배합비 또는 전용 캔 기술에 대해 P사가 독자적인 권리를 주장할 수 있음.", "A사의 기존 테프론 코팅 용기 기술이 S사 전용으로 개량되지 않았다면, A사 또는 P사가 해당 기술을 제3자에게 제공할 수 있음."],
+          recommended_legal_actions: ["안정성 및 보관 기술에 대한 권리 귀속 조항을 계약서에 추가하고, S사의 독점적 사용을 보장하는 방안을 마련할 것."]
+        },
+        evaluation_grade: {
+          tech_effect_grade: "N/A",
+          tech_effect_reasoning: "N/A - 소재 과제",
+          competitor_applicability: "N/A",
+          competitor_reasoning: "N/A - 소재 과제",
+          tech_gap: "N/A",
+          tech_gap_reasoning: "N/A - 소재 과제",
+          final_grade: "N/A",
+          grade_reasoning: "N/A - 소재 과제는 심의 등급 미적용"
+        }
+      },
+      {
+        group_id: "G005",
+        topic: "지식재산권 및 사업화 전략",
+        issue: "배타권 범위 및 계약 합의 주체",
+        exclusivity_holder: "Company S",
+        confidence: "High",
+        reasoning: "COMPANY_S는 개발 초기부터 독자 아이디어를 제시하고 타사 공유 불가 의사를 명확히 표명했습니다(F012, F016, F026, F027). P사는 S사의 아이디어 기여를 인정하고(F020, F028, F086), S사의 독자적 제안에 대한 배타적 보호 필요성을 공식적으로 인정했습니다(F040, F060, F069). 특히, P사는 S사가 제안하고 공동 최적화한 '특정 분지형 리간드 구조체(IP-B21-F 계열)'에 한해 S사에 독점적인 권리를 부여하는 방향으로 계약서 초안을 검토하고(F089), S사의 5년간 경쟁사 공급 금지 조항 요구를 수용하기로 결정했습니다(F090). S사는 이 배타권 조항이 포함된 계약서 최종안을 발송하고(F094), 해당 기술을 S사 배타권 DB에 등록 관리할 예정입니다(F085, F095). 이는 S사가 핵심 기술에 대한 배타적 권리를 성공적으로 확보했음을 명확히 보여줍니다.",
+        supporting_facts: ["F012", "F016", "F027", "F040", "F041", "F069", "F084", "F085", "F089", "F090", "F094", "F095"],
+        counter_arguments: "P사는 Sn 원천 기술이 인프리아의 독점 특허임을 주장하고(F010, F011, F087), IP-B20 샘플이 S사의 아이디어와 P사의 원천 기술을 결합한 독점 제조물임을 주장했습니다(F021, F030). 또한 P사는 양산 공급 체계 구축 및 사업화를 주도했습니다(F068, F071, F098).",
+        recommendation: "최종 계약서 서명 전, S사의 배타권 범위와 P사의 원천 기술 및 제조 독점권 범위가 상호 명확하게 정의되어 있는지 재확인해야 합니다. 특히 '유도체 일체'의 범위에 대한 해석의 여지를 최소화해야 합니다.",
+        legal_basis: {
+          applicable_laws: ["CL002", "PL001", "PL002"],
+          contract_analysis: {
+            has_exclusivity_clause: true,
+            clause_summary: "S사가 '분지형 할로겐 말단 치환 구조'에 대한 배타권 조항이 포함된 계약서 최종안을 발송(F094)했으며, P사가 5년간 경쟁사 공급 금지 조항을 수용(F090)하고 특정 리간드 구조체에 S사 독점권 부여를 검토(F089)하기로 합의함.",
+            validity_period: "5년 (F090)",
+            enforcement_risk: "P사가 S사의 배타적 권리를 명시적으로 인정하고 계약서에 반영하기로 합의했으므로, 법적 집행 가능성이 매우 높습니다. 단, 계약서의 구체적인 문구가 중요합니다."
+          },
+          inventorship_analysis: "S사가 '분지형 할로겐 말단 치환 리간드 구조'에 대한 독자적인 아이디어를 제안하고 개발을 주도했으므로, 해당 구조의 발명자는 S사로 인정됩니다 (PL001).",
+          contribution_analysis: "S사는 핵심 아이디어 제안, 개발 방향 설정, 배타권 확보를 위한 협상 주도에 결정적으로 기여했습니다. P사는 원천 기술 제공, S사 아이디어 구현, 양산화 인프라 구축에 기여했습니다.",
+          risk_factors: ["P사가 보유한 원천 기술 특허와 S사의 배타권이 설정된 기술 범위 간의 중첩 또는 경계 모호성."],
+          recommended_legal_actions: ["계약서에 S사의 배타권이 적용되는 기술 범위(IP-B21-F 구조체 및 유도체 일체)를 화학 구조식, 특허 청구항 등 구체적인 형태로 명확히 명시하고, P사의 원천 기술과의 관계를 정의할 것."]
+        },
+        evaluation_grade: {
+          tech_effect_grade: "N/A",
+          tech_effect_reasoning: "N/A - 소재 과제",
+          competitor_applicability: "N/A",
+          competitor_reasoning: "N/A - 소재 과제",
+          tech_gap: "N/A",
+          tech_gap_reasoning: "N/A - 소재 과제",
+          final_grade: "N/A",
+          grade_reasoning: "N/A - 소재 과제는 심의 등급 미적용"
+        }
+      },
+      {
+        group_id: "G006",
+        topic: "기타",
+        issue: "프로젝트 완료 및 배타권 계약 최종화",
+        exclusivity_holder: "Company S",
+        confidence: "High",
+        reasoning: "COMPANY_S는 공동 개발 프로젝트의 최종 성공을 선언하고(F091), 합의된 기술 스펙 및 지재권 조항을 바탕으로 정식 계약 문서 작성을 진행했습니다(F092). 특히, S사는 개발을 공식 완료하며 '분지형 할로겐 말단 치환 구조'에 대한 배타권 조항이 포함된 구매 및 기술 협력 계약서 최종안을 발송했습니다(F093). 또한 S사는 해당 기술을 S사 배타권 DB에 등록하여 엄격히 관리할 예정임을 명시했습니다(F095). 이는 S사가 핵심 기술에 대한 배타적 권리를 최종적으로 확보하고 내부 관리 체계까지 수립했음을 보여줍니다.",
+        supporting_facts: ["F091", "F092", "F093", "F095"],
+        counter_arguments: "P사는 무기물 PR의 세계 최초 양산 라인 적용이라는 성과를 강조하고(F096), 2021년부터 본격 양산 공급에 차질이 없도록 하겠다고 약속했습니다(F098). 또한 차세대 EUV 공정용 소재 공동 개발 지속 추진 의지를 표명했습니다(F099).",
+        recommendation: "P사가 S사가 발송한 계약서의 배타권 범위(IP-B21-F 구조체 및 유도체 일체)를 확인 후 서명할 예정이므로(F097), 최종 계약 체결까지 법무팀의 면밀한 검토와 관리가 필요합니다.",
+        legal_basis: {
+          applicable_laws: ["CL002"],
+          contract_analysis: {
+            has_exclusivity_clause: true,
+            clause_summary: "S사가 '분지형 할로겐 말단 치환 구조'에 대한 배타권 조항이 포함된 구매 및 기술 협력 계약서 최종안을 발송(F093).",
+            validity_period: "5년 (F090 참조)",
+            enforcement_risk: "최종 계약서가 체결되면 S사의 배타권은 강력한 법적 효력을 가집니다."
+          },
+          inventorship_analysis: "S사가 핵심 기술 아이디어의 발명자로서의 지위를 확고히 했습니다.",
+          contribution_analysis: "S사는 개발 완료 및 배타권 확보의 최종 단계에서 주도적인 역할을 수행했습니다.",
+          risk_factors: ["P사가 계약서 서명을 거부하거나 배타권 범위에 대한 추가적인 이견을 제시할 가능성."],
+          recommended_legal_actions: ["P사의 최종 서명 여부를 확인하고, 계약서 체결 완료 시 법적 효력을 즉시 발생시킬 수 있도록 준비할 것."]
+        },
+        evaluation_grade: {
+          tech_effect_grade: "N/A",
+          tech_effect_reasoning: "N/A - 소재 과제",
+          competitor_applicability: "N/A",
+          competitor_reasoning: "N/A - 소재 과제",
+          tech_gap: "N/A",
+          tech_gap_reasoning: "N/A - 소재 과제",
+          final_grade: "N/A",
+          grade_reasoning: "N/A - 소재 과제는 심의 등급 미적용"
+        }
+      }
+    ],
+    legal_perspective: {
+      applicable_laws: [
+        {
+          law_id: "PL001",
+          law_name: "특허법 제33조 (특허를 받을 수 있는 권리)",
+          relevance: "발명자 인정 기준 - 기술 아이디어 창출자를 특정하는 근거",
+          application_to_project: "본 프로젝트에서 S사가 '분지형 할로겐 말단 치환 리간드 구조'와 같은 핵심 기술 아이디어를 최초 제안하고 개발을 주도했으므로, 해당 기술에 대한 발명자로 인정될 가능성이 높습니다."
+        },
+        {
+          law_id: "CL002",
+          law_name: "계약 특약 조항 배타적 독점권 조항",
+          relevance: "계약서에 명시적 배타권/독점권 조항이 있는 경우, 해당 조항의 유효기간, 위반 시 제재 조항을 확인해야 합니다.",
+          application_to_project: "S사가 특정 리간드 구조에 대한 5년간 경쟁사 공급 금지(배타적 사용권)를 요구했고, P사가 이를 수용하여 계약서에 명시될 예정이므로, 이 조항이 S사의 배타권의 핵심 법적 근거가 됩니다."
+        },
+        {
+          law_id: "PL002",
+          law_name: "특허법 제10조~제15조 (직무발명)",
+          relevance: "종업원이 직무상 발명한 경우, 사용자(회사)는 그 발명에 대한 특허를 받을 수 있는 권리를 승계할 수 있습니다. 협력사 직원이 개발한 경우, 협력사와 위탁사 간 계약에 따라 권리 귀속이 달라질 수 있습니다.",
+          application_to_project: "P사 직원이 S사의 아이디어를 바탕으로 실제 합성 및 공정 개발을 수행했으므로, P사 내부의 직무발명 규정과 S-P 간의 계약상 권리 귀속 조항이 중요하게 작용합니다."
+        },
+        {
+          law_id: "CL001",
+          law_name: "계약법 (민법 제664조) 도급계약 - 일의 완성과 보수",
+          relevance: "도급계약에서 도급인(위탁사)은 수급인(협력사)에게 일의 완성을 요구하고, 수급인은 보수를 받습니다. 일의 완성에 따른 결과물의 소유권은 계약서에 명시된 조항에 따릅니다.",
+          application_to_project: "S사가 P사에게 특정 기술 개발 및 샘플 합성을 요청하고 P사가 이를 수행했으므로, 이 관계는 도급계약의 성격을 가지며, 개발 결과물의 소유권은 최종 계약서의 권리 귀속 조항에 따라 결정됩니다."
+        },
+        {
+          law_id: "CV001",
+          law_name: "민법 제654조 (공유물의 관리)",
+          relevance: "공동 소유물의 관리는 공유자 과반수의 지분으로 결정합니다. 공동 개발 시 각자의 기여도에 따라 지분 비율을 정할 수 있습니다.",
+          application_to_project: "P사의 원천 기술과 S사의 아이디어가 결합된 공동 개발의 성격이 있으므로, 명시적인 권리 귀속 합의가 없다면 공동 소유로 해석될 여지가 있습니다. 그러나 본 프로젝트에서는 특정 기술에 대한 S사의 배타권이 합의되었으므로, 해당 합의가 우선합니다."
+        }
+      ],
+      overall_legal_analysis: "COMPANY_S는 차세대 EUV D램용 Sn 무기물 PR 개발 과정에서 핵심적인 기술 아이디어(분지형 할로겐 말단 치환 리간드 구조)를 제안하고, 문제점 분석 및 개선 방향을 주도하며 발명자로서의 기여를 명확히 했습니다 (PL001). COMPANY_P는 자사의 Sn 코어 원천 기술을 보유하고 있었으나, S사의 제안을 수용하여 실제 개발 및 양산화를 위한 공정 투자를 수행했습니다 (PL002, CL001). 최종적으로 COMPANY_P는 S사의 특정 리간드 구조에 대한 배타적 가치를 인정하고 5년간 경쟁사 공급 금지 조항을 수용하기로 합의했습니다 (CL002). 이는 계약법적 근거를 통해 S사가 해당 핵심 기술에 대한 배타적 권리를 확보했음을 강력히 뒷받침합니다. 다만, P사의 원천 기술 범위와 S사의 배타권 범위의 명확한 구분이 중요하며, P사가 개발한 공정 기술에 대한 권리 귀속도 계약서에 명시되어야 합니다.",
+      risk_factors: [
+        "계약서에 명시된 배타권 범위(IP-B21-F 구조체 및 유도체 일체)의 해석에 대한 이견 발생 가능성 및 P사의 원천 기술과의 경계 모호성",
+        "P사가 개발한 전용 현상액, 고순도 정제 라인 등 공정 기술에 대한 권리 귀속이 명확히 정의되지 않을 경우 분쟁 발생 가능성",
+        "P사 직무발명에 대한 보상 문제 등 P사 내부 규정 위반 시 발생할 수 있는 법적 리스크"
+      ],
+      recommended_actions: [
+        "최종 계약서에 S사의 배타권이 적용되는 기술 범위(IP-B21-F 구조체 및 유도체 일체)를 화학 구조식, 특허 청구항 등 구체적인 형태로 명확히 명시하고, 유효기간 및 위반 시 제재 조항을 상세히 규정할 것 (CL002).",
+        "P사가 개발한 전용 현상액, 고순도 정제 라인 등 공정 기술에 대한 권리 귀속 및 사용 허락 범위에 대해 명확한 조항을 포함할 것 (CL001, CV001).",
+        "P사의 직무발명 규정 및 관련 보상 체계가 S사와의 계약 내용과 상충되지 않는지 확인하고, 필요한 경우 P사와의 협의를 통해 법적 리스크를 최소화할 것 (PL002)."
+      ]
+    },
+    elapsed_time: 342.83,
+    facts: buildSnpr20e1Facts(),
   },
 }
 
