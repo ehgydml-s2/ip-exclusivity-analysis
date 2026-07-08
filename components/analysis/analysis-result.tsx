@@ -57,6 +57,7 @@ export function AnalysisResultView({
   projectName?: string
 }) {
   const [conclusionExpanded, setConclusionExpanded] = useState(true)
+  const [judgementsExpanded, setJudgementsExpanded] = useState(true)
   const { overall_conclusion: conclusion, legal_perspective: legal } = result
 
   function handleExport() {
@@ -191,12 +192,32 @@ export function AnalysisResultView({
 
         {/* 3. Judgement Group Cards */}
         <div>
-          <SectionHeading icon={ClipboardList} title={`판단 그룹 (${result.judgements.length})`} />
-          <div className="space-y-3">
-            {result.judgements.map((j) => (
-              <JudgementCard key={j.group_id} judgement={j} />
-            ))}
-          </div>
+          <button
+            type="button"
+            onClick={() => setJudgementsExpanded(!judgementsExpanded)}
+            className="mb-4 flex w-full items-center justify-between gap-2 hover:opacity-70"
+          >
+            <div className="flex items-center gap-2">
+              <ClipboardList className="size-4 text-primary" aria-hidden="true" />
+              <h2 className="text-base font-semibold text-foreground">
+                판단 그룹 ({result.judgements.length})
+              </h2>
+            </div>
+            <ChevronDown
+              className={`size-4 text-muted-foreground transition-transform duration-200 ${
+                judgementsExpanded ? "rotate-180" : ""
+              }`}
+              aria-hidden="true"
+            />
+          </button>
+
+          {judgementsExpanded && (
+            <div className="space-y-3">
+              {result.judgements.map((j) => (
+                <JudgementCard key={j.group_id} judgement={j} />
+              ))}
+            </div>
+          )}
         </div>
 
         {/* 4. Legal Perspective Summary */}
