@@ -68,13 +68,13 @@ function ContributionCard({ contribution }: { contribution: KeyContribution }) {
               {contribution.supporting_facts.slice(0, 5).map((fact) => (
                 <span
                   key={fact}
-                  className="inline-block rounded-md bg-muted px-2 py-0.5 text-xs font-mono text-muted-foreground"
+                  className="inline-block rounded-md bg-muted px-2 py-0.5 text-2xs font-mono text-muted-foreground"
                 >
                   {fact}
                 </span>
               ))}
               {contribution.supporting_facts.length > 5 && (
-                <span className="inline-block px-2 py-0.5 text-xs text-muted-foreground">
+                <span className="inline-block px-2 py-0.5 text-2xs font-mono text-muted-foreground">
                   +{contribution.supporting_facts.length - 5}
                 </span>
               )}
