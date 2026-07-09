@@ -171,7 +171,7 @@ export function AnalysisResultView({
                   <div>
                     <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
                       <CheckSquare className="size-3.5 text-primary" aria-hidden="true" />
-                      권고 사항
+                      ACTION ITEM
                     </h4>
                     <ul className="space-y-1.5">
                       {conclusion.recommendations.map((a, i) => (
