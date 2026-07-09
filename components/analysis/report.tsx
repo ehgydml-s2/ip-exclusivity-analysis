@@ -62,22 +62,6 @@ export function buildReportText(result: AnalysisResult, projectName?: string) {
     p.push("")
   })
 
-  p.push("[ 법률 관점 종합 ]")
-  p.push(result.legal_perspective.overall_legal_analysis)
-  p.push("")
-  p.push("적용 법령")
-  result.legal_perspective.applicable_laws.forEach((law) => {
-    p.push(`  · [${law.law_id}] ${law.law_name}`)
-    p.push(`    관련성   : ${law.relevance}`)
-    p.push(`    적용     : ${law.application_to_project}`)
-  })
-  p.push("")
-  p.push("Risk Factors")
-  result.legal_perspective.risk_factors.forEach((r) => p.push(`  · ${r}`))
-  p.push("")
-  p.push("권고 조치")
-  result.legal_perspective.recommended_actions.forEach((s, i) => p.push(`  [${i + 1}] ${s}`))
-  p.push("")
   p.push(line)
 
   return p.join("\n")

@@ -9,7 +9,6 @@ import {
   Tag,
   ShieldCheck,
   CheckSquare,
-  Scale,
   AlertTriangle,
   ClipboardList,
   ChevronDown,
@@ -58,8 +57,7 @@ export function AnalysisResultView({
 }) {
   const [conclusionExpanded, setConclusionExpanded] = useState(true)
   const [judgementsExpanded, setJudgementsExpanded] = useState(true)
-  const [legalExpanded, setLegalExpanded] = useState(true)
-  const { overall_conclusion: conclusion, legal_perspective: legal } = result
+  const { overall_conclusion: conclusion } = result
 
   function handleExport() {
     const text = buildReportText(result, projectName)
@@ -219,94 +217,7 @@ export function AnalysisResultView({
             )}
           </div>
 
-          {/* 4. Legal Perspective Summary */}
-          <div className="rounded-2xl border border-border bg-secondary/30 p-5">
-            <button
-              type="button"
-              onClick={() => setLegalExpanded(!legalExpanded)}
-              className="mb-4 flex w-full items-center justify-between gap-2 hover:opacity-70"
-            >
-              <div className="flex items-center gap-2">
-                <Scale className="size-4 text-primary" aria-hidden="true" />
-                <h2 className="text-base font-semibold text-foreground">법률 관점 종합</h2>
-              </div>
-              <ChevronDown
-                className={`size-4 text-muted-foreground transition-transform duration-200 ${legalExpanded ? "rotate-180" : ""
-                  }`}
-                aria-hidden="true"
-              />
-            </button>
 
-            {legalExpanded && (
-              <div className="space-y-5">
-                <FactText className="block text-sm leading-relaxed text-foreground">
-                  {legal.overall_legal_analysis}
-                </FactText>
-
-                <div>
-                  <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                    <Scale className="size-3.5 text-primary" aria-hidden="true" />
-                    적용 법령
-                  </h4>
-                  <div className="space-y-2.5">
-                    {legal.applicable_laws.map((law) => (
-                      <div key={law.law_id} className="rounded-lg border border-border bg-card p-3.5">
-                        <div className="mb-1.5 flex flex-wrap items-center gap-2">
-                          <span className="rounded-md bg-primary/10 px-2 py-0.5 font-mono text-xs font-bold text-primary">
-                            {law.law_id}
-                          </span>
-                          <span className="text-sm font-semibold text-foreground">{law.law_name}</span>
-                        </div>
-                        <p className="mb-1.5 text-xs leading-relaxed text-muted-foreground">{law.relevance}</p>
-                        <FactText className="block rounded-md border-l-2 border-primary/30 bg-secondary/40 py-1.5 pl-3 pr-2 text-sm leading-relaxed text-foreground">
-                          {law.application_to_project}
-                        </FactText>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div>
-                    <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                      <AlertTriangle className="size-3.5 text-destructive" aria-hidden="true" />
-                      Risk Factors
-                    </h4>
-                    <ul className="space-y-1.5">
-                      {legal.risk_factors.map((r, i) => (
-                        <li
-                          key={i}
-                          className="flex items-start gap-2 rounded-lg border border-destructive/20 bg-destructive/5 p-2.5 text-sm leading-relaxed text-foreground"
-                        >
-                          <AlertTriangle className="mt-0.5 size-4 shrink-0 text-destructive" aria-hidden="true" />
-                          {r}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                      <ClipboardList className="size-3.5 text-primary" aria-hidden="true" />
-                      권고 조치
-                    </h4>
-                    <ol className="space-y-2">
-                      {legal.recommended_actions.map((s, i) => (
-                        <li
-                          key={i}
-                          className="flex items-start gap-3 rounded-lg border border-border bg-card p-3 text-sm leading-relaxed text-foreground"
-                        >
-                          <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">
-                            {i + 1}
-                          </span>
-                          {s}
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
         </div>
       </section>
     </FactMapProvider>
