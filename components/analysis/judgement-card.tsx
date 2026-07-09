@@ -83,7 +83,7 @@ export function JudgementCard({ judgement }: { judgement: Judgement }) {
               신뢰도 <ConfidenceBadge value={judgement.confidence} />
             </span>
             <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              등급 <GradeBadge value={grade.final_grade} />
+              AI 판정 등급 <GradeBadge value={grade.final_grade} />
             </span>
           </div>
         </div>
