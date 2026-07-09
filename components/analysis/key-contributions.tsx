@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Lightbulb, ChevronDown } from "lucide-react"
 import type { KeyContributions, KeyContribution } from "@/lib/data"
-import { FactText } from "./fact-ref"
+import { FactText, FactRef } from "./fact-ref"
 
 function ContributionCard({ contribution }: { contribution: KeyContribution }) {
   const [isExpanded, setIsExpanded] = useState(false)
@@ -64,17 +64,12 @@ function ContributionCard({ contribution }: { contribution: KeyContribution }) {
           </p>
 
           {contribution.supporting_facts.length > 0 && (
-            <div className="flex flex-wrap gap-1">
+            <div className="flex flex-wrap gap-0.5">
               {contribution.supporting_facts.slice(0, 5).map((fact) => (
-                <span
-                  key={fact}
-                  className="inline-block rounded-md bg-muted px-2 py-0.5 text-2xs font-mono text-muted-foreground"
-                >
-                  {fact}
-                </span>
+                <FactRef key={fact} id={fact} />
               ))}
               {contribution.supporting_facts.length > 5 && (
-                <span className="inline-block px-2 py-0.5 text-2xs font-mono text-muted-foreground">
+                <span className="inline-flex items-center rounded-md border border-border bg-muted px-1.5 py-0.5 align-baseline text-[0.65rem] font-mono font-semibold text-muted-foreground">
                   +{contribution.supporting_facts.length - 5}
                 </span>
               )}
