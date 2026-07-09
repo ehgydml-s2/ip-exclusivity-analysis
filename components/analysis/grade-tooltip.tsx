@@ -100,32 +100,34 @@ function GradeTooltip({ type, value }: { type: keyof typeof gradeDescriptions; v
       </button>
 
       {showTooltip && (
-        <div className="absolute bottom-full right-0 z-50 mb-3 w-96 rounded-xl border border-border bg-card p-4 shadow-xl">
+        <div className="absolute bottom-full right-0 z-50 mb-3 max-h-96 w-96 overflow-y-auto rounded-xl border border-border bg-card p-4 shadow-xl">
           {/* Header */}
           <div className="mb-3 border-b border-border/50 pb-3">
             <p className="text-sm font-bold text-primary">{config.label}</p>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{config.description}</p>
           </div>
 
-          {/* Level Details */}
-          {level && (
-            <div className="mb-3 space-y-2.5">
-              <p className="text-sm font-semibold leading-snug text-foreground">{level.title}</p>
-              {level.details.length > 0 && (
-                <ul className="space-y-1.5 pl-1">
-                  {level.details.map((detail, idx) => (
-                    <li key={idx} className="text-xs leading-relaxed text-muted-foreground">
-                      <span className="text-primary">•</span> <span>{detail}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          )}
+          {/* All Level Details */}
+          <div className="space-y-3">
+            {config.levels.map((lvl, idx) => (
+              <div key={lvl.grade} className={lvl.grade === value ? "rounded-lg bg-primary/5 p-2.5" : ""}>
+                <p className="text-sm font-semibold leading-snug text-foreground">{lvl.title}</p>
+                {lvl.details.length > 0 && (
+                  <ul className="mt-1.5 space-y-1 pl-1">
+                    {lvl.details.map((detail, detailIdx) => (
+                      <li key={detailIdx} className="text-xs leading-relaxed text-muted-foreground">
+                        <span className="text-primary">&gt;</span> <span>{detail}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
 
           {/* Tech Gap Comparison */}
           {type === "tech_gap" && config.comparison && (
-            <div className="border-t border-border/50 pt-3">
+            <div className="border-t border-border/50 pt-3 mt-3">
               <p className="mb-2 text-xs font-semibold text-foreground">기술 격차 비교 방법:</p>
               <ul className="space-y-1 pl-1">
                 {config.comparison.map((item, idx) => (
