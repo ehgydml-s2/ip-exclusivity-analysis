@@ -23,7 +23,7 @@ export function buildReportText(result: AnalysisResult, projectName?: string) {
   p.push("")
   p.push(result.overall_conclusion.summary)
   p.push("")
-  p.push("핵심 리스크")
+  p.push("POINT")
   result.overall_conclusion.key_risks.forEach((f) => p.push(`  · ${f}`))
   p.push("")
   p.push("권고 사항")
