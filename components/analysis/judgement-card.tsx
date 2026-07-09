@@ -83,11 +83,6 @@ export function JudgementCard({ judgement }: { judgement: Judgement }) {
             <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
               신뢰도 <ConfidenceBadge value={judgement.confidence} />
             </span>
-            <div className="flex items-center gap-2">
-              <GradeTooltip type="tech_effect" value={grade.tech_effect_grade} />
-              <GradeTooltip type="competitor_applicability" value={grade.competitor_applicability} />
-              <GradeTooltip type="tech_gap" value={grade.tech_gap} />
-            </div>
           </div>
         </div>
         <ChevronDown
@@ -260,7 +255,12 @@ export function JudgementCard({ judgement }: { judgement: Judgement }) {
                       </div>
                       {row.grade && (
                         <div className="w-24 shrink-0 rounded-lg border border-border bg-secondary/40 p-3">
-                          <dt className="mb-1 text-xs font-semibold text-primary">AI 판정 등급</dt>
+                          <div className="mb-1 flex items-center gap-1">
+                            <dt className="text-xs font-semibold text-primary">AI 판정 등급</dt>
+                            {row.label === "기술 효과" && <GradeTooltip type="tech_effect" value={row.grade} />}
+                            {row.label === "경쟁사 적용" && <GradeTooltip type="competitor_applicability" value={row.grade} />}
+                            {row.label === "기술 격차" && <GradeTooltip type="tech_gap" value={row.grade} />}
+                          </div>
                           <dd className="text-sm font-medium text-foreground">{row.grade}</dd>
                         </div>
                       )}
