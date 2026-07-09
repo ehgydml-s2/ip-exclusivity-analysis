@@ -10,21 +10,21 @@ const gradeDescriptions = {
     levels: [
       {
         grade: "1",
-        title: "대체 기술 없어 Integration 불가",
+        title: "1등급: 대체 기술 없어 Integration 불가",
         details: [
           "Integration 기여: 재무성과 기준(연간) 200억 이상 / 설비 가격 10배 이상",
         ],
       },
       {
         grade: "2",
-        title: "해당 기술 없이 Integration에 다소 영향 있음 (대체 기술 있지만, 활용 시 효과 있음)",
+        title: "2등급: 해당 기술 없이 Integration에 다소 영향 있음 (대체 기술 있지만, 활용 시 효과 있음)",
         details: [
           "Integration 기여: 재무성과 기준(연간) 50억~200억 / 설비 가격 2배~10배",
         ],
       },
       {
         grade: "3",
-        title: "Integration 영향력 적음",
+        title: "3등급: Integration 영향력 적음",
         details: [
           "Integration 기여: 재무성과 기준(연간) 50억 이하 / 설비 가격 2배 이하",
         ],
