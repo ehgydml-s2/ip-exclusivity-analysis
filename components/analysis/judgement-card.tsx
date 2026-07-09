@@ -255,13 +255,13 @@ export function JudgementCard({ judgement }: { judgement: Judgement }) {
                       </div>
                       {row.grade && (
                         <div className="w-24 shrink-0 rounded-lg border border-border bg-secondary/40 p-3">
-                          <div className="mb-1 flex items-center gap-1">
-                            <dt className="text-xs font-semibold text-primary">AI 판정 등급</dt>
+                          <dt className="mb-1 text-xs font-semibold text-primary">AI 판정 등급</dt>
+                          <div className="flex items-center gap-1">
+                            <dd className="text-sm font-medium text-foreground">{row.grade}</dd>
                             {row.label === "기술 효과" && <GradeTooltip type="tech_effect" value={row.grade} />}
                             {row.label === "경쟁사 적용" && <GradeTooltip type="competitor_applicability" value={row.grade} />}
                             {row.label === "기술 격차" && <GradeTooltip type="tech_gap" value={row.grade} />}
                           </div>
-                          <dd className="text-sm font-medium text-foreground">{row.grade}</dd>
                         </div>
                       )}
                     </div>

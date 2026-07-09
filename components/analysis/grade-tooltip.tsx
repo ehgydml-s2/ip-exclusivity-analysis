@@ -94,10 +94,9 @@ function GradeTooltip({ type, value }: { type: keyof typeof gradeDescriptions; v
         type="button"
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
-        className="flex items-center gap-1 rounded px-2 py-1 hover:bg-accent/20"
+        className="inline-flex items-center gap-0.5"
       >
-        <span className="text-xs font-semibold text-foreground">[{value}]</span>
-        <HelpCircle className="size-3.5 text-muted-foreground hover:text-primary" />
+        <HelpCircle className="size-3.5 text-muted-foreground hover:text-primary transition-colors" />
       </button>
 
       {showTooltip && (
