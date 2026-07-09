@@ -100,32 +100,37 @@ function GradeTooltip({ type, value }: { type: keyof typeof gradeDescriptions; v
       </button>
 
       {showTooltip && (
-        <div className="absolute right-0 top-full z-50 mt-2 w-80 rounded-lg border border-border bg-card p-3 shadow-lg">
-          <div className="mb-2 border-b border-border pb-2">
-            <p className="text-xs font-semibold text-primary">{config.label}</p>
-            <p className="text-2xs text-muted-foreground">{config.description}</p>
+        <div className="absolute bottom-full right-0 z-50 mb-3 w-96 rounded-xl border border-border bg-card p-4 shadow-xl">
+          {/* Header */}
+          <div className="mb-3 border-b border-border/50 pb-3">
+            <p className="text-sm font-bold text-primary">{config.label}</p>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{config.description}</p>
           </div>
+
+          {/* Level Details */}
           {level && (
-            <div className="space-y-2">
-              <p className="text-xs font-semibold text-foreground">{level.title}</p>
+            <div className="mb-3 space-y-2.5">
+              <p className="text-sm font-semibold leading-snug text-foreground">{level.title}</p>
               {level.details.length > 0 && (
-                <ul className="space-y-1">
+                <ul className="space-y-1.5 pl-1">
                   {level.details.map((detail, idx) => (
-                    <li key={idx} className="text-2xs leading-relaxed text-muted-foreground">
-                      • {detail}
+                    <li key={idx} className="text-xs leading-relaxed text-muted-foreground">
+                      <span className="text-primary">•</span> <span>{detail}</span>
                     </li>
                   ))}
                 </ul>
               )}
             </div>
           )}
+
+          {/* Tech Gap Comparison */}
           {type === "tech_gap" && config.comparison && (
-            <div className="mt-2 border-t border-border pt-2">
-              <p className="mb-1 text-2xs font-semibold text-foreground">기술 격차 비교 방법:</p>
-              <ul className="space-y-0.5">
+            <div className="border-t border-border/50 pt-3">
+              <p className="mb-2 text-xs font-semibold text-foreground">기술 격차 비교 방법:</p>
+              <ul className="space-y-1 pl-1">
                 {config.comparison.map((item, idx) => (
-                  <li key={idx} className="text-2xs leading-relaxed text-muted-foreground">
-                    {item}
+                  <li key={idx} className="text-xs leading-relaxed text-muted-foreground">
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
