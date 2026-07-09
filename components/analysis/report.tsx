@@ -30,7 +30,32 @@ export function buildReportText(result: AnalysisResult, projectName?: string) {
   result.overall_conclusion.recommendations.forEach((a, i) => p.push(`  [${i + 1}] ${a}`))
   p.push("")
 
-  p.push("[ 판단 그룹 ]")
+  if (result.key_contributions) {
+    p.push("[ 핵심 아이디어 ]")
+    p.push("")
+    p.push("< S사의 아이디어 >")
+    result.key_contributions.company_s_ideas.forEach((idea, idx) => {
+      p.push(`${idx + 1}. ${idea.idea}`)
+      p.push(`   설명   : ${idea.description}`)
+      p.push(`   영향   : ${idea.impact}`)
+      p.push(`   중요도 : ${idea.significance}`)
+      p.push(`   사실   : ${idea.supporting_facts.join(", ")}`)
+      p.push(`   평가   : ${idea.reasoning}`)
+      p.push("")
+    })
+    p.push("< 협력사의 아이디어 >")
+    result.key_contributions.company_p_ideas.forEach((idea, idx) => {
+      p.push(`${idx + 1}. ${idea.idea}`)
+      p.push(`   설명   : ${idea.description}`)
+      p.push(`   영향   : ${idea.impact}`)
+      p.push(`   중요도 : ${idea.significance}`)
+      p.push(`   사실   : ${idea.supporting_facts.join(", ")}`)
+      p.push(`   평가   : ${idea.reasoning}`)
+      p.push("")
+    })
+  }
+
+  p.push("[ 청구 범위(그룹별 판단) ]")
   result.judgements.forEach((j) => {
     p.push(sub)
     p.push(`${j.group_id} ${j.topic}`)

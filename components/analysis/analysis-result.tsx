@@ -16,6 +16,7 @@ import {
 import type { AnalysisResult } from "@/lib/data"
 import { ConfidenceBadge } from "./badges"
 import { JudgementCard } from "./judgement-card"
+import { KeyContributionsView } from "./key-contributions"
 import { buildReportText } from "./report"
 import { FactMapProvider, FactText } from "./fact-ref"
 
@@ -188,7 +189,12 @@ export function AnalysisResultView({
             )}
           </div>
 
-          {/* 3. Judgement Group Cards */}
+          {/* 3. Key Contributions */}
+          {result.key_contributions && (
+            <KeyContributionsView contributions={result.key_contributions} />
+          )}
+
+          {/* 4. Judgement Group Cards */}
           <div className="rounded-2xl border border-border bg-secondary/30 p-5">
             <button
               type="button"
@@ -198,7 +204,7 @@ export function AnalysisResultView({
               <div className="flex items-center gap-2">
                 <ClipboardList className="size-4 text-primary" aria-hidden="true" />
                 <h2 className="text-base font-semibold text-foreground">
-                  판단 그룹 ({result.judgements.length})
+                  청구 범위(그룹별 판단) ({result.judgements.length})
                 </h2>
               </div>
               <ChevronDown
