@@ -14,8 +14,9 @@ import {
 } from "lucide-react"
 import type { Judgement } from "@/lib/data"
 import { cn } from "@/lib/utils"
-import { ConfidenceBadge, HolderBadge, GradeBadge } from "./badges"
+import { ConfidenceBadge, HolderBadge } from "./badges"
 import { FactRef, FactText } from "./fact-ref"
+import { GradeTooltip } from "./grade-tooltip"
 
 type Tab = "reasoning" | "legal" | "grade"
 
@@ -82,9 +83,11 @@ export function JudgementCard({ judgement }: { judgement: Judgement }) {
             <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
               신뢰도 <ConfidenceBadge value={judgement.confidence} />
             </span>
-            <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              AI 판정 등급 <GradeBadge value={grade.final_grade} />
-            </span>
+            <div className="flex items-center gap-2">
+              <GradeTooltip type="tech_effect" value={grade.tech_effect_grade} />
+              <GradeTooltip type="competitor_applicability" value={grade.competitor_applicability} />
+              <GradeTooltip type="tech_gap" value={grade.tech_gap} />
+            </div>
           </div>
         </div>
         <ChevronDown
