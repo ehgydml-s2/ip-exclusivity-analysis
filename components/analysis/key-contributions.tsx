@@ -6,49 +6,61 @@ import type { KeyContributions, KeyContribution } from "@/lib/data"
 import { FactText } from "./fact-ref"
 
 function ContributionCard({ contribution }: { contribution: KeyContribution }) {
+  const [isExpanded, setIsExpanded] = useState(false)
+
   const significanceColor =
     contribution.significance === "High"
       ? "border-primary/30 bg-primary/5"
       : "border-secondary/30 bg-secondary/5"
 
   return (
-    <div className={`rounded-xl border p-4 ${significanceColor}`}>
-      <div className="mb-3 flex items-start justify-between gap-2">
-        <h4 className="flex-1 text-sm font-semibold leading-snug text-foreground">
-          {contribution.idea}
-        </h4>
-        <span className="shrink-0 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-bold text-primary">
-          {contribution.significance}
-        </span>
-      </div>
+    <div className={`rounded-xl border p-4 ${significanceColor} cursor-pointer transition-all`}>
+      <button
+        type="button"
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="w-full text-left"
+      >
+        <div className="mb-3 flex items-start justify-between gap-2">
+          <h4 className="flex-1 text-sm font-semibold leading-snug text-foreground">
+            {contribution.idea}
+          </h4>
+          <span className="shrink-0 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-bold text-primary">
+            {contribution.significance}
+          </span>
+        </div>
+      </button>
 
-      <FactText className="mb-3 block text-xs leading-relaxed text-muted-foreground">
-        {contribution.description}
-      </FactText>
+      {isExpanded && (
+        <div className="space-y-3 border-t border-border/30 pt-3">
+          <FactText className="block text-xs leading-relaxed text-muted-foreground">
+            {contribution.description}
+          </FactText>
 
-      <div className="mb-3 rounded-lg border border-primary/15 bg-card/40 p-2.5">
-        <p className="text-xs font-semibold text-primary mb-1">Impact</p>
-        <p className="text-xs leading-relaxed text-foreground">{contribution.impact}</p>
-      </div>
+          <div className="rounded-lg border border-primary/15 bg-card/40 p-2.5">
+            <p className="mb-1 text-xs font-semibold text-primary">Impact</p>
+            <p className="text-xs leading-relaxed text-foreground">{contribution.impact}</p>
+          </div>
 
-      <p className="text-xs leading-relaxed text-muted-foreground italic">
-        {contribution.reasoning}
-      </p>
+          <p className="text-xs leading-relaxed italic text-muted-foreground">
+            {contribution.reasoning}
+          </p>
 
-      {contribution.supporting_facts.length > 0 && (
-        <div className="mt-2.5 flex flex-wrap gap-1">
-          {contribution.supporting_facts.slice(0, 5).map((fact) => (
-            <span
-              key={fact}
-              className="inline-block rounded-md bg-muted px-2 py-0.5 text-xs font-mono text-muted-foreground"
-            >
-              {fact}
-            </span>
-          ))}
-          {contribution.supporting_facts.length > 5 && (
-            <span className="inline-block px-2 py-0.5 text-xs text-muted-foreground">
-              +{contribution.supporting_facts.length - 5}
-            </span>
+          {contribution.supporting_facts.length > 0 && (
+            <div className="flex flex-wrap gap-1">
+              {contribution.supporting_facts.slice(0, 5).map((fact) => (
+                <span
+                  key={fact}
+                  className="inline-block rounded-md bg-muted px-2 py-0.5 text-xs font-mono text-muted-foreground"
+                >
+                  {fact}
+                </span>
+              ))}
+              {contribution.supporting_facts.length > 5 && (
+                <span className="inline-block px-2 py-0.5 text-xs text-muted-foreground">
+                  +{contribution.supporting_facts.length - 5}
+                </span>
+              )}
+            </div>
           )}
         </div>
       )}
