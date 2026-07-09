@@ -244,22 +244,24 @@ export function JudgementCard({ judgement }: { judgement: Judgement }) {
             {/* Tab: 평가 등급 */}
             {tab === "grade" && (
               <div className="space-y-5">
-                <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
-                  <KeyValueRow label="기술 효과 등급" value={grade.tech_effect_grade} />
-                  <KeyValueRow label="경쟁사 적용 가능성" value={grade.competitor_applicability} />
-                  <KeyValueRow label="기술 격차" value={grade.tech_gap} />
-                </div>
-
                 <dl className="space-y-3">
                   {[
-                    { label: "기술 효과", value: grade.tech_effect_reasoning },
-                    { label: "경쟁사 적용", value: grade.competitor_reasoning },
-                    { label: "기술 격차", value: grade.tech_gap_reasoning },
-                    { label: "종합 등급", value: grade.grade_reasoning },
+                    { label: "기술 효과", value: grade.tech_effect_reasoning, grade: grade.tech_effect_grade },
+                    { label: "경쟁사 적용", value: grade.competitor_reasoning, grade: grade.competitor_applicability },
+                    { label: "기술 격차", value: grade.tech_gap_reasoning, grade: grade.tech_gap },
+                    { label: "종합 등급", value: grade.grade_reasoning, grade: null },
                   ].map((row) => (
-                    <div key={row.label} className="rounded-lg border border-border bg-secondary/40 p-3">
-                      <dt className="mb-1 text-xs font-semibold text-primary">{row.label} 근거</dt>
-                      <dd className="text-sm leading-relaxed text-foreground">{row.value}</dd>
+                    <div key={row.label} className="grid gap-2.5 lg:grid-cols-2">
+                      <div className="rounded-lg border border-border bg-secondary/40 p-3">
+                        <dt className="mb-1 text-xs font-semibold text-primary">{row.label} 근거</dt>
+                        <dd className="text-sm leading-relaxed text-foreground">{row.value}</dd>
+                      </div>
+                      {row.grade && (
+                        <div className="rounded-lg border border-border bg-secondary/40 p-3">
+                          <dt className="mb-1 text-xs font-semibold text-primary">(AI 판정 등급)</dt>
+                          <dd className="text-sm font-medium text-foreground">{row.grade}</dd>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </dl>
