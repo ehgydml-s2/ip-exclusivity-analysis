@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { HelpCircle } from "lucide-react"
+import { HelpCircle, X } from "lucide-react"
 
 const gradeDescriptions = {
   tech_effect: {
@@ -84,63 +84,86 @@ const gradeDescriptions = {
 }
 
 function GradeTooltip({ type, value }: { type: keyof typeof gradeDescriptions; value: string }) {
-  const [showTooltip, setShowTooltip] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const config = gradeDescriptions[type]
-  const level = config.levels.find((l) => l.grade === value)
 
   return (
-    <div className="relative inline-block">
+    <>
       <button
         type="button"
-        onMouseEnter={() => setShowTooltip(true)}
-        onMouseLeave={() => setShowTooltip(false)}
+        onClick={() => setIsOpen(true)}
         className="inline-flex items-center gap-0.5"
       >
         <HelpCircle className="size-3.5 text-muted-foreground hover:text-primary transition-colors" />
       </button>
 
-      {showTooltip && (
-        <div className="absolute bottom-full right-0 z-50 mb-3 max-h-96 w-96 overflow-y-auto rounded-xl border border-border bg-card p-4 shadow-xl">
-          {/* Header */}
-          <div className="mb-3 border-b border-border/50 pb-3">
-            <p className="text-sm font-bold text-primary">{config.label}</p>
-            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{config.description}</p>
-          </div>
+      {isOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 z-50 bg-black/30"
+            onClick={() => setIsOpen(false)}
+          />
 
-          {/* All Level Details */}
-          <div className="space-y-3">
-            {config.levels.map((lvl, idx) => (
-              <div key={lvl.grade} className={lvl.grade === value ? "rounded-lg bg-primary/5 p-2.5" : ""}>
-                <p className="text-sm font-semibold leading-snug text-foreground">{lvl.title}</p>
-                {lvl.details.length > 0 && (
-                  <ul className="mt-1.5 space-y-1 pl-1">
-                    {lvl.details.map((detail, detailIdx) => (
-                      <li key={detailIdx} className="text-xs leading-relaxed text-muted-foreground">
-                        <span className="text-primary">&gt;</span> <span>{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+          {/* Modal */}
+          <div className="fixed left-1/2 top-1/2 z-50 max-h-[80vh] w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-xl border border-border bg-card p-6 shadow-2xl">
+            {/* Header with Close Button */}
+            <div className="mb-4 flex items-start justify-between border-b border-border/50 pb-4">
+              <div className="flex-1">
+                <p className="text-lg font-bold text-primary">{config.label}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{config.description}</p>
               </div>
-            ))}
-          </div>
-
-          {/* Tech Gap Comparison */}
-          {type === "tech_gap" && config.comparison && (
-            <div className="border-t border-border/50 pt-3 mt-3">
-              <p className="mb-2 text-xs font-semibold text-foreground">기술 격차 비교 방법:</p>
-              <ul className="space-y-1 pl-1">
-                {config.comparison.map((item, idx) => (
-                  <li key={idx} className="text-xs leading-relaxed text-muted-foreground">
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                className="ml-4 shrink-0 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <X className="size-5" />
+              </button>
             </div>
-          )}
-        </div>
+
+            {/* All Level Details */}
+            <div className="space-y-4">
+              {config.levels.map((lvl) => (
+                <div
+                  key={lvl.grade}
+                  className={`rounded-lg border p-3.5 transition-colors ${
+                    lvl.grade === value
+                      ? "border-primary/50 bg-primary/5"
+                      : "border-border/30 bg-secondary/20"
+                  }`}
+                >
+                  <p className="text-base font-semibold leading-snug text-foreground">{lvl.title}</p>
+                  {lvl.details.length > 0 && (
+                    <ul className="mt-2.5 space-y-1.5 pl-1">
+                      {lvl.details.map((detail, detailIdx) => (
+                        <li key={detailIdx} className="text-sm leading-relaxed text-muted-foreground">
+                          <span className="text-primary font-semibold">&gt;</span> <span>{detail}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Tech Gap Comparison */}
+            {type === "tech_gap" && config.comparison && (
+              <div className="border-t border-border/50 pt-4 mt-4">
+                <p className="mb-3 text-base font-semibold text-foreground">기술 격차 비교 방법:</p>
+                <ul className="space-y-2 pl-1">
+                  {config.comparison.map((item, idx) => (
+                    <li key={idx} className="text-sm leading-relaxed text-muted-foreground">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </>
       )}
-    </div>
+    </>
   )
 }
 
