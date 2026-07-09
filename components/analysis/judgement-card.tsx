@@ -244,11 +244,7 @@ export function JudgementCard({ judgement }: { judgement: Judgement }) {
             {/* Tab: 평가 등급 */}
             {tab === "grade" && (
               <div className="space-y-5">
-                <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
-                  <div className="flex flex-col items-start gap-1.5 rounded-lg border border-primary/20 bg-primary/5 p-3">
-                    <span className="text-xs text-muted-foreground">최종 등급</span>
-                    <GradeBadge value={grade.final_grade} />
-                  </div>
+                <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
                   <KeyValueRow label="기술 효과 등급" value={grade.tech_effect_grade} />
                   <KeyValueRow label="경쟁사 적용 가능성" value={grade.competitor_applicability} />
                   <KeyValueRow label="기술 격차" value={grade.tech_gap} />
