@@ -1,6 +1,7 @@
 "use client"
 
-import { Lightbulb, Badge, TrendingUp, Target } from "lucide-react"
+import { useState } from "react"
+import { Lightbulb, ChevronDown } from "lucide-react"
 import type { KeyContributions, KeyContribution } from "@/lib/data"
 import { FactText } from "./fact-ref"
 
@@ -56,14 +57,27 @@ function ContributionCard({ contribution }: { contribution: KeyContribution }) {
 }
 
 export function KeyContributionsView({ contributions }: { contributions: KeyContributions }) {
+  const [isExpanded, setIsExpanded] = useState(true)
+
   return (
     <div className="rounded-2xl border border-border bg-secondary/30 p-5">
-      <div className="mb-4 flex items-center gap-2">
-        <Lightbulb className="size-4 text-primary" aria-hidden="true" />
-        <h2 className="text-base font-semibold text-foreground">핵심 아이디어</h2>
-      </div>
+      <button
+        type="button"
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="mb-4 flex w-full items-center justify-between gap-2 hover:opacity-70"
+      >
+        <div className="flex items-center gap-2">
+          <Lightbulb className="size-4 text-primary" aria-hidden="true" />
+          <h2 className="text-base font-semibold text-foreground">핵심 아이디어</h2>
+        </div>
+        <ChevronDown
+          className={`size-4 text-muted-foreground transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}
+          aria-hidden="true"
+        />
+      </button>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      {isExpanded && (
+        <div className="grid gap-6 lg:grid-cols-2">
         {/* Company S Column */}
         <div>
           <div className="mb-3 flex items-center gap-2">
@@ -98,6 +112,7 @@ export function KeyContributionsView({ contributions }: { contributions: KeyCont
           </div>
         </div>
       </div>
+      )}
     </div>
   )
 }
