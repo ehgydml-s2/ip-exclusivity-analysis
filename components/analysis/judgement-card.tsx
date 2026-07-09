@@ -251,13 +251,13 @@ export function JudgementCard({ judgement }: { judgement: Judgement }) {
                     { label: "기술 격차", value: grade.tech_gap_reasoning, grade: grade.tech_gap },
                     { label: "종합 등급", value: grade.grade_reasoning, grade: null },
                   ].map((row) => (
-                    <div key={row.label} className="grid gap-2.5 lg:grid-cols-2">
-                      <div className="rounded-lg border border-border bg-secondary/40 p-3">
+                    <div key={row.label} className="flex gap-2.5">
+                      <div className="flex-1 rounded-lg border border-border bg-secondary/40 p-3">
                         <dt className="mb-1 text-xs font-semibold text-primary">{row.label} 근거</dt>
                         <dd className="text-sm leading-relaxed text-foreground">{row.value}</dd>
                       </div>
                       {row.grade && (
-                        <div className="rounded-lg border border-border bg-secondary/40 p-3">
+                        <div className="w-24 shrink-0 rounded-lg border border-border bg-secondary/40 p-3">
                           <dt className="mb-1 text-xs font-semibold text-primary">(AI 판정 등급)</dt>
                           <dd className="text-sm font-medium text-foreground">{row.grade}</dd>
                         </div>
