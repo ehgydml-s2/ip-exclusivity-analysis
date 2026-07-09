@@ -8,10 +8,20 @@ import { FactText } from "./fact-ref"
 function ContributionCard({ contribution }: { contribution: KeyContribution }) {
   const [isExpanded, setIsExpanded] = useState(false)
 
-  const significanceColor =
-    contribution.significance === "High"
-      ? "border-primary/30 bg-primary/5"
-      : "border-secondary/30 bg-secondary/5"
+  const getSignificanceColor = (significance: string) => {
+    switch (significance) {
+      case "High":
+        return "border-primary/30 bg-primary/5"
+      case "Medium":
+        return "border-amber-500/30 bg-amber-500/5"
+      case "Low":
+        return "border-destructive/30 bg-destructive/5"
+      default:
+        return "border-secondary/30 bg-secondary/5"
+    }
+  }
+
+  const significanceColor = getSignificanceColor(contribution.significance)
 
   return (
     <div className={`rounded-xl border p-4 ${significanceColor} cursor-pointer transition-all`}>
@@ -24,7 +34,15 @@ function ContributionCard({ contribution }: { contribution: KeyContribution }) {
           <h4 className="flex-1 text-sm font-semibold leading-snug text-foreground">
             {contribution.idea}
           </h4>
-          <span className="shrink-0 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-bold text-primary">
+          <span
+            className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-bold ${
+              contribution.significance === "High"
+                ? "bg-primary/10 text-primary"
+                : contribution.significance === "Medium"
+                  ? "bg-amber-500/10 text-amber-600"
+                  : "bg-destructive/10 text-destructive"
+            }`}
+          >
             {contribution.significance}
           </span>
         </div>
