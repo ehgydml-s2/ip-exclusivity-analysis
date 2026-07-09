@@ -11,7 +11,6 @@ import {
   MessageSquareWarning,
   Lightbulb,
   FileText,
-  Info,
 } from "lucide-react"
 import type { Judgement } from "@/lib/data"
 import { cn } from "@/lib/utils"
@@ -245,34 +244,24 @@ export function JudgementCard({ judgement }: { judgement: Judgement }) {
             {/* Tab: 평가 등급 */}
             {tab === "grade" && (
               <div className="space-y-5">
-                {/* AI 판정 등급 Header */}
-                <div className="rounded-lg border border-border bg-secondary/40 p-3">
-                  <div className="flex items-center gap-2 mb-2">
-                    <dt className="text-xs font-semibold text-primary flex items-center gap-1">
-                      AI 판정 등급
-                      <Info className="size-3.5 text-primary" aria-hidden="true" />
-                    </dt>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    <div className="inline-block">
-                      <span className="text-sm font-medium text-foreground">[{grade.tech_effect_grade}/</span>
-                      <span className="text-sm font-medium text-foreground">{grade.competitor_applicability}/</span>
-                      <span className="text-sm font-medium text-foreground">{grade.tech_gap}]</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Reasoning sections */}
                 <dl className="space-y-3">
                   {[
-                    { label: "기술 효과", value: grade.tech_effect_reasoning },
-                    { label: "경쟁사 적용", value: grade.competitor_reasoning },
-                    { label: "기술 격차", value: grade.tech_gap_reasoning },
-                    { label: "종합 등급", value: grade.grade_reasoning },
+                    { label: "기술 효과", value: grade.tech_effect_reasoning, grade: grade.tech_effect_grade },
+                    { label: "경쟁사 적용", value: grade.competitor_reasoning, grade: grade.competitor_applicability },
+                    { label: "기술 격차", value: grade.tech_gap_reasoning, grade: grade.tech_gap },
+                    { label: "종합 등급", value: grade.grade_reasoning, grade: null },
                   ].map((row) => (
-                    <div key={row.label} className="rounded-lg border border-border bg-secondary/40 p-3">
-                      <dt className="mb-1 text-xs font-semibold text-primary">{row.label} 근거</dt>
-                      <dd className="text-sm leading-relaxed text-foreground">{row.value}</dd>
+                    <div key={row.label} className="flex gap-2.5">
+                      <div className="flex-1 rounded-lg border border-border bg-secondary/40 p-3">
+                        <dt className="mb-1 text-xs font-semibold text-primary">{row.label} 근거</dt>
+                        <dd className="text-sm leading-relaxed text-foreground">{row.value}</dd>
+                      </div>
+                      {row.grade && (
+                        <div className="w-24 shrink-0 rounded-lg border border-border bg-secondary/40 p-3">
+                          <dt className="mb-1 text-xs font-semibold text-primary">(AI 판정 등급)</dt>
+                          <dd className="text-sm font-medium text-foreground">{row.grade}</dd>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </dl>
