@@ -249,7 +249,6 @@ export function JudgementCard({ judgement }: { judgement: Judgement }) {
                     { label: "기술 효과", value: grade.tech_effect_reasoning, grade: grade.tech_effect_grade },
                     { label: "경쟁사 적용", value: grade.competitor_reasoning, grade: grade.competitor_applicability },
                     { label: "기술 격차", value: grade.tech_gap_reasoning, grade: grade.tech_gap },
-                    { label: "종합 등급", value: grade.grade_reasoning, grade: null },
                   ].map((row) => (
                     <div key={row.label} className="flex gap-2.5">
                       <div className="flex-1 rounded-lg border border-border bg-secondary/40 p-3">
