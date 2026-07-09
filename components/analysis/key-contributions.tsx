@@ -1,0 +1,143 @@
+"use client"
+
+import { useState } from "react"
+import { Lightbulb, ChevronDown } from "lucide-react"
+import type { KeyContributions, KeyContribution } from "@/lib/data"
+import { FactText, FactRef } from "./fact-ref"
+
+function ContributionCard({ contribution }: { contribution: KeyContribution }) {
+  const [isExpanded, setIsExpanded] = useState(false)
+
+  const getSignificanceColor = (significance: string) => {
+    switch (significance) {
+      case "High":
+        return "border-primary/30 bg-primary/5"
+      case "Medium":
+        return "border-amber-500/30 bg-amber-500/5"
+      case "Low":
+        return "border-destructive/30 bg-destructive/5"
+      default:
+        return "border-secondary/30 bg-secondary/5"
+    }
+  }
+
+  const significanceColor = getSignificanceColor(contribution.significance)
+
+  return (
+    <div className={`rounded-xl border p-4 ${significanceColor} cursor-pointer transition-all`}>
+      <button
+        type="button"
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="w-full text-left"
+      >
+        <div className="mb-3 flex items-start justify-between gap-2">
+          <h4 className="flex-1 text-sm font-semibold leading-snug text-foreground">
+            {contribution.idea}
+          </h4>
+          <span
+            className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-bold ${
+              contribution.significance === "High"
+                ? "bg-primary/10 text-primary"
+                : contribution.significance === "Medium"
+                  ? "bg-amber-500/10 text-amber-600"
+                  : "bg-destructive/10 text-destructive"
+            }`}
+          >
+            {contribution.significance}
+          </span>
+        </div>
+      </button>
+
+      {isExpanded && (
+        <div className="space-y-3 border-t border-border/30 pt-3">
+          <FactText className="block text-xs leading-relaxed text-muted-foreground">
+            {contribution.description}
+          </FactText>
+
+          <div className="rounded-lg border border-primary/15 bg-card/40 p-2.5">
+            <p className="mb-1 text-xs font-semibold text-primary">Impact</p>
+            <p className="text-xs leading-relaxed text-foreground">{contribution.impact}</p>
+          </div>
+
+          <p className="text-xs leading-relaxed italic text-muted-foreground">
+            {contribution.reasoning}
+          </p>
+
+          {contribution.supporting_facts.length > 0 && (
+            <div className="flex flex-wrap gap-0.5">
+              {contribution.supporting_facts.slice(0, 5).map((fact) => (
+                <FactRef key={fact} id={fact} />
+              ))}
+              {contribution.supporting_facts.length > 5 && (
+                <span className="inline-flex items-center rounded-md border border-border bg-muted px-1.5 py-0.5 align-baseline text-[0.65rem] font-mono font-semibold text-muted-foreground">
+                  +{contribution.supporting_facts.length - 5}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export function KeyContributionsView({ contributions }: { contributions: KeyContributions }) {
+  const [isExpanded, setIsExpanded] = useState(true)
+
+  return (
+    <div className="rounded-2xl border border-border bg-secondary/30 p-5">
+      <button
+        type="button"
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="mb-4 flex w-full items-center justify-between gap-2 hover:opacity-70"
+      >
+        <div className="flex items-center gap-2">
+          <Lightbulb className="size-4 text-primary" aria-hidden="true" />
+          <h2 className="text-base font-semibold text-foreground">핵심 아이디어</h2>
+        </div>
+        <ChevronDown
+          className={`size-4 text-muted-foreground transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}
+          aria-hidden="true"
+        />
+      </button>
+
+      {isExpanded && (
+        <div className="grid gap-6 lg:grid-cols-2">
+        {/* Company S Column */}
+        <div>
+          <div className="mb-3 flex items-center gap-2">
+            <div className="flex size-6 items-center justify-center rounded-lg bg-blue-500/10">
+              <span className="text-xs font-bold text-blue-600">S</span>
+            </div>
+            <h3 className="text-sm font-semibold text-foreground">
+              S사의 아이디어
+            </h3>
+          </div>
+          <div className="space-y-3">
+            {contributions.company_s_ideas.map((idea, idx) => (
+              <ContributionCard key={`s-${idx}`} contribution={idea} />
+            ))}
+          </div>
+        </div>
+
+        {/* Company P Column */}
+        <div>
+          <div className="mb-3 flex items-center gap-2">
+            <div className="flex size-6 items-center justify-center rounded-lg bg-amber-500/10">
+              <span className="text-xs font-bold text-amber-600">P</span>
+            </div>
+            <h3 className="text-sm font-semibold text-foreground">
+              협력사의 아이디어
+            </h3>
+          </div>
+          <div className="space-y-3">
+            {contributions.company_p_ideas.map((idea, idx) => (
+              <ContributionCard key={`p-${idx}`} contribution={idea} />
+            ))}
+          </div>
+        </div>
+      </div>
+      )}
+    </div>
+  )
+}

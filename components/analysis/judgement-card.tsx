@@ -14,8 +14,9 @@ import {
 } from "lucide-react"
 import type { Judgement } from "@/lib/data"
 import { cn } from "@/lib/utils"
-import { ConfidenceBadge, HolderBadge, GradeBadge } from "./badges"
+import { ConfidenceBadge, HolderBadge } from "./badges"
 import { FactRef, FactText } from "./fact-ref"
+import { GradeTooltip } from "./grade-tooltip"
 
 type Tab = "reasoning" | "legal" | "grade"
 
@@ -83,7 +84,12 @@ export function JudgementCard({ judgement }: { judgement: Judgement }) {
               신뢰도 <ConfidenceBadge value={judgement.confidence} />
             </span>
             <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-              등급 <GradeBadge value={grade.final_grade} />
+              AI 판정 등급
+              <span className="inline-flex items-center gap-0.5 text-xs font-semibold">
+                <span className="rounded-full bg-primary/10 px-2 py-0.5 text-primary">{grade.tech_effect_grade}</span>
+                <span className="rounded-full bg-amber-500/10 px-2 py-0.5 text-amber-600">{grade.competitor_applicability}</span>
+                <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-destructive">{grade.tech_gap}</span>
+              </span>
             </span>
           </div>
         </div>
@@ -244,26 +250,28 @@ export function JudgementCard({ judgement }: { judgement: Judgement }) {
             {/* Tab: 평가 등급 */}
             {tab === "grade" && (
               <div className="space-y-5">
-                <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
-                  <div className="flex flex-col items-start gap-1.5 rounded-lg border border-primary/20 bg-primary/5 p-3">
-                    <span className="text-xs text-muted-foreground">최종 등급</span>
-                    <GradeBadge value={grade.final_grade} />
-                  </div>
-                  <KeyValueRow label="기술 효과 등급" value={grade.tech_effect_grade} />
-                  <KeyValueRow label="경쟁사 적용 가능성" value={grade.competitor_applicability} />
-                  <KeyValueRow label="기술 격차" value={grade.tech_gap} />
-                </div>
-
                 <dl className="space-y-3">
                   {[
-                    { label: "기술 효과", value: grade.tech_effect_reasoning },
-                    { label: "경쟁사 적용", value: grade.competitor_reasoning },
-                    { label: "기술 격차", value: grade.tech_gap_reasoning },
-                    { label: "종합 등급", value: grade.grade_reasoning },
+                    { label: "기술 효과", value: grade.tech_effect_reasoning, grade: grade.tech_effect_grade },
+                    { label: "경쟁사 적용", value: grade.competitor_reasoning, grade: grade.competitor_applicability },
+                    { label: "기술 격차", value: grade.tech_gap_reasoning, grade: grade.tech_gap },
                   ].map((row) => (
-                    <div key={row.label} className="rounded-lg border border-border bg-secondary/40 p-3">
-                      <dt className="mb-1 text-xs font-semibold text-primary">{row.label} 근거</dt>
-                      <dd className="text-sm leading-relaxed text-foreground">{row.value}</dd>
+                    <div key={row.label} className="flex gap-2.5">
+                      <div className="flex-1 rounded-lg border border-border bg-secondary/40 p-3">
+                        <dt className="mb-1 text-xs font-semibold text-primary">{row.label} 근거</dt>
+                        <dd className="text-sm leading-relaxed text-foreground">{row.value}</dd>
+                      </div>
+                      {row.grade && (
+                        <div className="w-24 shrink-0 rounded-lg border border-border bg-secondary/40 p-3">
+                          <dt className="mb-1 text-xs font-semibold text-primary">AI 판정 등급</dt>
+                          <div className="flex items-center gap-1">
+                            <dd className="text-sm font-medium text-foreground">{row.grade}</dd>
+                            {row.label === "기술 효과" && <GradeTooltip type="tech_effect" value={row.grade} />}
+                            {row.label === "경쟁사 적용" && <GradeTooltip type="competitor_applicability" value={row.grade} />}
+                            {row.label === "기술 격차" && <GradeTooltip type="tech_gap" value={row.grade} />}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </dl>
