@@ -83,6 +83,14 @@ export function JudgementCard({ judgement }: { judgement: Judgement }) {
             <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
               신뢰도 <ConfidenceBadge value={judgement.confidence} />
             </span>
+            <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              AI 판정 등급
+              <span className="inline-flex items-center gap-0.5 text-xs font-semibold">
+                <span className="rounded-full bg-primary/10 px-2 py-0.5 text-primary">{grade.tech_effect_grade}</span>
+                <span className="rounded-full bg-amber-500/10 px-2 py-0.5 text-amber-600">{grade.competitor_applicability}</span>
+                <span className="rounded-full bg-destructive/10 px-2 py-0.5 text-destructive">{grade.tech_gap}</span>
+              </span>
+            </span>
           </div>
         </div>
         <ChevronDown
