@@ -1,0 +1,28 @@
+import { Analytics } from '@vercel/analytics/next'
+import type { Metadata, Viewport } from 'next'
+import { GeistMono } from 'geist/font/mono'
+import '@fontsource/noto-sans-kr/400.css'
+import '@fontsource/noto-sans-kr/500.css'
+import '@fontsource/noto-sans-kr/600.css'
+import '@fontsource/noto-sans-kr/700.css'
+import './globals.css'
+
+// ...metadata, viewport 동일하게 유지...
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="ko" className={`bg-background ${GeistMono.variable}`}>
+      <head>
+        <meta charSet="utf-8" />
+      </head>
+      <body className="font-sans antialiased">
+        {children}
+        {process.env.NODE_ENV === 'production' && <Analytics />}
+      </body>
+    </html>
+  )
+}
