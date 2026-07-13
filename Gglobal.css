@@ -26,3 +26,11 @@ export default function RootLayout({
     </html>
   )
 }
+
+
+
+         
+:root {
+  --font-sans-kr: 'Noto Sans KR', ui-sans-serif, system-ui, sans-serif;
+}
+
