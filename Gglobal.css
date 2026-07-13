@@ -34,26 +34,3 @@ export default function RootLayout({
   --font-sans-kr: 'Noto Sans KR', ui-sans-serif, system-ui, sans-serif;
 }
 
-
-⨯ ReferenceError: Noto_Sans_KR is not defined
-    at module evaluation (app/layout.tsx:10:20)
-    at module evaluation (.next/dev/server/chunks/ssr/NSRM_Risk-Sensing-poc-b_0rn1.cx._.js:121:47)
-   8 | import './globals.css'
-   9 |
-> 10 | const notoSansKr = Noto_Sans_KR({
-     |                    ^
-  11 |   subsets: ['latin'],
-  12 |   weight: ['400', '500', '600', '700'],
-  13 |   variable: '--font-sans-kr',
-⨯ ReferenceError: Noto_Sans_KR is not defined
-    at module evaluation (app/layout.tsx:10:20)
-    at module evaluation (.next/dev/server/chunks/ssr/NSRM_Risk-Sensing-poc-b_0rn1.cx._.js:121:47)
-   8 | import './globals.css'
-   9 |
-> 10 | const notoSansKr = Noto_Sans_KR({
-     |                    ^
-  11 |   subsets: ['latin'],
-  12 |   weight: ['400', '500', '600', '700'],
-  13 |   variable: '--font-sans-kr', {
-  page: '/'
-}
