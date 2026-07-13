@@ -7,7 +7,36 @@ import '@fontsource/noto-sans-kr/600.css'
 import '@fontsource/noto-sans-kr/700.css'
 import './globals.css'
 
-// ...metadata, viewport 동일하게 유지...
+export const metadata: Metadata = {
+  title: 'IP 배타성 분석 시스템',
+  description: '회의록 기반 지식재산 배타권 분석 대시보드',
+  generator: 'v0.app',
+  icons: {
+    icon: [
+      {
+        url: '/icon-light-32x32.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/icon-dark-32x32.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+      {
+        url: '/icon.svg',
+        type: 'image/svg+xml',
+      },
+    ],
+    apple: '/apple-icon.png',
+  },
+}
+
+export const viewport: Viewport = {
+  colorScheme: 'light dark',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+}
 
 export default function RootLayout({
   children,
@@ -26,11 +55,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-
-         
-:root {
-  --font-sans-kr: 'Noto Sans KR', ui-sans-serif, system-ui, sans-serif;
-}
-
