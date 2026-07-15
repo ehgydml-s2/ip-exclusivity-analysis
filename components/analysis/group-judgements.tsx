@@ -108,8 +108,8 @@ export function GroupJudgementsView({ judgements }: { judgements: Judgement[] })
 
   const companySJudgements = judgements.filter((j) => j.claimed_holder === "Company S")
   const partnerJudgements = judgements.filter((j) => j.claimed_holder === "Partner")
-  const otherJudgements = judgements.filter(
-    (j) => j.claimed_holder !== "Company S" && j.claimed_holder !== "Partner"
+  const unclearJudgements = judgements.filter(
+    (j) => j.claimed_holder === "Unclear" || j.claimed_holder === "No Data"
   )
 
   return (
@@ -121,7 +121,7 @@ export function GroupJudgementsView({ judgements }: { judgements: Judgement[] })
       >
         <div className="flex items-center gap-2">
           <Lightbulb className="size-4 text-primary" aria-hidden="true" />
-          <h2 className="text-base font-semibold text-foreground">청구 범위(그룹별 판단)</h2>
+          <h2 className="text-base font-semibold text-foreground">아이디어</h2>
         </div>
         <ChevronDown
           className={`size-4 text-muted-foreground transition-transform duration-200 ${isExpanded ? "rotate-180" : ""}`}
@@ -138,17 +138,12 @@ export function GroupJudgementsView({ judgements }: { judgements: Judgement[] })
               {companySJudgements.map((j) => (
                 <JudgementGroupCard key={j.group_id} judgement={j} />
               ))}
-              {otherJudgements
-                .filter((j) => j.claimed_holder === "Unclear" || j.claimed_holder === "No Data")
-                .map((j) => (
-                  <JudgementGroupCard key={j.group_id} judgement={j} />
-                ))}
-              {companySJudgements.length === 0 &&
-                otherJudgements.filter(
-                  (j) => j.claimed_holder === "Unclear" || j.claimed_holder === "No Data"
-                ).length === 0 && (
-                  <p className="text-xs text-muted-foreground">없음</p>
-                )}
+              {unclearJudgements.map((j) => (
+                <JudgementGroupCard key={j.group_id} judgement={j} />
+              ))}
+              {companySJudgements.length === 0 && unclearJudgements.length === 0 && (
+                <p className="text-xs text-muted-foreground">없음</p>
+              )}
             </div>
           </div>
 
