@@ -130,39 +130,40 @@ export function GroupJudgementsView({ judgements }: { judgements: Judgement[] })
       </button>
 
       {isExpanded && (
-        <div className="space-y-6">
-          {companySJudgements.length > 0 && (
-            <div>
-              <h3 className="mb-3 text-sm font-semibold text-foreground">S사 주장 그룹</h3>
-              <div className="space-y-3">
-                {companySJudgements.map((j) => (
+        <div className="grid gap-6 lg:grid-cols-2">
+          {/* S사 아이디어 */}
+          <div>
+            <h3 className="mb-3 text-sm font-semibold text-foreground">S사 아이디어</h3>
+            <div className="space-y-3">
+              {companySJudgements.map((j) => (
+                <JudgementGroupCard key={j.group_id} judgement={j} />
+              ))}
+              {otherJudgements
+                .filter((j) => j.claimed_holder === "Unclear" || j.claimed_holder === "No Data")
+                .map((j) => (
                   <JudgementGroupCard key={j.group_id} judgement={j} />
                 ))}
-              </div>
+              {companySJudgements.length === 0 &&
+                otherJudgements.filter(
+                  (j) => j.claimed_holder === "Unclear" || j.claimed_holder === "No Data"
+                ).length === 0 && (
+                  <p className="text-xs text-muted-foreground">없음</p>
+                )}
             </div>
-          )}
+          </div>
 
-          {partnerJudgements.length > 0 && (
-            <div>
-              <h3 className="mb-3 text-sm font-semibold text-foreground">협력사 주장 그룹</h3>
-              <div className="space-y-3">
-                {partnerJudgements.map((j) => (
-                  <JudgementGroupCard key={j.group_id} judgement={j} />
-                ))}
-              </div>
+          {/* 협력사 아이디어 */}
+          <div>
+            <h3 className="mb-3 text-sm font-semibold text-foreground">협력사 아이디어</h3>
+            <div className="space-y-3">
+              {partnerJudgements.map((j) => (
+                <JudgementGroupCard key={j.group_id} judgement={j} />
+              ))}
+              {partnerJudgements.length === 0 && (
+                <p className="text-xs text-muted-foreground">없음</p>
+              )}
             </div>
-          )}
-
-          {otherJudgements.length > 0 && (
-            <div>
-              <h3 className="mb-3 text-sm font-semibold text-foreground">기타 그룹</h3>
-              <div className="space-y-3">
-                {otherJudgements.map((j) => (
-                  <JudgementGroupCard key={j.group_id} judgement={j} />
-                ))}
-              </div>
-            </div>
-          )}
+          </div>
         </div>
       )}
     </div>
