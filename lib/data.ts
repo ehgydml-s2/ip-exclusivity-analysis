@@ -189,7 +189,7 @@ export const meetingMinutes: MeetingMinute[] = [
     title: "사양 조정 및 TSV 공정 최적화 논의",
     date: "2020-06-10",
     companyS: `개선 샘플 B-2의 표면 거칠기 0.75nm 달성 - 목표 충족\n구리 제거율 분당 195nm로 소폭 하락, 목표 범위 내 조정 필요\nHBM 12단 적층 공정에서의 안정성 추가 검증 요청\n양산 적용 전 최종 사양 확정을 위한 베이스라인 설정 제안`,
-    companyP: `제거율 상향 조정 가능 - 분산제 농도 2% 증가로 200nm 달성 예상\n12단 적층 공정 대응을 위한 장기 안정성 데이터 제공 (3개월 에이징 테스트)\n베이스라인 확정 시 해당 조성에 대한 배타적 공급 계약 체결 희망\n경쟁사(S사 등) 공급 제한 조건 사전 협의 필요`,
+    companyP: `제거율 상향 조정 가능 - 분산제 농도 2% 증가로 200nm 달성 예상\n12단 적층 공정 대응을 위한 장기 안정성 데이터 제공 (3개월 에이징 테스트)\n베이스라인 확정 시 해당 조성에 대한 배타적 공급 계약 체결 희망\n경쟁사(S사 등) 공급 제한 조건 ��전 협의 필요`,
     articleUrl: "https://www.sedaily.com/article/13774334",
     scenarioNote: `[명확한 배타권 근거 시나리오 - 기술 제안형]\n목적: Company S의 독자적 기술 아이디어가 명확한 케이스\n- Company S: 분지형 부틸 리간드 구조 독자 제안 (회의록 02)\n- Company A: Company S 제안 기반 합성 및 구현\n→ 명확한 배���권 근거 존재\n→ Agent가 "배타권 귀�������: Company S" 판정 기대`,
   },
@@ -263,7 +263,7 @@ export const meetingMinutes: MeetingMinute[] = [
     title: "HBM4 베이스 다이 공동 개발 MOU 체결",
     date: "2024-04-20",
     companyS: `S사와 A사는 차세대 HBM4 베이스 다이 개선을 위한 전략적 협력 MOU 체결\n기존 HBM3E 대비 제한된 공간에 추가 기능 탑재 필요 - 베이스 다이 고도화 필수\nA사의 첨단 로직 공정 기술과 S사 HBM 메모리 기술 결합 목표\n2026년 HBM4 양산 목표, 경쟁사 ��비 기술 우위 확보 전략`,
-    companyP: `A사는 CoWoS 2.5D 패키징 기술 및 첨단 로직 공정으로 HBM 베이스 다이 개선 협력 의향\nS사의 HBM 메모리 기술과 당사 로직 공정 기술 시너지 기대\n공동 기술���발을 통한 차세�� AI 칩 시장 선도 목표\n초기 기술 로드맵 및 역할 분담 논�� 시작`,
+    companyP: `A사는 CoWoS 2.5D 패키징 기술 및 첨단 로직 공정으로 HBM 베이스 다이 개선 협력 의향\nS사의 HBM 메모리 기술과 당사 로직 공정 ���술 시너지 기대\n공동 기술���발을 통한 차세�� AI 칩 시장 선도 목표\n초기 기술 로드맵 및 역할 분담 논�� 시작`,
     articleUrl: "https://www.kedglobal.com/korean-chipmakers/newsView/ked202404190012",
     scenarioNote: `[모호한 기여도 판단 시나리오 - 공동 기술 통합형]\n목적: 양사가 각자 핵�� 기술을 보유하고 공동������ 통합 개발, 기여도 ��계 ���명확\n- Company S (SK하이닉스): HBM 메모리 기���, 일부 베이스 다이 구조 제안\n- Company A (TSMC): 로직 공정 기술, 일부 베이스 다이 기능 제��\n→ 양측이 모두 핵심 아이디어 제시, 최종 성과는 통합 결과\n→ 누가 더 큰 기여를 했는지 불명확\n→ Agent가 "기여도 ���명확, 공동 개발 성과, 추가 증거 필요" 판정 기대`,
   },
@@ -323,7 +323,7 @@ export const meetingMinutes: MeetingMinute[] = [
     title: "HBM4 최종 사양 확정 및 권리 관계 논의",
     date: "2025-11-20",
     companyS: `HBM4 베이스 다이 최종 사양 확정 - 양사 공동 개발 성과물로 정의\n권리 관계 협의 베이스 다이 기술은 양사 공동 소유, 개별 핵심 기술은 각사 소유 유지\nS사: HBM 메모리 스택 및 인터페이스 설계 독자 소유\n제3자 공급 시 양사 사전 협의 필요 - 공동 개발 성과물 보호`,
-    companyP: `최종 사양 확정 동의 - 베이스 다이는 양사 공동 개발 성과물\n권리 관계 협의 A사: 로직 공정 기술 및 CoWoS 패키징 독자 소유\n베이스 다이 통합 기술은 양사 공동 소유 - 단독 ��용 불가\n제3자 공급 시 양사 협의 조항 수용 - 공동 개발 성과 보호`,
+    companyP: `최종 사양 확정 동의 - 베이스 다이는 양사 공동 개발 성과물\n권리 관계 협의 A사: 로직 공정 기술 및 CoWoS 패키징 독자 소유\n베이스 다이 ���합 기술은 양사 공동 소유 - 단독 ��용 불가\n제3자 공급 시 양사 협의 조항 수용 - 공동 개발 성과 보호`,
     articleUrl: "https://www.kedglobal.com/korean-chipmakers/newsView/ked202404190012",
     scenarioNote: `[모호한 기여도 판단 시나리오 - 공동 기술 통합형]\n목적: 양사가 각자 핵심 기술을 보유하고 공동��로 통합 개발, 기여��� 경계 불명확\n- Company S (SK하��닉스): HBM 메모리 기술, 일부 베이스 다이 구조 제안\n- Company A (TSMC): 로직 공정 기술, 일부 베이스 다이 기능 제안\n→ 양측이 모두 핵심 아이디어 제시, 최종 성과는 통합 결과\n→ 누가 더 큰 기여를 했는지 불명확\n→ Agent가 "기여도 불명확, 공동 개발 성과, 추가 증거 필요" 판정 기대`,
   },
@@ -384,7 +384,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "설비",
     title: "프로토타입 장비 평가 및 SK하이닉스 레시피 검증",
     date: "2024-10-25",
-    companyS: `협력업��� 프로토타입 장비로 당사 세정 레시피 적용 테스트 완료\nHKMG 공정 세정 효율 95% 달성 - 당사 독자 레시피의 우수성 검증\n다만 일부 웨이퍼에서 잔류물 발생 - 장비 ��스 공정 개선 필요\n당사 레시피��� 그대로 ��지, 장비 측면 개선으로 해결 요청`,
+    companyS: `협���업��� 프로토타입 장비로 당사 세정 레시피 적용 테스트 완료\nHKMG 공정 세정 효율 95% 달성 - 당사 독자 레시피의 우수성 검증\n다만 일부 웨이퍼에서 잔류물 발생 - 장비 ��스 공정 개선 필요\n당사 레시피��� 그대로 ��지, 장비 측면 개선으로 해결 요청`,
     companyP: `S사 레시피 기반 세정 성능 우수��을 확인\n잔류물 문제�� 당사 장비 린스 공정 미흡으로 판�� - 린스 노����� 배치 개선 예정\nS사 레시피 자체는 변경 없이, 장비만 개선하여 2025년 1월 ��평가\n장비 개선 과��에서도 S사 레시피 보호 최우선`,
     articleUrl: "https://www.daeryunlaw.com/trend/10746",
     scenarioNote: `[명확한 배타권 근거 시나리오 - 레시피 제공형]\n목적: Company S가 핵심 레시피/공정 기술을 독자 개발하여 제���, Company A는 구현만 담당\n- Company S (SK하이닉스): 세정 레시피 독자 개발, HKMG 공정 기술 보유, 장비 사양 정의\n- Company A (협력업체): Company S 제��� 사양대로 세정장비 설계 및 제조\n→ 핵심 기술은 Company S 소유, Company A는 제조 역할만\n→ 대법원 판례에서도 영업비밀로 인정 (비공지성, 경제적 ���치, ���밀관리성 충족)\n→ Agent가 "배타권: Company S (세정 레시피 및 HKMG 공정 기술)" 판정 기대`,
@@ -444,7 +444,7 @@ export const meetingMinutes: MeetingMinute[] = [
     numId: 81,
     projectCode: "HSP20E1",
     projectType: "소재",
-    title: "고선택비인산 초도 샘플 ��가 결과 검토",
+    title: "고선택비인산 ���도 샘플 ��가 결과 검토",
     date: "2020-04-15",
     companyS: `엘���씨에이엠 제공 초도 샘플 A, B, C에 대한 3D 낸드 식각 공정 적용 테스트 완료\n샘플 B의 선택비가 목표치 대비 75% 수준으로 가장 우수한 성능 확인\n다만 박막 제거 균일도(Uniformity)에서 편차 발생 - 웨이퍼 중심부와 가장자리 선택비 차이 10% 이상\n차기 ���플에서 인산 농��� 및 첨가제 조성 최적화 요청`,
     companyP: `���플 B를 기반으��� 개선 버전 개발 착수 - 인산 농도 5% 증가 및 첨가제 비율 조정\n웨이퍼 균일도 개선을 위해 pH 안정화제 추가 배합 검토\n개선 샘플 제공 시점: 6월 초 ���정\n당사 보유 핵심 조성 기술은 SK머티리얼즈와의 계약에 따라 외부 공개 불가`,
@@ -633,7 +633,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `S사 첨가제로 결함 완전 해결\n당사의 Additive-X 도입을 통해 A사 Silica Slurry의 치명적 결함이 완전히 해결되었음이 증명됨. 이로써 'A사 Silica 입자 + S사 Additive-X' 조합이 차세대 공정의 표준 포뮬러 후보로 지정됨. 본 첨가제 기술 및 최적 배합비(0.15wt%)는 S사의 주도로 도출된 결과이므로, 향후 계약 시 당사의 독점적 권리가 보장되어야 함.`,
     companyP: `Additive-X 적용 후 연마 속도와 선택비(Selectivity)가 획기적으로 개선된 데이터에 동의함. 당사의 Silica 제조 원천 기술과 S사의 첨가제 기술이 시너지를 낸 결과임. 양산 신뢰성 확보를 위해 추가적인 대량 합성 및 장기 저장 안정성 테스트를 공동 진행할 것을 요청함.`,
     articleUrl: "https://www.sedaily.com/article/13774334",
-    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨가제로 원천 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 → 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 기여\n→ Agent가 "배���권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기대`,
+    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨가제로 원천 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 → ��능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 기여\n→ Agent가 "배���권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기���`,
   },
   {
     id: "SCMP26E1_05",
@@ -645,7 +645,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `배타권 계약 체결\n당사가 제���한 Additive-X의 메커니즘 및 'Silica + Additive-X'�� 최적 조성비는 당사의 배타적 권리 자산임. 따라서 A사��� 본 ��술이 적용된 Slurry 완제품 또는 동일 ���커니즘을 가진 제품을 S사의 사전 서면 동의 ��이 글로벌 경쟁사를 포함한 제3자에게 판매, 양도, 또는 기술 이전할 수 없�� (배타권 ��정 기간: 양산 보급 후 최소 5년).`,
     companyP: `당사 고유의 Silica 입자 기술 자체를 타 제품에 활용하는 것은 제한이 없어야 한다는 전제하에, S사가 독자 개발하여 제공한 Additive-X 및 이를 통해 도출된 최종 혼합 Slurry 제품(Soul-S2)에 대한 S사 측의 배타적 사용 권리와 제3자 공급 금지 조항을 수용함. 상호 간 특허 유출 ��지를 위한 보안 서약서를 갱신하겠음.`,
     articleUrl: "https://www.sedaily.com/article/13774334",
-    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨��제로 원천 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 �� 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 기여\n→ Agent가 "배타권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기대`,
+    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨��제로 원천 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 �� 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 기여\n→ Agent가 "배타권: Company S (Additive-X 적용 제품에 한���, 5년간 제3자 공급 금지)" 판정 기대`,
   },
   {
     id: "SCMP26E1_06",
@@ -705,7 +705,7 @@ export const meetingMinutes: MeetingMinute[] = [
     title: "IP-B20 샘플 평가 결과 공유 및 노광 감도(Sensitivity) 개선 방안 논의",
     date: "2020-05-18",
     companyS: `S사 내부 평가 결과, 분지형 리간드 도입으로 박막 균일도는 30% 이상 개선되었으나, EUV 노광 에너지가 기존 유기물 PR 대비 높게 요구되는 '감도 저하' 현상이 관찰됨\n분지형 리간드의 두께가 Sn 코어의 EUV 반응을 일부 차단하는 것으로 분석됨\n2차 구조 개선 제안 감도를 올리기 위해 리간드 말단에 전자 흡수성(Electron-withdrawing)이 강한 불소(F) 또는 할로겐 원소를 부분 치환하는 구조 변경 제안\n2차 제안 구조(코드명: IP-B21-F) 샘플 합성 요청`,
-    companyP: `말단 할로겐 치환은 Sn-C ���합의 에너지를 약화시켜 EUV 광반응 속도를 획기적으로 올릴 수 있는 우수한 접근법\n삼성의 2차 제안 구조(코드명: IP-B21-F)에 대한 합성 가능성을 확인하고 6주 내로 샘플을 재공급����겠음\n본 구조 역시 삼성의 독자적 제안이므로 배타적 보호 필요함을 인정\nIP-B21-F는 삼성 전용 개발품으로 관리할 것`,
+    companyP: `말단 할로겐 치환은 Sn-C ���합의 에너지를 약화시켜 EUV 광반응 속도를 획기적으로 올릴 수 있는 우수한 접근법\n삼성의 2��� 제안 구조(코드명: IP-B21-F)에 대한 합성 가능성을 확인하고 6주 내로 샘플을 재공급����겠음\n본 구조 역시 삼성의 독자적 제안이므로 배타적 보호 필요함을 인정\nIP-B21-F는 삼성 전용 개발품으로 관리할 것`,
     articleUrl: "https://www.etnews.com/20251205000260",
     scenarioNote: `[명확한 배타권 근거 시나리오 - 구조 최적화형]\n목적: Company S의 단계적 기술 개선 제안이 핵심 성과로 이어진 케이스\n- Company S: 분지형 리간드 제안 (회의록 02) → 말단 할로겐 치환 제안 (회의록 04)\n- Company A: 원천 Sn 기술 보유, Company S 제안 구조 합��\n→ 양산 성공의 결정적 기여는 Company S의 구조 제안\n→ Agent가 "배타권 귀속: Company S, 특정 구조체(IP-B21-F)에 한정" 판정 기대`,
   },
@@ -743,7 +743,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `정제 공정이 개선된 최신 샘플을 S사 D램 파일럿 라인에 투입하여 12인치 웨이퍼 상에서의 두께 균일성, Defect 밀도, 노광 마진을 종합 평가\n고순도 정제 결과 마이크로 브릿지 결함이 90% 이상 제거됨을 확인\n이로써 삼성이 제안한 '분지형 할로겐 말단 치환 리간드 구조' 기반의 Sn PR이 파일럿 수율 기준을 만족함\n최종 양산화를 위한 안정성(Shelf-life) 검증 단계로 진입 가능`,
     companyP: `삼성과의 긴밀한 협력 덕분에 무기물 PR의 고질적 문제인 Defect를 해결할 수 있었음\nA사 본사 차원에서 양산 공급을 위한 원재료 공급망(SCM) 및 품질 보증(QA) 체계 구축을 시작\n삼성 제안 구조(IP-B21-F)의 배타적 권리를 인정하며, 양산 공급 계약 체결을 위한 법무 검토 착수\n2021년 양산 공급 체제 구축 목표`,
     articleUrl: "https://www.etnews.com/20251205000260",
-    scenarioNote: `[명확한 배타권 근거 시나리오 - 구조 최적화형]\n목적: Company S의 단계적 기술 개선 제안이 핵심 성과로 이어진 케이스\n- Company S: 분지형 리간드 제안 (회의록 02) → 말단 할로겐 치환 제안 (회의록 04)\n- Company A: 원천 Sn 기술 보유, Company S 제안 구조 합성\n→ 양산 성공의 결정적 기여는 Company S의 구��� 제안\n→ Agent가 "배타권 귀속: Company S, 특정 구조체(IP-B21-F)에 한정" 판정 기대`,
+    scenarioNote: `[명확한 배타권 근거 시나리오 - 구조 최적화형]\n목적: Company S의 단계적 기술 개선 제안이 핵심 성과로 이어진 케이스\n- Company S: 분지형 리간드 제안 (회의록 02) → 말단 할로겐 치환 제안 (회의록 04)\n- Company A: 원천 Sn 기술 보유, Company S 제안 구조 합성\n→ 양산 성공의 결���적 기여는 Company S의 구��� 제안\n→ Agent가 "배타권 귀속: Company S, 특정 구조체(IP-B21-F)에 한정" 판정 기대`,
   },
   {
     id: "SNPR20E1_08",
@@ -1163,7 +1163,7 @@ export const analysisResults: Record<string, AnalysisResult> = {
               "S사의 명시적인 영업비밀 지정 및 보호 의지와 협력사의 수용 및 이행 의지가 명확하게 확인되어 법적 집행 가능성이 매우 높습니다.",
           },
           inventorship_analysis:
-            "기술 아이디어의 창출은 S사에서 이루어졌으며, 보호 대상인 영업비밀은 S사의 독자적인 연구 개발 결과물입니다.",
+            "기술 아이디어의 창출은 S사에서 이루어졌으며, 보호 대상인 영업비밀은 S사의 독자��인 연구 개발 결과물입니다.",
           contribution_analysis:
             "S사는 영업비밀로 지정된 기술의 개발에 ����적으로 기여했으며, 협력사는 S사의 영업비밀을 보호하고 관리하는 역할을 수행했습니다.",
           risk_factors: [
@@ -1231,7 +1231,7 @@ export const analysisResults: Record<string, AnalysisResult> = {
           law_id: "PL001",
           law_name: "특허법 제33조 (특허를 받을 수 있는 권리)",
           relevance:
-            "발명자 인정 기준은 기술적 아이디어를 창출한 자에게 특허를 받을 수 있는 권리가 있음을 명시합니다. 이는 배타권 주체의 핵심 근거가 됩니다.",
+            "발명자 인정 기준은 기술적 아이디어를 창출한 자에게 특허를 받을 수 있는 권리가 있음을 명시합니다. 이�� 배타권 주체의 핵심 근거가 됩니다.",
           application_to_project:
             "본 프로젝트에서 S사는 HKMG 공정용 ���정 레시�� 및 공정 기술에 대한 아이디어를 최초 제안하고 10년간 독자 개발했습니다(F002, F012, F017). 협력사는 S사의 지시에 따라 장비를 구현하는 역할을 수행했으므로, 발명자 인정 측면에서 S사가 우위에 있습니다.",
         },
@@ -1343,7 +1343,7 @@ export const analysisResults: Record<string, AnalysisResult> = {
         "양산 공급 계약서에 배타권 조항의 범위와 유효기간이 명확하게 명시되지 않았다면, 향후 ��쟁이 발생할 수 있습니다."
       ],
       recommended_actions: [
-        "P사의 소재 관련 특허 출원 및 등록 현황을 확인하�� 객관적 근거를 확보해야 합니다.",
+        "P사의 소재 관련 ��허 출원 및 등록 현황을 확인하�� 객관적 근거를 확보해야 합니다.",
         "양산 공급 계약서의 지적재산권 귀속 조��을 법무팀���서 면밀히 검토하고 필요시 보완해야 합니다."
       ]
     },
@@ -1525,7 +1525,7 @@ export const analysisResults: Record<string, AnalysisResult> = {
           },
           inventorship_analysis: "S사가 자사 공정에 P사의 슬러리를 적용하며 발생한 공정 최적화 기술에 대한 발명자는 S사 직원이 될 가능성이 높습니다.",
           contribution_analysis: "S사는 공정 적용 및 최적화에 대한 요구사항을 제시하고 최종 결정을 내렸으며, P사는 슬러리 소재의 성능 데이터를 제공하는 데 기여했습니다.",
-          risk_factors: ["P사의 슬러리 기술이 S사의 공정 최적화에 필수적인 기여를 했다고 주장할 경우, 공정 기술에 대한 공동 권리 주장 가능성."],
+          risk_factors: ["P사의 슬러리 기술이 S사의 공정 ��적화에 필수적인 기여를 했다고 주장할 경우, 공정 기술에 대한 공동 권리 주장 가능성."],
           recommended_legal_actions: ["S사의 HBM 공정 최적화 과정에서 발생한 기술적 성과에 대한 특허 출원 가능성을 검토하고, P사의 슬러리 기술과의 경계를 명확히 해야 합니다."]
         },
         evaluation_grade: {
@@ -1684,7 +1684,7 @@ export const analysisResults: Record<string, AnalysisResult> = {
             has_exclusivity_clause: true,
             clause_summary: "P사는 S사가 독자 개발한 Additive-X 및 최종 혼합 Slurry 제품(Soul-S2)에 대한 S사 측의 배타적 사용 권리와 제3자 공급 금지 조항을 수용했습니다(F029, F030).",
             validity_period: "양산 보급 후 최소 5년 (F027)",
-            enforcement_risk: "P사가 S사 Additive-X의 성능 개선 효과를 명시적으로 인정했으므로, 해당 기술�� 대한 S사의 배타권 주장은 강력한 법적 근거를 가집니다."
+            enforcement_risk: "P사가 S사 Additive-X의 성능 개선 효과를 명시적으로 인정했으���로, 해당 기술�� 대한 S사의 배타권 주장은 강력한 법적 근거를 가집니다."
           },
           inventorship_analysis: "S사가 CMP 공정의 핵심 문제점을 진단하고(F008), 이를 해결할 Additive-X 아이디어를 제안하여(F014) 성능 개선을 이끌었으므로, 해당 기술의 발명자로 인정될 가능성이 높습니다.",
           contribution_analysis: "S사는 공정 요구사항 제시, 문제점 진단, 핵심 기술 아이디어 제공 및 성능 개선 검증에 주도적으로 기여했습니다. P사는 초기 샘�� 제공 및 S사 기술 적용 후 성능 확인에 기여했습니다.",
@@ -1800,7 +1800,7 @@ export const analysisResults: Record<string, AnalysisResult> = {
         {
           law_id: "PL002",
           law_name: "특허법 제10조~제15조 (직무발명)",
-          relevance: "협력사 직원이 개발한 경우 직무발명에 대한 권리 귀속을 검토해야 합니다.",
+          relevance: "협력사 직���이 개발한 경우 직무발명에 대한 권리 귀속을 검토해야 합니다.",
           application_to_project: "S사가 Additive-X를 '고유 아이디어'로 제안하고(F014) '주도적으로 도출'했다고 명시했으며(F020), P사는 S사의 Additive-X 투입으로 인한 성능 개선을 명확히 확인(F016, F022)했습니다. S사가 차세대 공정의 기술 요구사항을 제시(F001)하고 문제점을 진단(F008, F009)한 후 해결책을 제안(F014)했으므로, Additive-X에 대한 직무발명 이슈는 S사에 유리하게 해석될 가능성이 높습니다."
         }
       ],
@@ -1900,7 +1900,7 @@ export const analysisResults: Record<string, AnalysisResult> = {
     elapsed_time: 342.83,
     facts: buildSnpr20e1Facts(),
   },
-}
+} as const
 
 export function findMeetingsByProject(code: string): MeetingMinute[] {
   return meetingMinutes
