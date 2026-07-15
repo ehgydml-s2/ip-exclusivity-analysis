@@ -130,35 +130,47 @@ export function GroupJudgementsView({ judgements }: { judgements: Judgement[] })
       </button>
 
       {isExpanded && (
-        <div className="grid gap-6 lg:grid-cols-2">
-          {/* S사 아이디어 */}
-          <div>
-            <h3 className="mb-3 text-sm font-semibold text-foreground">S사 아이디어</h3>
-            <div className="space-y-3">
-              {companySJudgements.map((j) => (
-                <JudgementGroupCard key={j.group_id} judgement={j} />
-              ))}
-              {unclearJudgements.map((j) => (
-                <JudgementGroupCard key={j.group_id} judgement={j} />
-              ))}
-              {companySJudgements.length === 0 && unclearJudgements.length === 0 && (
-                <p className="text-xs text-muted-foreground">없음</p>
-              )}
+        <div className="space-y-6">
+          {/* Two-column layout for Company S and Partner */}
+          <div className="grid gap-6 lg:grid-cols-2">
+            {/* S사 아이디어 */}
+            <div>
+              <h3 className="mb-3 text-sm font-semibold text-foreground">S사 아이디어</h3>
+              <div className="space-y-3">
+                {companySJudgements.map((j) => (
+                  <JudgementGroupCard key={j.group_id} judgement={j} />
+                ))}
+                {companySJudgements.length === 0 && (
+                  <p className="text-xs text-muted-foreground">없음</p>
+                )}
+              </div>
+            </div>
+
+            {/* 협력사 아이디어 */}
+            <div>
+              <h3 className="mb-3 text-sm font-semibold text-foreground">협력사 아이디어</h3>
+              <div className="space-y-3">
+                {partnerJudgements.map((j) => (
+                  <JudgementGroupCard key={j.group_id} judgement={j} />
+                ))}
+                {partnerJudgements.length === 0 && (
+                  <p className="text-xs text-muted-foreground">없음</p>
+                )}
+              </div>
             </div>
           </div>
 
-          {/* 협력사 아이디어 */}
-          <div>
-            <h3 className="mb-3 text-sm font-semibold text-foreground">협력사 아이디어</h3>
-            <div className="space-y-3">
-              {partnerJudgements.map((j) => (
-                <JudgementGroupCard key={j.group_id} judgement={j} />
-              ))}
-              {partnerJudgements.length === 0 && (
-                <p className="text-xs text-muted-foreground">없음</p>
-              )}
+          {/* One-column layout for Unclear/No Data */}
+          {unclearJudgements.length > 0 && (
+            <div className="space-y-3 border-t border-border/30 pt-4">
+              <h3 className="text-sm font-semibold text-foreground">분류 미정</h3>
+              <div className="space-y-3">
+                {unclearJudgements.map((j) => (
+                  <JudgementGroupCard key={j.group_id} judgement={j} />
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
     </div>

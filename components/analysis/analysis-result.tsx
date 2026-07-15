@@ -17,6 +17,7 @@ import type { AnalysisResult } from "@/lib/data"
 import { ConfidenceBadge } from "./badges"
 import { JudgementCard } from "./judgement-card"
 import { KeyContributionsView } from "./key-contributions"
+import { GroupJudgementsView } from "./group-judgements"
 import { buildReportText } from "./report"
 import { FactMapProvider, FactText } from "./fact-ref"
 
@@ -187,6 +188,9 @@ export function AnalysisResultView({
           {result.key_contributions && (
             <KeyContributionsView contributions={result.key_contributions} />
           )}
+
+          {/* 4. Group Judgements */}
+          <GroupJudgementsView judgements={result.judgements} />
 
         </div>
       </section>
