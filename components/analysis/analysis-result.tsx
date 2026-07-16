@@ -188,6 +188,34 @@ export function AnalysisResultView({
             )}
           </div>
 
+          {/* 4. Judgements */}
+          {result.judgements && result.judgements.length > 0 && (
+            <div className="rounded-2xl border border-border bg-secondary/30 p-5">
+              <button
+                type="button"
+                onClick={() => setJudgementsExpanded(!judgementsExpanded)}
+                className="mb-4 flex w-full items-center justify-between gap-2 hover:opacity-70"
+              >
+                <div className="flex items-center gap-2">
+                  <ClipboardList className="size-4 text-primary" aria-hidden="true" />
+                  <h2 className="text-base font-semibold text-foreground">배타성 그룹 판단</h2>
+                </div>
+                <ChevronDown
+                  className={`size-4 text-muted-foreground transition-transform duration-200 ${judgementsExpanded ? "rotate-180" : ""
+                    }`}
+                  aria-hidden="true"
+                />
+              </button>
+
+              {judgementsExpanded && (
+                <div className="space-y-3">
+                  {result.judgements.map((j) => (
+                    <JudgementCard key={j.group_id} judgement={j} />
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
 
         </div>
       </section>
