@@ -188,5 +188,4 @@ export function AnalysisResultView({
         </div>
       </section>
     )
-  }
 }
