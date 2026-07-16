@@ -61,7 +61,7 @@ function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
       {/* Header */}
       <div className="flex items-start justify-between gap-3 p-4">
         <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex items-center gap-2 mb-2 flex-wrap">
             <span className="shrink-0 rounded-md bg-primary/10 px-2 py-1 font-mono text-xs font-bold text-primary">
               {judgement.group_id}
             </span>
@@ -80,6 +80,14 @@ function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
             >
               {judgement.claimed_holder}
             </span>
+            <span className="shrink-0 rounded-md bg-secondary/50 px-2 py-1 font-mono text-xs font-bold text-muted-foreground">
+              팩트 {factCount}
+            </span>
+            {grade && grade.final_grade && (
+              <span className="shrink-0 rounded-md bg-secondary/50 px-2 py-1 font-mono text-xs font-bold text-muted-foreground">
+                {grade.final_grade}
+              </span>
+            )}
           </div>
           <h5 className="text-sm font-semibold leading-snug text-foreground">
             {judgement.topic}
@@ -92,22 +100,7 @@ function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
           )}
         </div>
       </div>
-      
-      {/* Footer with stats */}
-      <div className="border-t border-border bg-secondary/30 px-4 py-2.5 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-4 text-xs text-muted-foreground">
-          <span className="flex items-center gap-1">
-            <span className="font-semibold text-foreground">{factCount}</span>
-            <span>팩트</span>
-          </span>
-          {grade && grade.final_grade && (
-            <span className="flex items-center gap-1">
-              <span className="font-semibold text-foreground">{grade.final_grade}</span>
-              <span>등급</span>
-            </span>
-          )}
-        </div>
-      </div>
+
     </div>
   )
 }
