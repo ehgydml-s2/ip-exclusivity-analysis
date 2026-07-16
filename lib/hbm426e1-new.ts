@@ -1,7 +1,7 @@
 export const HBM426E1_NEW = {
   project_code: "HBM426E1",
   project_type: "설비",
-  elapsed_time: 287.45,
+  elapsed_time: 406.38,
   overall_conclusion: {
     summary: "HBM4 베이스 다이 개발 프로젝트는 S사와 A사의 전략적 협력을 통해 성공적으로 양산에 돌입했으며, 경쟁사 대비 뛰어난 성능을 달성했습니다. 핵심 베이스 다이 기술은 양사의 공동 개발 성과물로 정의되었고, 제3자 공급 시 양사 사전 협의가 필수적인 공동 소유 형태로 합의되었습니다. 다만, 각 사의 개별 핵심 기술은 독자 소유로 인정되어 향후 권리 범위에 대한 명확한 정의가 필요합니다.",
     overall_exclusivity_assessment: "Mixed",
