@@ -113,7 +113,12 @@ export function AnalysisResultView({
             </SummaryStat>
           </div>
 
-          {/* 2. Overall Conclusion Card */}
+          {/* 2. Key Contributions */}
+          {result.key_contributions && (
+            <KeyContributionsView contributions={result.key_contributions} />
+          )}
+
+          {/* 3. Overall Conclusion Card */}
           <div className="rounded-2xl border border-border bg-secondary/30 p-5">
             <button
               type="button"
@@ -182,11 +187,6 @@ export function AnalysisResultView({
               </div>
             )}
           </div>
-
-          {/* 3. Key Contributions */}
-          {result.key_contributions && (
-            <KeyContributionsView contributions={result.key_contributions} />
-          )}
 
 
         </div>
