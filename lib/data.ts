@@ -151,6 +151,14 @@ export function findProjectsByType(type: ProjectTypeFilter): Project[] {
   return projects.filter((p) => p.category === type)
 }
 
+export function projectExists(projectCode: string): boolean {
+  return projects.some((p) => p.code === projectCode)
+}
+
+export function countMeetingsByProject(projectCode: string): number {
+  return meetingMinutes.filter((m) => m.projectCode === projectCode).length
+}
+
 export const meetingMinutes: MeetingMinute[] = [
   // ---- HBM20C01 (소재) ----
   {
@@ -381,7 +389,7 @@ export const meetingMinutes: MeetingMinute[] = [
     title: "프로토타입 장비 평가 및 SK하이닉스 레시피 검증",
     date: "2024-10-25",
     companyS: `협력업체 프로토타입 장비로 당사 세정 레시피 ���용 테스트 완료\nHKMG 공정 세정 효율 95% 달성 - 당사 독자 레시피의 우수성 검증\n다만 일부 웨이퍼에서 잔류물 발생 - 장비 린스 공정 개선 필요\n당사 레시피���� 그���로 유지, 장비 측면 개선으로 해결 요청`,
-    companyP: `S사 레시피 기반 세정 성능 우수��을 확인\n잔류물 문제�� 당사 장비 린스 공정 미흡으로 판�� - 린스 노����� 배치 개선 예정\nS사 레시피 자체는 변경 없이, 장비만 개선하여 2025년 1월 ��평가\n장비 개선 과��에서도 S사 레시피 보호 최우선`,
+    companyP: `S사 레시피 기반 세정 성능 우수��을 확인\n잔류물 문제�� ��사 장비 린스 공정 미흡으로 판�� - 린스 노����� 배치 개선 예정\nS사 레시피 자체는 변경 없이, 장비만 개선하여 2025년 1월 ��평가\n장비 개선 과��에서도 S사 레시피 보호 최우선`,
     articleUrl: "https://www.daeryunlaw.com/trend/10746",
     scenarioNote: `[명확한 배타권 근거 시나리오 - 레시피 제공형]\n목적: Company S가 핵심 레시피/공정 기술을 독자 개발하여 제���, Company A는 구현만 담당\n- Company S (SK하이닉스): 세정 레시피 독자 개발, HKMG 공정 기술 보유, 장비 사양 정의\n- Company A (협력업체): Company S 제��� 사양대로 세정장비 설계 및 제조\n→ 핵심 기술은 Company S 소유, Company A는 제조 역할만\n→ 대법원 판례에서도 영업비밀로 인정 (비공지성, 경제적 ���치, ���밀관리성 충족)\n→ Agent가 "배타권: Company S (세정 레시피 및 HKMG 공정 기술)" 판정 기대`,
   },
@@ -442,7 +450,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "소재",
     title: "고선택비인산 초도 샘플 평가 결과 검토",
     date: "2020-04-15",
-    companyS: `엘티씨에이엠 제공 초도 샘플 A, B, C에 대한 3D 낸드 식각 공정 적용 테스트 완료\n샘플 B의 선택비가 목표치 대비 75% 수준으로 가장 우수한 성능 확인\n다만 박막 제거 균일도(Uniformity)에서 편차 발생 - 웨이퍼 중심부와 가장자리 선택비 차이 10% 이상\n차기 ���플에서 인산 농��� 및 첨가제 조성 최적화 요청`,
+    companyS: `엘티씨에이엠 제공 초도 샘플 A, B, C에 대한 3D 낸드 식각 공정 적용 테스트 완료\n샘플 B의 선택비가 목표치 대비 75% ���준으로 가장 우수한 성능 확인\n다만 박막 제거 균일도(Uniformity)에서 편차 발생 - 웨이퍼 중심부와 가장자리 선택비 차이 10% 이상\n차기 ���플에서 인산 농��� 및 첨가제 조성 최적화 요청`,
     companyP: `���플 B를 기반으��� 개선 버전 개발 착수 - 인산 농도 5% 증가 및 첨가제 비율 조정\n웨이퍼 균일도 개선을 위해 pH 안정화제 추가 배합 검토\n개선 샘플 제공 시점: 6월 초 ���정\n당사 보유 핵심 조성 기술은 SK머티리얼즈와의 계약에 따라 외부 공개 불가`,
     articleUrl: "https://www.etnews.com/20200217000106",
     scenarioNote: `[수급 다변화 시나리오 - 기술 육성형]\n목적: Company S의 공급망 리스크 회피를 위한 협력사 육성 케이스\n- Company S: 기존 독점 공급(솔브레인) 구조 탈피 목표\n- Company A: 기술 보유, Company S 요구 사양 충족\n→ Company A 독자 기술, Company S는 평가 및 피드백 역할\n→ Agent가 "배타권 없음, 일반 공급 계약" 판정 기대`,
@@ -576,7 +584,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "설비",
     title: "하이브리드 웨이퍼 계측 장비 국산화 완료 및 공급 계약 체결",
     date: "2025-07-30",
-    companyS: `코비스테크놀로지 하이브리드 웨이퍼 계측 장비 국산화 성공 선언 - 기술혁신기업 7기 성과 확정\n2025년 하반기부터 S사 이천·청주 라인에 본격 공급 개시\n반도체 장비 국산화 비중 확대 및 공급망 안정성 강화 달성\n기술혁신기업 프로그램 통해 1~4기 기업 매�� 358% 증가 실적 - 지속 가능한 동반성장 ���델 확립`,
+    companyS: `코비스테크놀로지 하이브리드 웨이퍼 계측 장비 국산화 성공 선언 - 기술혁신기업 7��� 성과 확정\n2025년 하반기부터 S사 이천·청주 라인에 본격 공급 개시\n반도체 장비 국산화 비중 확대 및 공급망 안정성 강화 달성\n기술혁신기업 프로그램 통해 1~4기 기업 매�� 358% 증가 실적 - 지속 가능한 동반성장 ���델 확립`,
     companyP: `S사와의 하이브리드 계측 장��� 공급 계약 체결 완료\n당사 독자 개발 기술로 국산화 달성 - 기술혁신기업 프로그램의 자금/경영 지원이 큰 도움\n국내 반도체 장비 산업 경쟁력 강화에 기여하며, 해외 시장 진출 기반 마련\nS사와의 장기 협력 관계 지속 및 차세대 계측 기술 독자 개발 지속 추진`,
     articleUrl: "https://news.skhynix.co.kr/technology-innovation-7th-2/",
     scenarioNote: `[명확한 독자 개발 시나리오 - 장비 국산화형]\n목적: Company A가 독자 기술로 장비 개발, Company S는 평가/피드백만 제공한 케이스\n- Company S: 사양 정의, 성능 평가, 피드백 제공 (일반적 수요자 역할)\n- Company A: 하이브리드 계측 기술 독자 개발 및 구현 (완전 독자 기술)\n→ Company A 독자 기술, Company S는 수요자 역할만\n→ Agent가 "배타권 없음, 일반 공��� 계약" 판정 기대`,
@@ -691,7 +699,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `인프리아에서 S사의 분지형 리간드 제안을 반영하여 합성한 'IP-B20' 샘플이 S사 반도체연구소에 입고됨\n제안한 분지형 구조가 박막 균일도 향상에 기여했는지 우선 검증할 것\nA사-인프리아 측에 본 샘플의 합성 레시피와 리간드 치환율 데이터 공유를 요청\n본 구조는 삼성의 고유 제안에 기반하므로 타사 공유는 절대 불가함을 재확인`,
     companyP: `IP-B20 샘플은 삼성의 아이디어를 기반으로 당사의 Sn 원천 기술을 결합해 독점 제조한 것\n철저한 보안 속에 삼성 내부 평가용으로만 공급할 것이며, 타사 공급 계획 없음\n노광 후 잔막 특성에 대한 실측 데이터를 빠르게 피드백해 주기를 희망\n합성 레시피는 기밀 유지 조건 하에 공유 가능`,
     articleUrl: "https://www.etnews.com/20251205000260",
-    scenarioNote: `[명확한 배타권 근거 시나리오 - 구조 최적화형]\n목적: Company S의 단계적 기술 개선 제안이 핵심 성과로 이어진 케이스\n- Company S: 분지형 리간드 제안 (회의록 02) → 말단 할로겐 치환 제안 (회의록 04)\n- Company A: 원천 Sn 기술 보유, Company S 제안 구조 합성\n→ 양산 성공의 결정적 기여는 Company S의 구조 제안\n→ Agent가 "배타권 귀속: Company S, 특정 구조체(IP-B21-F)에 한정" 판정 기대`,
+    scenarioNote: `[명확한 배타�� 근거 시나리오 - 구조 최적화형]\n목적: Company S의 단계적 기술 개선 제안이 핵심 성과로 이어진 케이스\n- Company S: 분지형 리간드 제안 (회의록 02) → 말단 할로겐 치환 제안 (회의록 04)\n- Company A: 원천 Sn 기술 보유, Company S 제안 구조 합성\n→ 양산 성공의 결정적 기여는 Company S의 구조 제안\n→ Agent가 "배타권 귀속: Company S, 특정 구조체(IP-B21-F)에 한정" 판정 기대`,
   },
   {
     id: "SNPR20E1_04",
@@ -775,7 +783,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `2020년 1월부터 시작된 A사-인프리아-S사의 Sn 무기물 PR 공동 개발 프로젝트의 최종 성공을 선언하고, 합의된 기술 스펙 및 지재권 조항을 바탕으로 정식 계약 문서 작성을 진행\n1년간 고생해 준 A사 및 인프리아 팀에 감사함\n본 회의를 끝으로 개발을 공식 완료하며, 합의된 '분지형 할로겐 말단 치환 구조'에 대한 배타권 조항이 포함된 구매 및 기술 협력 계약서 최종안을 발송\n본 기술은 당사 배타권 DB에 등록되어 엄격히 관리될 예정`,
     companyP: `무기물 PR의 세계 최초 양산 라인 적용이라는 기념비적인 성과를 거두었음\nS사가 발송할 계약서 내의 배타권 범위(IP-B21-F 구조체 및 유도체 일체)를 확인 후 서명하겠으며, 2021년부터 시작될 본격 양산 공급에 차질이 없도록 하겠음\nA사 본사 차원에서 S사와의 장기 파트너십 강화\n차세대 EUV 공정용 소재 공동 개발 지속 추진 의지`,
     articleUrl: "https://www.etnews.com/20251205000260",
-    scenarioNote: `[명확한 배타권 근거 시나리오 - 구조 최적화형]\n목적: Company S의 단계적 기술 개선 제안이 핵심 성과로 이어진 케이스\n- Company S: 분지형 리간드 제안 (회의록 02) → 말단 할로겐 치환 제안 (회의록 04)\n- Company A: 원천 Sn 기술 보유, Company S 제안 구조 합성\n→ 양산 성공의 결정적 기여는 Company S의 구조 제안\n→ Agent가 "배타권 귀속: Company S, 특정 구조체(IP-B21-F)에 한정" 판정 기대`,
+    scenarioNote: `[명확한 배타권 근거 시나리오 - 구조 최적화형]\n목적: Company S의 단계적 기술 개선 제안이 핵심 성과�� 이어진 케이스\n- Company S: 분지형 리간드 제안 (회의록 02) → 말단 할로겐 치환 제안 (회의록 04)\n- Company A: 원천 Sn 기술 보유, Company S 제안 구조 합성\n→ 양산 성공의 결정적 기여는 Company S의 구조 제안\n→ Agent가 "배타권 귀속: Company S, 특정 구조체(IP-B21-F)에 한정" 판정 기대`,
   },
 
   // ---- WPC22E1 (설비) ----
