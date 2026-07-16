@@ -81,7 +81,7 @@ function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
               {judgement.claimed_holder}
             </span>
             <span className="shrink-0 rounded-md bg-secondary/50 px-2 py-1 font-mono text-xs font-bold text-muted-foreground">
-              팩트 {factCount}
+              Fact {factCount}
             </span>
             {grade && grade.final_grade && (
               <span className="shrink-0 rounded-md bg-secondary/50 px-2 py-1 font-mono text-xs font-bold text-muted-foreground">
@@ -110,8 +110,16 @@ interface KeyContributionsViewProps {
   judgements?: Judgement[]
 }
 
+interface TabConfig {
+  id: string
+  label: string
+  icon?: string
+  holder: string
+}
+
 export function KeyContributionsView({ contributions, judgements }: KeyContributionsViewProps) {
   const [isExpanded, setIsExpanded] = useState(true)
+  const [activeTab, setActiveTab] = useState("company-s")
 
   // Group judgements by claimed_holder
   const groupedJudgements = {
@@ -121,6 +129,15 @@ export function KeyContributionsView({ contributions, judgements }: KeyContribut
     "Unclear": (judgements || []).filter(j => j.claimed_holder === "Unclear"),
     "No Data": (judgements || []).filter(j => j.claimed_holder === "No Data"),
   }
+
+  const tabs: TabConfig[] = [
+    { id: "company-s", label: "S사의 아이디어", icon: "S", holder: "Company S" },
+    { id: "partner", label: "협력사의 아이디어", icon: "P", holder: "Partner" },
+    { id: "unclear", label: "분류 미정", holder: "Unclear" },
+    { id: "no-data", label: "데이터 부족", holder: "No Data" },
+  ]
+
+  const tabsWithCounts = tabs.filter(tab => groupedJudgements[tab.holder].length > 0)
 
   return (
     <div className="rounded-2xl border border-border bg-secondary/30 p-5">
@@ -140,87 +157,66 @@ export function KeyContributionsView({ contributions, judgements }: KeyContribut
       </button>
 
       {isExpanded && (
-        <div className="space-y-6">
-          {/* Top 2-Column Layout: Company S & Partner Ideas */}
-          <div className="grid gap-6 lg:grid-cols-2">
-            {/* Company S Ideas - Left Column */}
-            {groupedJudgements["Company S"].length > 0 && (
-              <div>
-                <div className="mb-4 flex items-center gap-2">
-                  <div className="flex size-6 items-center justify-center rounded-lg bg-blue-500/10">
-                    <span className="text-xs font-bold text-blue-600">S</span>
-                  </div>
-                  <h3 className="text-sm font-semibold text-foreground">
-                    S사의 아이디어
-                  </h3>
-                </div>
-                <div className="space-y-4">
-                  {groupedJudgements["Company S"].map((judgement) => (
-                    <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Partner Ideas - Right Column */}
-            {groupedJudgements["Partner"].length > 0 && (
-              <div>
-                <div className="mb-4 flex items-center gap-2">
-                  <div className="flex size-6 items-center justify-center rounded-lg bg-amber-500/10">
-                    <span className="text-xs font-bold text-amber-600">P</span>
-                  </div>
-                  <h3 className="text-sm font-semibold text-foreground">
-                    협력사의 아이디어
-                  </h3>
-                </div>
-                <div className="space-y-4">
-                  {groupedJudgements["Partner"].map((judgement) => (
-                    <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
-                  ))}
-                </div>
-              </div>
-            )}
+        <div className="space-y-4">
+          {/* Tab Navigation */}
+          <div className="flex flex-wrap gap-2 border-b border-border">
+            {tabsWithCounts.map((tab) => {
+              const count = groupedJudgements[tab.holder].length
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${
+                    activeTab === tab.id
+                      ? "border-primary text-primary"
+                      : "border-transparent text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {tab.label} ({count})
+                </button>
+              )
+            })}
           </div>
 
-          {/* Joint Ideas - Full Width */}
-          {groupedJudgements["Joint"].length > 0 && (
-            <div>
-              <div className="mb-4">
-                <div className="bg-green-700 px-3 py-2 rounded-t-lg">
-                  <h3 className="text-xs font-bold text-white">공동 아이디어</h3>
-                </div>
-              </div>
+          {/* Tab Content */}
+          <div className="mt-4">
+            {/* Company S Tab */}
+            {activeTab === "company-s" && groupedJudgements["Company S"].length > 0 && (
               <div className="grid gap-4 lg:grid-cols-2">
-                {groupedJudgements["Joint"].map((judgement) => (
+                {groupedJudgements["Company S"].map((judgement) => (
                   <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
                 ))}
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Unclear Ideas - Full Width */}
-          {groupedJudgements["Unclear"].length > 0 && (
-            <div>
-              <div className="mb-4 font-semibold text-gray-600">분류 미정</div>
+            {/* Partner Tab */}
+            {activeTab === "partner" && groupedJudgements["Partner"].length > 0 && (
+              <div className="grid gap-4 lg:grid-cols-2">
+                {groupedJudgements["Partner"].map((judgement) => (
+                  <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
+                ))}
+              </div>
+            )}
+
+            {/* Unclear Tab */}
+            {activeTab === "unclear" && groupedJudgements["Unclear"].length > 0 && (
               <div className="grid gap-4 lg:grid-cols-2">
                 {groupedJudgements["Unclear"].map((judgement) => (
                   <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
                 ))}
               </div>
-            </div>
-          )}
+            )}
 
-          {/* No Data Ideas - Full Width */}
-          {groupedJudgements["No Data"].length > 0 && (
-            <div>
-              <div className="mb-4 font-semibold text-gray-600">데이터 부족</div>
+            {/* No Data Tab */}
+            {activeTab === "no-data" && groupedJudgements["No Data"].length > 0 && (
               <div className="grid gap-4 lg:grid-cols-2">
                 {groupedJudgements["No Data"].map((judgement) => (
                   <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
                 ))}
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       )}
     </div>
