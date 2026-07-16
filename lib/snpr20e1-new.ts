@@ -1,7 +1,7 @@
 export const SNPR20E1_NEW = {
   project_code: "SNPR20E1",
   project_type: "소재",
-  elapsed_time: 342.8,
+  elapsed_time: 658.68,
   overall_conclusion: {
     summary: "본 프로젝트는 차세대 EUV D램용 Sn 무기물 PR 개발을 성공적으로 완료했습니다. S사는 핵심 리간드 구조 및 Defect 제어 아이디어를 주도적으로 제안하고 성능을 검증하여 기술 완성에 결정적으로 기여했습니다. 협력사는 P사의 Sn 원천 기술을 기반으로 S사 제안 구조의 합성, 고순도 정제 라인 구축, 전용 현상액 개발 및 양산 체제 구축을 담당했습니다. 최종적으로 S사가 제안하고 공동 최적화한 '분지형 할로겐 말단 치환 구조체(IP-B21-F 계열)'에 대해 5년간 경쟁사 공급 금지 조항을 포함한 배타적 권리 계약이 체결될 예정입니다.",
     overall_exclusivity_assessment: "Mixed",
