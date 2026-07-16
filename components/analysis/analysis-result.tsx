@@ -15,7 +15,6 @@ import {
 import type { AnalysisResult } from "@/lib/data"
 import { KeyContributionsView } from "./key-contributions"
 import { buildReportText } from "./report"
-import { FactMapProvider } from "./fact-ref"
 
 function SummaryStat({
   icon: Icon,
@@ -71,11 +70,10 @@ export function AnalysisResultView({
   }
 
   return (
-    <FactMapProvider facts={result.facts}>
-      <section
-        aria-label="AI 배타성 분석 결과"
-        className="overflow-hidden rounded-2xl border border-primary/20 bg-card shadow-lg ring-1 ring-primary/5"
-      >
+    <section
+      aria-label="AI 배타성 분석 결과"
+      className="overflow-hidden rounded-2xl border border-primary/20 bg-card shadow-lg ring-1 ring-primary/5"
+    >
         {/* Header */}
         <div className="flex items-center gap-3 border-b border-primary/15 bg-primary/5 px-6 py-4">
           <div className="flex size-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
@@ -189,6 +187,6 @@ export function AnalysisResultView({
 
         </div>
       </section>
-    </FactMapProvider>
-  )
+    )
+  }
 }

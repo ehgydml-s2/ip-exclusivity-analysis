@@ -1,8 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Lightbulb, ChevronDown, Scale, FileText, AlertTriangle, CheckSquare } from "lucide-react"
-import type { KeyContributions, KeyContribution } from "@/lib/data"
+import { Lightbulb, ChevronDown, AlertTriangle, CheckSquare } from "lucide-react"
 import { FactText, FactRef } from "./fact-ref"
 import { cn } from "@/lib/utils"
 
@@ -13,44 +12,6 @@ interface Judgement {
   impact: string
   claimed_holder: string
   [key: string]: any
-}
-
-function ContributionCard({ contribution }: { contribution: KeyContribution }) {
-  const getSignificanceColor = (significance: string) => {
-    switch (significance) {
-      case "High":
-        return "border-primary/30 bg-primary/5"
-      case "Medium":
-        return "border-amber-500/30 bg-amber-500/5"
-      case "Low":
-        return "border-destructive/30 bg-destructive/5"
-      default:
-        return "border-secondary/30 bg-secondary/5"
-    }
-  }
-
-  const significanceColor = getSignificanceColor(contribution.significance)
-
-  return (
-    <div className={`rounded-xl border p-4 ${significanceColor}`}>
-      <div className="flex items-start justify-between gap-2">
-        <h4 className="flex-1 text-sm font-semibold leading-snug text-foreground">
-          {contribution.idea}
-        </h4>
-        <span
-          className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-bold ${
-            contribution.significance === "High"
-              ? "bg-primary/10 text-primary"
-              : contribution.significance === "Medium"
-                ? "bg-amber-500/10 text-amber-600"
-                : "bg-destructive/10 text-destructive"
-          }`}
-        >
-          {contribution.significance}
-        </span>
-      </div>
-    </div>
-  )
 }
 
 function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
