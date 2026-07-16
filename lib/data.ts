@@ -159,6 +159,10 @@ export function countMeetingsByProject(projectCode: string): number {
   return meetingMinutes.filter((m) => m.projectCode === projectCode).length
 }
 
+export function findMeetingsByProject(projectCode: string): MeetingMinute[] {
+  return meetingMinutes.filter((m) => m.projectCode === projectCode)
+}
+
 export const meetingMinutes: MeetingMinute[] = [
   // ---- HBM20C01 (소재) ----
   {
@@ -266,7 +270,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "설비",
     title: "HBM4 베이스 다이 공동 개발 MOU 체결",
     date: "2024-04-20",
-    companyS: `S사와 A사는 차세대 HBM4 베이스 다이 개선을 위한 전략적 협력 MOU 체결\n기존 HBM3E 대비 제한된 공간에 추가 기능 탑재 필요 - 베이스 다이 고도화 필수\nA사의 첨단 로직 공정 기술과 S사 HBM 메모리 기술 결합 목표\n2026년 HBM4 양산 목표, 경쟁사 대비 기술 우위 확보 전략`,
+    companyS: `S사와 A사는 차세대 HBM4 베이스 다이 개선을 위한 전략적 협력 MOU 체결\n기존 HBM3E 대비 제한된 공간에 추가 기능 탑재 필요 - 베이스 다이 고도화 필수\nA사의 첨단 로직 공정 기술과 S사 HBM 메모리 기술 결합 목표\n2026�� HBM4 양산 목표, 경쟁사 대비 기술 우위 확보 전략`,
     companyP: `A사�� CoWoS 2.5D 패키징 기술 및 첨단 로직 공정으로 HBM 베이스 다이 개선 협력 의향\nS사의 HBM 메모리 기술과 당사 로직 공정 기술 시너지 기대\n공동 기술���발을 통한 ��세�� AI 칩 시장 선도 목표\n초기 기술 로드맵 및 역할 분담 논�� 시작`,
     articleUrl: "https://www.kedglobal.com/korean-chipmakers/newsView/ked202404190012",
     scenarioNote: `[모호한 기여도 판단 시나리오 - 공동 기술 통합형]\n목적: 양사가 각자 핵�� 기술을 보유하고 공동������ 통합 개발, 기여도 ��계 ���명확\n- Company S (SK하이닉스): HBM 메모리 기���, 일부 베이스 다이 구조 제안\n- Company A (TSMC): 로직 공정 기술, 일부 베이스 다이 기능 제��\n→ 양측이 모두 핵심 아이디어 제시, 최종 성과는 통합 결과\n→ 누가 더 큰 기여를 했는지 불명확\n→ Agent가 "기여도 ���명확, 공동 개발 성과, 추가 증거 필요" 판정 기대`,
@@ -388,7 +392,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "설비",
     title: "프로토타입 장비 평가 및 SK하이닉스 레시피 검증",
     date: "2024-10-25",
-    companyS: `협력업체 프로토타입 장비로 당사 세정 레시피 ���용 테스트 완료\nHKMG 공정 세정 효율 95% 달성 - 당사 독자 레시피의 우수성 검증\n다만 일부 웨이퍼에서 잔류물 발생 - 장비 린스 공정 개선 필요\n당사 레시피���� 그���로 유지, 장비 측면 개선으로 해결 요청`,
+    companyS: `협력업체 프로토타입 장비로 당사 세정 레시피 ���용 테스트 완료\nHKMG 공정 세정 효율 95% 달성 - 당사 독자 레시피의 우수성 검증\n다만 ���부 웨이퍼에서 잔류물 발생 - 장비 린스 공정 개선 필요\n당사 레시피���� 그���로 유지, 장비 측면 개선으로 해결 요청`,
     companyP: `S사 레시피 기반 세정 성능 우수��을 확인\n잔류물 문제�� ��사 장비 린스 공정 미흡으로 판�� - 린스 노����� 배치 개선 예정\nS사 레시피 자체는 변경 없이, 장비만 개선하여 2025년 1월 ��평가\n장비 개선 과��에서도 S사 레시피 보호 최우선`,
     articleUrl: "https://www.daeryunlaw.com/trend/10746",
     scenarioNote: `[명확한 배타권 근거 시나리오 - 레시피 제공형]\n목적: Company S가 핵심 레시피/공정 기술을 독자 개발하여 제���, Company A는 구현만 담당\n- Company S (SK하이닉스): 세정 레시피 독자 개발, HKMG 공정 기술 보유, 장비 사양 정의\n- Company A (협력업체): Company S 제��� 사양대로 세정장비 설계 및 제조\n→ 핵심 기술은 Company S 소유, Company A는 제조 역할만\n→ 대법원 판례에서도 영업비밀로 인정 (비공지성, 경제적 ���치, ���밀관리성 충족)\n→ Agent가 "배타권: Company S (세정 레시피 및 HKMG 공정 기술)" 판정 기대`,
@@ -513,7 +517,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `엘티씨에이엠과의 고선택비인산 양산 공급 계약 최종 체결\n2021년 공급 물량: 상반기 월 100톤, 하반기 월 200톤\n수급 다변화 전략 성공 - A사 독점 구도 탈피\n국내 반도체 소재 생태계 강화 및 공급망 안정성 확보 달성`,
     companyP: `S사와의 양산 공급 계약 체결 완료 - 국내 고선택비인산 시장 진입 성공\n연간 2,000억원 규모 시장에서 점유율 확대 목표\nSK머티리얼즈의 투자 및 기술 지원에 감사하며, 장기 파트너십 강화\n차세대 3D 낸드(128단 이상) 대응 고선택비인산 공동 개발 제안`,
     articleUrl: "https://www.etnews.com/20200217000106",
-    scenarioNote: `[수급 다변화 시나리오 - 기술 육성형]\n목적: Company S의 공급망 리스크 회피를 위한 협력사 육성 케이스\n- Company S: 기존 독점 공급(솔브레인) 구조 탈피 목표\n- Company A: 기술 보유, Company S 요구 사양 충족\n→ Company A 독자 기술, Company S는 평��� 및 피������백 역할\n→ Agent가 "배타권 없음, 일반 공급 계약" 판정 기대`,
+    scenarioNote: `[수급 다변화 시나리오 - 기술 육성형]\n목적: Company S의 공급망 리스크 회피를 위한 협력사 육성 케이스\n- Company S: 기존 독점 공급(솔브레인) 구조 탈피 ���표\n- Company A: 기술 보유, Company S 요구 사양 충족\n→ Company A 독자 기술, Company S는 평��� 및 피������백 역할\n→ Agent가 "배타권 없음, 일반 공급 계약" 판정 기대`,
   },
 
   // ---- HWM25E1 (설비) ----
@@ -637,7 +641,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `S사 첨가제로 결함 완전 해결\n당사의 Additive-X 도입을 통해 A사 Silica Slurry의 치명적 결함이 완전히 해결되었음이 증명됨. 이로써 'A사 Silica 입자 + S사 Additive-X' 조합이 차세대 공정의 표준 포뮬러 후보로 지정됨. 본 첨가제 기술 및 최적 배합비(0.15wt%)는 S사의 주도로 도출된 결과이므로, 향후 계약 시 당사의 독점적 권리가 보장되어야 함.`,
     companyP: `Additive-X 적용 후 연마 속도와 선택비(Selectivity)가 획기적으로 개선된 데이터에 동의함. 당사의 Silica 제조 원천 기술과 S사의 첨가제 기술이 시너지를 낸 결과임. 양산 신뢰성 확보를 위해 추가적인 대량 합성 및 장기 저장 안정성 테스트를 공동 진행할 것을 요청함.`,
     articleUrl: "https://www.sedaily.com/article/13774334",
-    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨가제로 원천 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 → 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 ��여\n→ Agent가 "배���권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기대`,
+    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨가제로 원천 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 → 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 ��여\n→ Agent가 "배���권: Company S (Additive-X 적용 제품에 한정, 5년��� 제3자 공급 금지)" 판정 기대`,
   },
   {
     id: "SCMP26E1_05",
@@ -649,7 +653,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `배타권 계약 체결\n당사가 제���한 Additive-X의 메커니즘 및 'Silica + Additive-X'�� 최적 조성비는 당사의 배타적 권리 자산임. 따라서 A사��� 본 ��술이 적용된 Slurry 완제품 또는 동일 ���커니즘을 가진 제품을 S사의 사전 서면 동의 ��이 글로벌 경쟁사를 포함한 제3자에게 판매, 양도, 또는 기술 이전할 수 없�� (배타권 ��정 기간: 양산 보급 후 최소 5년).`,
     companyP: `당사 고유의 Silica 입자 기술 자체를 타 제품에 활용하는 것은 제한이 없어야 한다는 전제하에, S사가 독자 개발하여 제공한 Additive-X 및 이를 통해 도출된 최종 혼합 Slurry 제품(Soul-S2)에 대한 S사 측의 배타적 사용 권리와 제3자 공급 금지 조항을 수용함. 상호 간 특허 유출 ��지를 위한 보안 서약서를 갱신하겠음.`,
     articleUrl: "https://www.sedaily.com/article/13774334",
-    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨��제로 원천 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 �� 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 기여\n→ Agent가 "배타권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기대`,
+    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨��제로 원천 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 �� 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 기여\n→ Agent가 "배���권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기대`,
   },
   {
     id: "SCMP26E1_06",
@@ -840,7 +844,7 @@ export const meetingMinutes: MeetingMinute[] = [
     numId: 113,
     projectCode: "WPC22E1",
     projectType: "설비",
-    title: "양산 적합성 평가 및 대량 생산 환경 검증",
+    title: "양산 적합성 평가 및 대량 생산 환경 검��",
     date: "2022-02-22",
     companyS: `양산형 장비 6개월 장기 운영 테스트 완료 - 가동률 98%, 고장률 0.5% 이하\n와피지 제어 안정��� 검증 완료 - 평균 ±45μm, 표준편차 2μm 이내\n유지보수 편의성 우수 - 정기 점검 주기 6개월, 부품 교체 시간 2시간 이내\n국산화 목표 달성 확인 - 해외 장비 대비 동등 이상 성능 및 20% 비용 절감`,
     companyP: `양산 적합성 평가 통과 - A사 와피지 제어 장비 국산화 성공\nS사 기술혁신기업 프로그램 3년 협력 기간 동안의 지원에 깊이 감사\n국산 장비 공급 계약 체결 준비 완료 - 2022년 하반기 본격 공급 개시\n향후 차세대 공정 대응 와피지 제어 기술 고도화 지속 협력 희망`,
