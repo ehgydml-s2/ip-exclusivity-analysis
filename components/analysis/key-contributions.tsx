@@ -1,9 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { Lightbulb, ChevronDown } from "lucide-react"
+import { Lightbulb, ChevronDown, Scale, FileText, AlertTriangle, CheckSquare } from "lucide-react"
 import type { KeyContributions, KeyContribution } from "@/lib/data"
 import { FactText, FactRef } from "./fact-ref"
+import { cn } from "@/lib/utils"
 
 interface Judgement {
   group_id: string
@@ -55,11 +56,19 @@ function ContributionCard({ contribution }: { contribution: KeyContribution }) {
 function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
   const factCount = judgement.supporting_facts?.length || 0
   const grade = judgement.evaluation_grade
+  const [open, setOpen] = useState(false)
+  const panelId = `idea-${judgement.group_id}`
 
   return (
     <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
-      {/* Header */}
-      <div className="flex items-start justify-between gap-3 p-4">
+      {/* Header - Clickable */}
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-controls={panelId}
+        onClick={() => setOpen((v) => !v)}
+        className="flex w-full items-start gap-3 p-4 text-left outline-none transition-colors hover:bg-accent/40 focus-visible:ring-3 focus-visible:ring-ring/40"
+      >
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2 mb-2 flex-wrap">
             <span className="shrink-0 rounded-md bg-primary/10 px-2 py-1 font-mono text-xs font-bold text-primary">
@@ -99,8 +108,131 @@ function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
             </p>
           )}
         </div>
-      </div>
+        <ChevronDown
+          className={cn(
+            "mt-1 size-5 shrink-0 text-muted-foreground transition-transform duration-200",
+            open && "rotate-180",
+          )}
+          aria-hidden="true"
+        />
+      </button>
 
+      {/* Expanded Content */}
+      {open && (
+        <div id={panelId} className="border-t border-border p-4 space-y-4">
+          {/* Impact */}
+          {judgement.impact && (
+            <div>
+              <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                <FileText className="size-3.5 text-primary" aria-hidden="true" />
+                영향도
+              </h4>
+              <FactText className="text-sm leading-relaxed text-foreground">{judgement.impact}</FactText>
+            </div>
+          )}
+
+          {/* Reasoning */}
+          {judgement.reasoning && (
+            <div>
+              <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                <Scale className="size-3.5 text-primary" aria-hidden="true" />
+                판단 근거
+              </h4>
+              <FactText className="text-sm leading-relaxed text-foreground">{judgement.reasoning}</FactText>
+            </div>
+          )}
+
+          {/* Supporting Facts */}
+          {judgement.supporting_facts && judgement.supporting_facts.length > 0 && (
+            <div>
+              <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                <FileText className="size-3.5 text-primary" aria-hidden="true" />
+                Supporting Facts
+              </h4>
+              <div className="flex flex-wrap gap-1.5">
+                {judgement.supporting_facts.map((fact) => (
+                  <FactRef key={fact} id={fact} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Legal Basis */}
+          {judgement.legal_basis && (
+            <div className="border-t border-border pt-4">
+              <h4 className="mb-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                <Scale className="size-3.5 text-primary" aria-hidden="true" />
+                법적 근거
+              </h4>
+              <div className="space-y-3">
+                {judgement.legal_basis.applicable_laws && judgement.legal_basis.applicable_laws.length > 0 && (
+                  <div>
+                    <p className="text-xs text-muted-foreground mb-1.5 font-semibold">적용 법령</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {judgement.legal_basis.applicable_laws.map((law) => (
+                        <span
+                          key={law}
+                          className="inline-flex items-center rounded-md bg-secondary px-2 py-1 text-xs font-medium text-secondary-foreground"
+                        >
+                          {law}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {judgement.legal_basis.overall_legal_analysis && (
+                  <div className="rounded-lg border border-border bg-secondary/40 p-3">
+                    <p className="text-xs text-muted-foreground mb-1.5 font-semibold">분석 내용</p>
+                    <FactText className="text-sm leading-relaxed text-foreground">
+                      {judgement.legal_basis.overall_legal_analysis}
+                    </FactText>
+                  </div>
+                )}
+                {judgement.legal_basis.risk_factors && judgement.legal_basis.risk_factors.length > 0 && (
+                  <div>
+                    <p className="text-xs text-muted-foreground mb-1.5 font-semibold">Risk Factors</p>
+                    <ul className="space-y-1.5">
+                      {judgement.legal_basis.risk_factors.map((r, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-2 rounded-lg border border-destructive/20 bg-destructive/5 p-2.5 text-sm text-foreground"
+                        >
+                          <AlertTriangle className="mt-0.5 size-4 shrink-0 text-destructive" aria-hidden="true" />
+                          <span className="leading-relaxed">{r}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Evaluation Grade */}
+          {grade && (
+            <div className="border-t border-border pt-4">
+              <h4 className="mb-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                <CheckSquare className="size-3.5 text-primary" aria-hidden="true" />
+                평가 등급
+              </h4>
+              <div className="space-y-2">
+                {grade.final_grade && (
+                  <div className="rounded-lg border border-border bg-secondary/40 p-3">
+                    <p className="text-xs text-muted-foreground font-semibold mb-1">최종 등급</p>
+                    <p className="text-sm font-medium text-foreground">{grade.final_grade}</p>
+                  </div>
+                )}
+                {grade.grade_reasoning && (
+                  <div className="rounded-lg border border-border bg-secondary/40 p-3">
+                    <p className="text-xs text-muted-foreground font-semibold mb-1">등급 산정 근거</p>
+                    <FactText className="text-sm leading-relaxed text-foreground">{grade.grade_reasoning}</FactText>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }
