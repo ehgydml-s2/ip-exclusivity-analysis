@@ -248,25 +248,27 @@ function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
 
             {/* Evaluation Grade Tab */}
             {activeDetailTab === "grade" && grade && (
-              <div className="space-y-3">
-                <h4 className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                  <CheckSquare className="size-3.5 text-primary" aria-hidden="true" />
-                  평가 등급
-                </h4>
-
-                {grade.final_grade && (
-                  <div className="rounded-lg border border-border bg-secondary/40 p-3">
-                    <p className="text-xs text-muted-foreground font-semibold mb-1">최종 등급</p>
-                    <p className="text-sm font-medium text-foreground">{grade.final_grade}</p>
-                  </div>
-                )}
-
-                {grade.grade_reasoning && (
-                  <div className="rounded-lg border border-border bg-secondary/40 p-3">
-                    <p className="text-xs text-muted-foreground font-semibold mb-1">등급 산정 근거</p>
-                    <FactText className="text-sm leading-relaxed text-foreground">{grade.grade_reasoning}</FactText>
-                  </div>
-                )}
+              <div className="space-y-5">
+                <dl className="space-y-3">
+                  {[
+                    { label: "기술 효과", value: grade.tech_effect_reasoning, grade: grade.tech_effect_grade },
+                    { label: "경쟁사 적용", value: grade.competitor_reasoning, grade: grade.competitor_applicability },
+                    { label: "기술 격차", value: grade.tech_gap_reasoning, grade: grade.tech_gap },
+                  ].map((row) => (
+                    <div key={row.label} className="flex gap-2.5">
+                      <div className="flex-1 rounded-lg border border-border bg-secondary/40 p-3">
+                        <dt className="mb-1 text-xs font-semibold text-primary">{row.label} 근거</dt>
+                        <dd className="text-sm leading-relaxed text-foreground">{row.value}</dd>
+                      </div>
+                      {row.grade && (
+                        <div className="w-24 shrink-0 rounded-lg border border-border bg-secondary/40 p-3">
+                          <dt className="mb-1 text-xs font-semibold text-primary">등급</dt>
+                          <dd className="text-sm font-medium text-foreground">{row.grade}</dd>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </dl>
               </div>
             )}
           </div>
