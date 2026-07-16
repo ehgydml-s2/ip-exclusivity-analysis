@@ -271,7 +271,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "설비",
     title: "HBM4 베이스 다이 공동 개발 MOU 체결",
     date: "2024-04-20",
-    companyS: `S사와 A사는 차세대 HBM4 베이스 다이 개선을 위한 ��략적 협력 MOU 체결\n기존 HBM3E 대비 제한��� 공간에 추가 기능 탑재 필요 - 베이스 다이 고도화 필수\nA사의 첨단 로직 공정 기술과 S사 HBM 메모리 기술 결합 목표\n2026�� HBM4 양산 목표, 경쟁사 대비 기술 우위 확보 전��`,
+    companyS: `S사와 A사는 차세대 HBM4 베이스 다이 개선을 위한 ���략적 협력 MOU 체결\n기존 HBM3E 대비 제한��� 공간에 추가 기능 탑재 필요 - 베이스 다이 고도화 필수\nA사의 첨단 로직 공정 기술과 S사 HBM 메모리 기술 결합 목표\n2026�� HBM4 양산 목표, 경쟁사 대비 기술 우위 확보 전��`,
     companyP: `A사�� CoWoS 2.5D 패키징 기술 및 첨단 로직 공정으로 HBM 베이스 다이 개선 협력 의향\nS사의 HBM 메모리 기술과 당사 로직 공정 기술 시너지 기대\n공동 기술���발을 통한 ��세�� AI 칩 시장 선도 목표\n초기 기술 로드맵 및 역할 분담 논�� 시작`,
     articleUrl: "https://www.kedglobal.com/korean-chipmakers/newsView/ked202404190012",
     scenarioNote: `[모호한 기여도 판단 시나리오 - 공동 기술 통합형]\n목적: 양사가 각자 핵�� 기술을 보유하고 공동������ 통합 개발, 기여도 ��계 ���명확\n- Company S (SK하이닉스): HBM 메모리 기���, 일부 베이스 다이 구조 제안\n- Company A (TSMC): 로직 공정 기술, 일부 베이스 다이 기능 제��\n→ 양측이 모두 핵심 아이디어 제시, 최종 성과는 통합 결과\n→ 누가 더 큰 기여를 했는지 불명확\n→ Agent가 "기여도 ���명확, 공동 개발 성과, 추가 증거 필요" 판정 기대`,
@@ -654,7 +654,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `배타권 계약 체결\n당사가 제���한 Additive-X의 메커니즘 및 'Silica + Additive-X'�� 최적 조성비는 당사의 배타적 권리 자산임. 따라서 A사��� 본 ��술이 적용된 Slurry 완제품 또는 동일 ���커니즘을 가진 제품을 S사의 사전 서면 동의 ��이 글로벌 경쟁사를 포함한 제3자에게 판매, 양도, 또는 기술 이전할 수 없�� (배타권 ��정 기간: 양산 보급 후 최소 5년).`,
     companyP: `당사 고유의 Silica 입자 기술 자체를 타 제품에 활용하는 것은 제한이 없어야 한다는 전제하에, S사가 독자 개발하여 제공한 Additive-X 및 이를 통해 도출된 최종 혼합 Slurry 제품(Soul-S2)에 대한 S사 측의 배타적 사용 권리와 제3자 공급 금지 조항을 수용함. 상호 간 특허 유출 ��지를 위한 보안 서약서를 갱신하겠음.`,
     articleUrl: "https://www.sedaily.com/article/13774334",
-    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨��제로 원천 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하��만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 �� 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 기여\n→ Agent가 "배���권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기대`,
+    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨��제로 원천 기��의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하��만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 �� 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 기여\n→ Agent가 "배���권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기대`,
   },
   {
     id: "SCMP26E1_06",
@@ -910,139 +910,6 @@ function buildSnpr20e1Facts(): Fact[] {
 export const analysisResults: Record<string, AnalysisResult> = {
   HBM426E1: {
     ...HBM426E1_NEW,
-    facts: []
-  },
-    legal_perspective: {
-      applicable_laws: [],
-      overall_legal_analysis: "",
-      risk_factors: [],
-      recommended_actions: []
-    },
-    facts: []
-  },
-    judgements: [
-      {
-        group_id: "G001",
-        topic: "양사 공동 개발 과정",
-        issue: "개발 주체",
-        impact: "양사 기술 아이디어의 복합적인 결합과 공동 최적화는 HBM4 베이스 다이 개발의 성공에 필수적이었습니다.",
-        reasoning: "양사는 초기 기술 로드맵 및 역할 분담 논의를 시작하고, 기술 통합 시 예상되는 인터페이스 이슈를 사전 논의했습니다.",
-        counter_arguments: "방향성 있는 Fact가 없어 특정 주체에 유리한 주장을 펼치기 어렵습니다.",
-        recommendation: "공동 개발 과정에서 각 사의 구체적인 역할과 기여도를 명확히 문서화해야 합니다.",
-        legal_basis: {
-          applicable_laws: ["CV001"],
-          contract_analysis: {
-            has_exclusivity_clause: true,
-            clause_summary: "공동 개발 성과물의 제3자 공급 시 양사 사전 협의 필요 조항 합의",
-            validity_period: "정보 부족",
-            enforcement_risk: "중간"
-          },
-          inventorship_analysis: "양사의 기술 아이디어가 복합적으로 결합된 결과",
-          contribution_analysis: "양사 공동 최적화 및 기술 통합을 통해 개발 진행",
-          risk_factors: [
-            "공동 개발 과정에서 각 사의 기여도에 대한 정량적 근거 부족",
-            "단독 해결 불가능했던 이슈에 대한 각 사의 구체적인 기술적 기여 범위 불명확"
-          ],
-          recommended_legal_actions: [
-            "공동 개발 계약서에 각 사의 기여도 산정 기준 및 지분 비율을 명확히 명시하도록 검토"
-          ]
-        },
-        evaluation_grade: {
-          tech_effect_grade: "1등급",
-          tech_effect_reasoning: "양사 기술 아이디어의 복합적인 결합과 공동 최적화가 HBM4 베이스 다이 개발에 필수적",
-          competitor_applicability: "정보 부족",
-          competitor_reasoning: "회의록에 경쟁사 적용 가능성에 대한 명시적인 정보가 부족",
-          tech_gap: "대",
-          tech_gap_reasoning: "특정 기술적 난관이 단독으로는 해결 불가능했음을 시사",
-          final_grade: "A1",
-          grade_reasoning: "양사 기술 시너지를 통한 공동 개발 성과"
-        },
-        claimed_holder: "Joint",
-        fact_count: 0,
-        supporting_facts: []
-      },
-      {
-        group_id: "G006",
-        topic: "프로토타입 성능 검증",
-        issue: "기술 성능 개선",
-        impact: "경쟁사 대비 전력 효율 20%, 대역폭 30% 향상 달성은 HBM4 베이스 다이 기술의 핵심적인 경쟁 우위를 확보했음을 입증",
-        reasoning: "S사가 성능 개선 목표를 설정하고 경쟁사 대비 전력 효율 20%, 대역폭 30% 향상을 달성했다고 발표",
-        counter_arguments: "성능 개선이 양사 기술의 통합 결과일 가능성 있음",
-        recommendation: "최종 성능 개선에 대한 S사와 A사의 구체적인 기여도를 정량적으로 분석해야 함",
-        legal_basis: {
-          applicable_laws: ["PL001"],
-          contract_analysis: {
-            has_exclusivity_clause: true,
-            clause_summary: "공동 개발 성과물의 제3자 공급 시 양사 사전 협의 필요",
-            validity_period: "정보 부족",
-            enforcement_risk: "중간"
-          },
-          inventorship_analysis: "성능 개선은 양사의 개별 기술 기여가 통합된 결과",
-          contribution_analysis: "양사의 기술 통합 효과로 평가",
-          risk_factors: [
-            "최종 성능 개선에 대한 S사 단독 기여 주장의 근거 부족",
-            "양사 기술 통합 효과에 대한 명확한 기여도 배분 기준 부재"
-          ],
-          recommended_legal_actions: [
-            "성능 개선 관련 특허 출원 시 발명자 기여도를 명확히 구분하여 등재"
-          ]
-        },
-        evaluation_grade: {
-          tech_effect_grade: "1등급",
-          tech_effect_reasoning: "경쟁사 대비 전력 효율 20%, 대역폭 30% 향상 달성",
-          competitor_applicability: "고",
-          competitor_reasoning: "경쟁사 대비 성능 향상을 명시적으로 언급하여 보호 필요",
-          tech_gap: "대",
-          tech_gap_reasoning: "경쟁사 대비 20-30% 성능 향상은 상당한 기술 격차 의미",
-          final_grade: "A1",
-          grade_reasoning: "경쟁사 대비 성능 향상 달성"
-        },
-        claimed_holder: "Company S",
-        fact_count: 1,
-        supporting_facts: []
-      }
-    ],
-    legal_perspective: {
-      applicable_laws: [
-        { law_id: "CV001", law_name: "기술 협력 계약", relevance: "공동 개발 기술 관련", application_to_project: "양사 기술 기여도 정의" },
-        { law_id: "CL002", law_name: "라이센스 계약", relevance: "제3자 공급 관련", application_to_project: "공동 기술 라이센스 제한" }
-      ],
-      overall_legal_analysis: "HBM4 베이스 다이는 양사의 공동 개발 성과물로서 공동 소유 구조로 합의. 각 사의 개별 기술은 독자 소유 유지.",
-      risk_factors: [
-        "공동 소유 기술과 개별 기술의 경계 불명확",
-        "배타권 유효기간 및 제재 조항 부재",
-        "자원 투입 비중 기록 부족"
-      ],
-      recommended_actions: [
-        "최종 계약서를 면밀히 검토하여 배타권 조항의 구체적 내용 확인",
-        "공동 기술과 개별 기술의 범위를 명확히 정의"
-      ]
-    },
-    key_contributions: {
-      company_s_ideas: [
-        {
-          idea: "HBM4 베이스 다이 고도화 제안",
-          description: "차세대 AI 칩 시장 선도를 위한 HBM4 개발 전략 수립",
-          impact: "프로젝트의 전략적 방향성 결���",
-          supporting_facts: [],
-          exclusivity_status: "Joint",
-          significance: "높음",
-          reasoning: "S사의 전략적 제안이 프로젝트 초기 설정에 중요한 역할"
-        }
-      ],
-      company_p_ideas: [
-        {
-          idea: "CoWoS 2.5D 패키징 기술 적용",
-          description: "첨단 로직 공정 기술을 통한 HBM 베이스 다이 개선",
-          impact: "성능 향상 및 수율 개선",
-          supporting_facts: [],
-          exclusivity_status: "Joint",
-          significance: "높음",
-          reasoning: "A사의 핵심 기술이 공동 개발에 중요하게 기여"
-        }
-      ]
-    },
-    elapsed_time: 287.45,
     facts: []
   },
   SNPR20E1: {
