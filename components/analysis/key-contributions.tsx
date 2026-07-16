@@ -57,6 +57,7 @@ function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
   const factCount = judgement.supporting_facts?.length || 0
   const grade = judgement.evaluation_grade
   const [open, setOpen] = useState(false)
+  const [activeDetailTab, setActiveDetailTab] = useState("impact")
   const panelId = `idea-${judgement.group_id}`
 
   return (
@@ -115,54 +116,95 @@ function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
       {/* Expanded Content */}
       {open && (
         <div id={panelId} className="border-t border-border p-4 space-y-4">
-          {/* Impact */}
-          {judgement.impact && (
-            <div>
-              <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                <FileText className="size-3.5 text-primary" aria-hidden="true" />
-                영향도
-              </h4>
-              <FactText className="text-sm leading-relaxed text-foreground">{judgement.impact}</FactText>
-            </div>
-          )}
+          {/* Tab Navigation */}
+          <div className="flex flex-wrap gap-2 border-b border-border pb-3">
+            <button
+              type="button"
+              onClick={() => setActiveDetailTab("impact")}
+              className={`px-3 py-1.5 text-xs font-medium transition-colors border-b-2 ${
+                activeDetailTab === "impact"
+                  ? "border-primary text-primary"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              영향도
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveDetailTab("legal")}
+              className={`px-3 py-1.5 text-xs font-medium transition-colors border-b-2 ${
+                activeDetailTab === "legal"
+                  ? "border-primary text-primary"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              법적 근거
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveDetailTab("grade")}
+              className={`px-3 py-1.5 text-xs font-medium transition-colors border-b-2 ${
+                activeDetailTab === "grade"
+                  ? "border-primary text-primary"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              평가 등급
+            </button>
+          </div>
 
-          {/* Reasoning */}
-          {judgement.reasoning && (
-            <div>
-              <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                <Scale className="size-3.5 text-primary" aria-hidden="true" />
-                판단 근거
-              </h4>
-              <FactText className="text-sm leading-relaxed text-foreground">{judgement.reasoning}</FactText>
-            </div>
-          )}
+          {/* Tab Content */}
+          <div className="space-y-3">
+            {/* Impact Tab */}
+            {activeDetailTab === "impact" && (
+              <>
+                {judgement.impact && (
+                  <div>
+                    <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                      <FileText className="size-3.5 text-primary" aria-hidden="true" />
+                      영향도
+                    </h4>
+                    <FactText className="text-sm leading-relaxed text-foreground">{judgement.impact}</FactText>
+                  </div>
+                )}
 
-          {/* Supporting Facts */}
-          {judgement.supporting_facts && judgement.supporting_facts.length > 0 && (
-            <div>
-              <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                <FileText className="size-3.5 text-primary" aria-hidden="true" />
-                Supporting Facts
-              </h4>
-              <div className="flex flex-wrap gap-1.5">
-                {judgement.supporting_facts.map((fact) => (
-                  <FactRef key={fact} id={fact} />
-                ))}
-              </div>
-            </div>
-          )}
+                {judgement.reasoning && (
+                  <div className="border-t border-border pt-3 mt-3">
+                    <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                      <Scale className="size-3.5 text-primary" aria-hidden="true" />
+                      판단 근거
+                    </h4>
+                    <FactText className="text-sm leading-relaxed text-foreground">{judgement.reasoning}</FactText>
+                  </div>
+                )}
 
-          {/* Legal Basis */}
-          {judgement.legal_basis && (
-            <div className="border-t border-border pt-4">
-              <h4 className="mb-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                <Scale className="size-3.5 text-primary" aria-hidden="true" />
-                법적 근거
-              </h4>
+                {judgement.supporting_facts && judgement.supporting_facts.length > 0 && (
+                  <div className="border-t border-border pt-3 mt-3">
+                    <h4 className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                      <FileText className="size-3.5 text-primary" aria-hidden="true" />
+                      Supporting Facts
+                    </h4>
+                    <div className="flex flex-wrap gap-1.5">
+                      {judgement.supporting_facts.map((fact) => (
+                        <FactRef key={fact} id={fact} />
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+
+            {/* Legal Basis Tab */}
+            {activeDetailTab === "legal" && judgement.legal_basis && (
               <div className="space-y-3">
+                <h4 className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  <Scale className="size-3.5 text-primary" aria-hidden="true" />
+                  법적 근거
+                </h4>
+
                 {judgement.legal_basis.applicable_laws && judgement.legal_basis.applicable_laws.length > 0 && (
                   <div>
-                    <p className="text-xs text-muted-foreground mb-1.5 font-semibold">적용 법령</p>
+                    <p className="text-xs text-muted-foreground mb-2 font-semibold">적용 법령</p>
                     <div className="flex flex-wrap gap-1.5">
                       {judgement.legal_basis.applicable_laws.map((law) => (
                         <span
@@ -175,17 +217,19 @@ function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
                     </div>
                   </div>
                 )}
+
                 {judgement.legal_basis.overall_legal_analysis && (
                   <div className="rounded-lg border border-border bg-secondary/40 p-3">
-                    <p className="text-xs text-muted-foreground mb-1.5 font-semibold">분석 내용</p>
+                    <p className="text-xs text-muted-foreground mb-2 font-semibold">분석 내용</p>
                     <FactText className="text-sm leading-relaxed text-foreground">
                       {judgement.legal_basis.overall_legal_analysis}
                     </FactText>
                   </div>
                 )}
+
                 {judgement.legal_basis.risk_factors && judgement.legal_basis.risk_factors.length > 0 && (
                   <div>
-                    <p className="text-xs text-muted-foreground mb-1.5 font-semibold">Risk Factors</p>
+                    <p className="text-xs text-muted-foreground mb-2 font-semibold">Risk Factors</p>
                     <ul className="space-y-1.5">
                       {judgement.legal_basis.risk_factors.map((r, i) => (
                         <li
@@ -200,23 +244,23 @@ function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
                   </div>
                 )}
               </div>
-            </div>
-          )}
+            )}
 
-          {/* Evaluation Grade */}
-          {grade && (
-            <div className="border-t border-border pt-4">
-              <h4 className="mb-3 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-                <CheckSquare className="size-3.5 text-primary" aria-hidden="true" />
-                평가 등급
-              </h4>
-              <div className="space-y-2">
+            {/* Evaluation Grade Tab */}
+            {activeDetailTab === "grade" && grade && (
+              <div className="space-y-3">
+                <h4 className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                  <CheckSquare className="size-3.5 text-primary" aria-hidden="true" />
+                  평가 등급
+                </h4>
+
                 {grade.final_grade && (
                   <div className="rounded-lg border border-border bg-secondary/40 p-3">
                     <p className="text-xs text-muted-foreground font-semibold mb-1">최종 등급</p>
                     <p className="text-sm font-medium text-foreground">{grade.final_grade}</p>
                   </div>
                 )}
+
                 {grade.grade_reasoning && (
                   <div className="rounded-lg border border-border bg-secondary/40 p-3">
                     <p className="text-xs text-muted-foreground font-semibold mb-1">등급 산정 근거</p>
@@ -224,8 +268,8 @@ function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
                   </div>
                 )}
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       )}
     </div>
