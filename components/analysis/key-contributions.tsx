@@ -141,45 +141,48 @@ export function KeyContributionsView({ contributions, judgements }: KeyContribut
 
       {isExpanded && (
         <div className="space-y-6">
-          {/* Company S Ideas */}
-          {groupedJudgements["Company S"].length > 0 && (
-            <div>
-              <div className="mb-4 flex items-center gap-2">
-                <div className="flex size-6 items-center justify-center rounded-lg bg-blue-500/10">
-                  <span className="text-xs font-bold text-blue-600">S</span>
+          {/* Top 2-Column Layout: Company S & Partner Ideas */}
+          <div className="grid gap-6 lg:grid-cols-2">
+            {/* Company S Ideas - Left Column */}
+            {groupedJudgements["Company S"].length > 0 && (
+              <div>
+                <div className="mb-4 flex items-center gap-2">
+                  <div className="flex size-6 items-center justify-center rounded-lg bg-blue-500/10">
+                    <span className="text-xs font-bold text-blue-600">S</span>
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground">
+                    S사의 아이디어
+                  </h3>
                 </div>
-                <h3 className="text-sm font-semibold text-foreground">
-                  S사의 아이디어
-                </h3>
-              </div>
-              <div className="grid gap-4 lg:grid-cols-2">
-                {groupedJudgements["Company S"].map((judgement) => (
-                  <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Partner Ideas */}
-          {groupedJudgements["Partner"].length > 0 && (
-            <div>
-              <div className="mb-4 flex items-center gap-2">
-                <div className="flex size-6 items-center justify-center rounded-lg bg-amber-500/10">
-                  <span className="text-xs font-bold text-amber-600">P</span>
+                <div className="space-y-4">
+                  {groupedJudgements["Company S"].map((judgement) => (
+                    <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
+                  ))}
                 </div>
-                <h3 className="text-sm font-semibold text-foreground">
-                  협력사의 아이디어
-                </h3>
               </div>
-              <div className="grid gap-4 lg:grid-cols-2">
-                {groupedJudgements["Partner"].map((judgement) => (
-                  <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
-                ))}
-              </div>
-            </div>
-          )}
+            )}
 
-          {/* Joint Ideas */}
+            {/* Partner Ideas - Right Column */}
+            {groupedJudgements["Partner"].length > 0 && (
+              <div>
+                <div className="mb-4 flex items-center gap-2">
+                  <div className="flex size-6 items-center justify-center rounded-lg bg-amber-500/10">
+                    <span className="text-xs font-bold text-amber-600">P</span>
+                  </div>
+                  <h3 className="text-sm font-semibold text-foreground">
+                    협력사의 아이디어
+                  </h3>
+                </div>
+                <div className="space-y-4">
+                  {groupedJudgements["Partner"].map((judgement) => (
+                    <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Joint Ideas - Full Width */}
           {groupedJudgements["Joint"].length > 0 && (
             <div>
               <div className="mb-4">
@@ -195,7 +198,7 @@ export function KeyContributionsView({ contributions, judgements }: KeyContribut
             </div>
           )}
 
-          {/* Unclear Ideas */}
+          {/* Unclear Ideas - Full Width */}
           {groupedJudgements["Unclear"].length > 0 && (
             <div>
               <div className="mb-4 font-semibold text-gray-600">분류 미정</div>
@@ -207,7 +210,7 @@ export function KeyContributionsView({ contributions, judgements }: KeyContribut
             </div>
           )}
 
-          {/* No Data Ideas */}
+          {/* No Data Ideas - Full Width */}
           {groupedJudgements["No Data"].length > 0 && (
             <div>
               <div className="mb-4 font-semibold text-gray-600">데이터 부족</div>
