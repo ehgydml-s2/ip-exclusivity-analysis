@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react"
 import { Search, ScanSearch, AlertCircle, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { ProjectSelect } from "@/components/project-select"
 import { projectExists, findProjectsByType, countMeetingsByProject, analysisResults, type ProjectTypeFilter } from "@/lib/data"
 import { cn } from "@/lib/utils"
 
@@ -138,36 +139,21 @@ export function SearchPanel({
                 </div>
 
                 {/* 과제코드 dropdown (filtered by type) */}
-                <div className="relative w-full sm:max-w-md sm:flex-1">
-                  <select
-                    aria-label="과제코드 선택"
-                    value={selectedCode}
-                    onChange={(e) => {
-                      setSelectedCode(e.target.value)
-                      setError(null)
-                    }}
-                    className={cn(
-                      "h-10 w-full appearance-none rounded-lg border border-input bg-background px-3.5 pr-10 text-sm text-foreground outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/40",
-                      !selectedCode && "text-muted-foreground",
-                    )}
-                  >
-                    <option value="" disabled>
-                      {`과제코드를 선택하세요`}
-                    </option>
-                    {filteredProjects.map((p) => {
-                      const hasAnalysis = PROJECTS_WITH_ANALYSIS.includes(p.code)
-                      return (
-                        <option key={p.code} value={p.code} className={hasAnalysis ? "font-bold" : ""}>
-                          {`${hasAnalysis ? "" : ""}${p.code}(${countMeetingsByProject(p.code)})${hasAnalysis ? "" : ""}`}
-                        </option>
-                      )
-                    })}
-                  </select>
-                  <ChevronDown
-                    className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
-                    aria-hidden="true"
-                  />
-                </div>
+                <ProjectSelect
+                  aria-label="과제코드 선택"
+                  value={selectedCode}
+                  onChange={(code) => {
+                    setSelectedCode(code)
+                    setError(null)
+                  }}
+                  options={filteredProjects.map((p) => ({
+                    code: p.code,
+                    label: `${p.code}(${countMeetingsByProject(p.code)})`,
+                    hasAnalysis: PROJECTS_WITH_ANALYSIS.includes(p.code),
+                    meetingCount: countMeetingsByProject(p.code),
+                  }))}
+                  placeholder="과제코드를 선택하세요"
+                />
               </div>
             ) : (
               <div className="relative max-w-md">
