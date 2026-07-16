@@ -10,15 +10,11 @@ import {
   ShieldCheck,
   CheckSquare,
   AlertTriangle,
-  ClipboardList,
   ChevronDown,
 } from "lucide-react"
 import type { AnalysisResult } from "@/lib/data"
-import { ConfidenceBadge } from "./badges"
-import { JudgementCard } from "./judgement-card"
 import { KeyContributionsView } from "./key-contributions"
 import { buildReportText } from "./report"
-import { FactMapProvider, FactText } from "./fact-ref"
 
 function SummaryStat({
   icon: Icon,
@@ -57,7 +53,6 @@ export function AnalysisResultView({
   projectName?: string
 }) {
   const [conclusionExpanded, setConclusionExpanded] = useState(true)
-  const [judgementsExpanded, setJudgementsExpanded] = useState(true)
   const { overall_conclusion: conclusion } = result
 
   function handleExport() {
@@ -75,11 +70,10 @@ export function AnalysisResultView({
   }
 
   return (
-    <FactMapProvider facts={result.facts}>
-      <section
-        aria-label="AI 배타성 분석 결과"
-        className="overflow-hidden rounded-2xl border border-primary/20 bg-card shadow-lg ring-1 ring-primary/5"
-      >
+    <section
+      aria-label="AI 배타성 분석 결과"
+      className="overflow-hidden rounded-2xl border border-primary/20 bg-card shadow-lg ring-1 ring-primary/5"
+    >
         {/* Header */}
         <div className="flex items-center gap-3 border-b border-primary/15 bg-primary/5 px-6 py-4">
           <div className="flex size-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
@@ -101,22 +95,25 @@ export function AnalysisResultView({
 
         <div className="space-y-8 p-6">
           {/* 1. Project Summary Header */}
-          <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3">
             <SummaryStat icon={Tag} label="과제유형">
               {result.project_type}
             </SummaryStat>
             <SummaryStat icon={FolderKanban} label="과제코드">
               <span className="font-bold">{result.project_code}</span>
             </SummaryStat>
-            <SummaryStat icon={ShieldCheck} label="신뢰도">
-              <ConfidenceBadge value={conclusion.confidence_level} />
-            </SummaryStat>
             <SummaryStat icon={Clock} label="분석 소요시간">
               {result.elapsed_time.toFixed(1)}초
             </SummaryStat>
           </div>
 
-          {/* 2. Overall Conclusion Card */}
+          {/* 2. Key Contributions */}
+          <KeyContributionsView 
+            contributions={result.key_contributions}
+            judgements={result.judgements}
+          />
+
+          {/* 3. Overall Conclusion Card */}
           <div className="rounded-2xl border border-border bg-secondary/30 p-5">
             <button
               type="button"
@@ -139,9 +136,6 @@ export function AnalysisResultView({
                 <div className="flex flex-wrap items-center gap-3">
                   <span className="rounded-lg bg-primary px-3 py-1.5 text-sm font-semibold text-primary-foreground">
                     {conclusion.overall_exclusivity_assessment}
-                  </span>
-                  <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                    신뢰도 <ConfidenceBadge value={conclusion.confidence_level} />
                   </span>
                 </div>
 
@@ -189,43 +183,9 @@ export function AnalysisResultView({
             )}
           </div>
 
-          {/* 3. Key Contributions */}
-          {result.key_contributions && (
-            <KeyContributionsView contributions={result.key_contributions} />
-          )}
-
-          {/* 4. Judgement Group Cards */}
-          <div className="rounded-2xl border border-border bg-secondary/30 p-5">
-            <button
-              type="button"
-              onClick={() => setJudgementsExpanded(!judgementsExpanded)}
-              className="mb-4 flex w-full items-center justify-between gap-2 hover:opacity-70"
-            >
-              <div className="flex items-center gap-2">
-                <ClipboardList className="size-4 text-primary" aria-hidden="true" />
-                <h2 className="text-base font-semibold text-foreground">
-                  청구 범위(그룹별 판단) ({result.judgements.length})
-                </h2>
-              </div>
-              <ChevronDown
-                className={`size-4 text-muted-foreground transition-transform duration-200 ${judgementsExpanded ? "rotate-180" : ""
-                  }`}
-                aria-hidden="true"
-              />
-            </button>
-
-            {judgementsExpanded && (
-              <div className="space-y-3">
-                {result.judgements.map((j) => (
-                  <JudgementCard key={j.group_id} judgement={j} />
-                ))}
-              </div>
-            )}
-          </div>
 
 
         </div>
       </section>
-    </FactMapProvider>
-  )
+    )
 }
