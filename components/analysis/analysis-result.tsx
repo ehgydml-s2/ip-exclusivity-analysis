@@ -192,6 +192,7 @@ export function AnalysisResultView({
           {/* 4. Group Judgements */}
           <GroupJudgementsView judgements={result.judgements} />
 
+
         </div>
       </section>
     </FactMapProvider>
