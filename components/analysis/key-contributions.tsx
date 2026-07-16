@@ -5,6 +5,15 @@ import { Lightbulb, ChevronDown } from "lucide-react"
 import type { KeyContributions, KeyContribution } from "@/lib/data"
 import { FactText, FactRef } from "./fact-ref"
 
+interface Judgement {
+  group_id: string
+  topic: string
+  issue: string
+  impact: string
+  claimed_holder: string
+  [key: string]: any
+}
+
 function ContributionCard({ contribution }: { contribution: KeyContribution }) {
   const getSignificanceColor = (significance: string) => {
     switch (significance) {
@@ -43,8 +52,57 @@ function ContributionCard({ contribution }: { contribution: KeyContribution }) {
   )
 }
 
-export function KeyContributionsView({ contributions }: { contributions: KeyContributions }) {
+function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
+  return (
+    <div className="rounded-xl border border-primary/30 bg-primary/5 p-4">
+      <div className="flex items-start justify-between gap-2">
+        <div className="flex-1">
+          <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wide">
+            {judgement.group_id}
+          </h4>
+          <h5 className="mt-1 text-sm font-semibold leading-snug text-foreground">
+            {judgement.topic}
+          </h5>
+        </div>
+        <span
+          className={`shrink-0 rounded-full px-2.5 py-1 text-xs font-bold whitespace-nowrap ${
+            judgement.claimed_holder === "Company S"
+              ? "bg-blue-500/10 text-blue-600"
+              : judgement.claimed_holder === "Partner"
+                ? "bg-amber-500/10 text-amber-600"
+                : judgement.claimed_holder === "Joint"
+                  ? "bg-green-500/10 text-green-600"
+                  : "bg-gray-500/10 text-gray-600"
+          }`}
+        >
+          {judgement.claimed_holder}
+        </span>
+      </div>
+      {judgement.impact && (
+        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+          {judgement.impact}
+        </p>
+      )}
+    </div>
+  )
+}
+
+interface KeyContributionsViewProps {
+  contributions?: KeyContributions
+  judgements?: Judgement[]
+}
+
+export function KeyContributionsView({ contributions, judgements }: KeyContributionsViewProps) {
   const [isExpanded, setIsExpanded] = useState(true)
+
+  // Group judgements by claimed_holder
+  const groupedJudgements = {
+    "Company S": (judgements || []).filter(j => j.claimed_holder === "Company S"),
+    "Partner": (judgements || []).filter(j => j.claimed_holder === "Partner"),
+    "Joint": (judgements || []).filter(j => j.claimed_holder === "Joint"),
+    "Unclear": (judgements || []).filter(j => j.claimed_holder === "Unclear"),
+    "No Data": (judgements || []).filter(j => j.claimed_holder === "No Data"),
+  }
 
   return (
     <div className="rounded-2xl border border-border bg-secondary/30 p-5">
@@ -65,9 +123,8 @@ export function KeyContributionsView({ contributions }: { contributions: KeyCont
 
       {isExpanded && (
         <div className="space-y-6">
-          {/* Ideas Grid */}
-          <div className="grid gap-6 lg:grid-cols-2">
-            {/* Company S Column */}
+          {/* Company S Ideas */}
+          {groupedJudgements["Company S"].length > 0 && (
             <div>
               <div className="mb-3 flex items-center gap-2">
                 <div className="flex size-6 items-center justify-center rounded-lg bg-blue-500/10">
@@ -78,16 +135,15 @@ export function KeyContributionsView({ contributions }: { contributions: KeyCont
                 </h3>
               </div>
               <div className="space-y-3">
-                {contributions.company_s_ideas.map((idea, idx) => (
-                  <ContributionCard key={`s-${idx}`} contribution={idea} />
+                {groupedJudgements["Company S"].map((judgement) => (
+                  <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
                 ))}
-                {contributions.company_s_ideas.length === 0 && (
-                  <p className="text-xs text-muted-foreground">없음</p>
-                )}
               </div>
             </div>
+          )}
 
-            {/* Company P Column */}
+          {/* Partner Ideas */}
+          {groupedJudgements["Partner"].length > 0 && (
             <div>
               <div className="mb-3 flex items-center gap-2">
                 <div className="flex size-6 items-center justify-center rounded-lg bg-amber-500/10">
@@ -98,27 +154,49 @@ export function KeyContributionsView({ contributions }: { contributions: KeyCont
                 </h3>
               </div>
               <div className="space-y-3">
-                {contributions.company_p_ideas.map((idea, idx) => (
-                  <ContributionCard key={`p-${idx}`} contribution={idea} />
+                {groupedJudgements["Partner"].map((judgement) => (
+                  <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
                 ))}
-                {contributions.company_p_ideas.length === 0 && (
-                  <p className="text-xs text-muted-foreground">없음</p>
-                )}
               </div>
             </div>
-          </div>
+          )}
 
-          {/* Joint Ideas Section */}
-          {contributions.joint_ideas && contributions.joint_ideas.length > 0 && (
+          {/* Joint Ideas */}
+          {groupedJudgements["Joint"].length > 0 && (
             <div className="space-y-2">
               <div className="bg-green-700 px-3 py-2">
                 <h3 className="text-xs font-bold text-white">공동 아이디어</h3>
               </div>
               <div className="space-y-2">
-                {contributions.joint_ideas.map((idea, idx) => (
-                  <div key={`joint-${idx}`} className="bg-green-700 px-4 py-3 text-xs text-white">
-                    {idea.idea}
+                {groupedJudgements["Joint"].map((judgement) => (
+                  <div key={judgement.group_id} className="bg-green-700 px-4 py-3 text-xs text-white rounded">
+                    <p className="font-semibold">{judgement.topic}</p>
+                    <p className="text-green-100 mt-1">{judgement.impact}</p>
                   </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Unclear Ideas */}
+          {groupedJudgements["Unclear"].length > 0 && (
+            <div>
+              <div className="mb-3 font-semibold text-gray-600">분류 미정</div>
+              <div className="space-y-3">
+                {groupedJudgements["Unclear"].map((judgement) => (
+                  <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* No Data Ideas */}
+          {groupedJudgements["No Data"].length > 0 && (
+            <div>
+              <div className="mb-3 font-semibold text-gray-600">데이터 부족</div>
+              <div className="space-y-3">
+                {groupedJudgements["No Data"].map((judgement) => (
+                  <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
                 ))}
               </div>
             </div>

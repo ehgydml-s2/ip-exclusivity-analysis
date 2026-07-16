@@ -114,9 +114,10 @@ export function AnalysisResultView({
           </div>
 
           {/* 2. Key Contributions */}
-          {result.key_contributions && (
-            <KeyContributionsView contributions={result.key_contributions} />
-          )}
+          <KeyContributionsView 
+            contributions={result.key_contributions}
+            judgements={result.judgements}
+          />
 
           {/* 3. Overall Conclusion Card */}
           <div className="rounded-2xl border border-border bg-secondary/30 p-5">
