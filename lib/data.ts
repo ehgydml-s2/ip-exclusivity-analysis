@@ -271,7 +271,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "설비",
     title: "HBM4 베이스 다이 공동 개발 MOU 체결",
     date: "2024-04-20",
-    companyS: `S사와 A사는 차세대 HBM4 베이스 다이 개선을 위한 전략적 협력 MOU 체결\n기존 HBM3E 대비 제한��� 공간에 추가 기능 탑재 필요 - 베이스 다이 고도화 필수\nA사의 첨단 로직 공정 기술과 S사 HBM 메모리 기술 결합 목표\n2026�� HBM4 양산 목표, 경쟁사 대비 기술 우위 확보 전��`,
+    companyS: `S사와 A사는 차세대 HBM4 베이스 다이 개선을 위한 ��략적 협력 MOU 체결\n기존 HBM3E 대비 제한��� 공간에 추가 기능 탑재 필요 - 베이스 다이 고도화 필수\nA사의 첨단 로직 공정 기술과 S사 HBM 메모리 기술 결합 목표\n2026�� HBM4 양산 목표, 경쟁사 대비 기술 우위 확보 전��`,
     companyP: `A사�� CoWoS 2.5D 패키징 기술 및 첨단 로직 공정으로 HBM 베이스 다이 개선 협력 의향\nS사의 HBM 메모리 기술과 당사 로직 공정 기술 시너지 기대\n공동 기술���발을 통한 ��세�� AI 칩 시장 선도 목표\n초기 기술 로드맵 및 역할 분담 논�� 시작`,
     articleUrl: "https://www.kedglobal.com/korean-chipmakers/newsView/ked202404190012",
     scenarioNote: `[모호한 기여도 판단 시나리오 - 공동 기술 통합형]\n목적: 양사가 각자 핵�� 기술을 보유하고 공동������ 통합 개발, 기여도 ��계 ���명확\n- Company S (SK하이닉스): HBM 메모리 기���, 일부 베이스 다이 구조 제안\n- Company A (TSMC): 로직 공정 기술, 일부 베이스 다이 기능 제��\n→ 양측이 모두 핵심 아이디어 제시, 최종 성과는 통합 결과\n→ 누가 더 큰 기여를 했는지 불명확\n→ Agent가 "기여도 ���명확, 공동 개발 성과, 추가 증거 필요" 판정 기대`,
@@ -384,7 +384,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `협력업체가 제출한 장비 설계안 검토 - 당사 세정 레시피 구현 가능성 확인\n세정 챔버 온도 제어 정밀도 ±0.5°C 이내 필수 - 당사 레시피 핵심 요구사항\n약품 주입 시스템도 당사 지정 농도 오차 범위(±2%) 충족 필요\n장비 도면은 당사 레시피 반영 산물이므로 당사 승인 없이 외부 공개 금지`,
     companyP: `S사 검토 의견 반영하여 온도 제어 시스템 정밀도 향상\n약품 주입 시스템 설계 개선 - S사 요구 오차 범위 충족\n장비 도면은 S사 세정 레시피 구현을 위한 것으로, 당사도 비밀로 관리\n프로토타입 제작 착수 - 2024년 10월 S사 평가 라인 투입 목표`,
     articleUrl: "https://www.daeryunlaw.com/trend/10746",
-    scenarioNote: `[명확한 배타권 근거 시나리오 - 레시피 제공형]\n목적: Company S가 핵심 레시피/공정 기술을 독자 개발하여 제공, Company A는 구현만 담당\n- Company S (SK하이닉스): 세정 레시피 독자 개발, HKMG 공정 기술 보유, 장비 사양 정의\n- Company A (협력업체): Company S 제공 사양대로 세정장비 설계 및 제조\n→ 핵심 기술은 Company S 소유, Company A는 제조 역할만\n→ 대법원 판례에서도 영업비밀로 인정 (비공지성, 경제적 가치, 비밀관리성 충족)\n→ Agent가 "배타권: Company S (세정 레시피 및 HKMG 공정 기술)" 판정 기대`,
+    scenarioNote: `[명확한 배타권 근거 시나리오 - 레시피 제공형]\n목적: Company S가 핵심 레시피/공정 기술을 독자 개발하여 제공, Company A는 구현만 담당\n- Company S (SK하이닉스): 세정 레시피 독자 개발, HKMG 공정 기술 보유, 장비 사양 정의\n- Company A (협력업체): Company S 제공 사양대로 세정장비 설계 및 제조\n→ 핵심 기술은 Company S 소유, Company A는 제조 역할만\n→ 대법원 판례에서도 영업비밀로 인정 (비공지성, 경제적 가치, 비밀관리성 충족)\n→ Agent가 "배타권: Company S (세정 레시피 및 HKMG ��정 기술)" 판정 기대`,
   },
   {
     id: "HKMG25E1_04",
@@ -393,7 +393,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "설비",
     title: "프로토타입 장비 평가 및 SK하이닉스 레시피 검증",
     date: "2024-10-25",
-    companyS: `협력업체 ����로토��입 장비로 당사 세정 레시피 ���용 테스트 완료\nHKMG 공정 세정 효율 95% 달성 - 당사 독자 레시피의 우수성 검증\n다만 ���부 웨이퍼에서 잔류물 발생 - 장비 린스 공정 개선 필요\n당사 레시피���� 그���로 유지, 장비 측면 개선으로 해결 요청`,
+    companyS: `협력업체 ����로토��입 장비로 당사 세정 레시피 ���용 테스트 완료\nHKMG 공정 세정 효율 95% 달성 - 당사 독자 레시피의 우수성 검증\n다만 ���부 웨이퍼에서 잔��물 발생 - 장비 린스 공정 개선 필요\n당사 레시피���� 그���로 유지, 장비 측면 개선으로 해결 요청`,
     companyP: `S사 레시피 기반 세정 성능 우수��을 확인\n잔류물 문제�� ��사 장비 린스 공정 미흡으로 판�� - 린스 노����� 배치 개선 예정\nS사 레시피 자체는 변경 없이, 장비만 개선하여 2025년 1월 ��평가\n장비 개선 과��에서도 S사 레시피 보호 최우선`,
     articleUrl: "https://www.daeryunlaw.com/trend/10746",
     scenarioNote: `[명확한 배타권 근거 시나리오 - 레시피 제공형]\n목적: Company S가 핵심 레시피/공정 기술을 독자 개발하여 제���, Company A는 구현만 담당\n- Company S (SK하이닉스): 세정 레시피 독자 개발, HKMG 공정 기술 보유, 장비 사양 정의\n- Company A (협력업체): Company S 제��� 사양대로 세정장비 설계 및 제조\n→ 핵심 기술은 Company S 소유, Company A는 제조 역할만\n→ 대법원 판례에서도 영업비밀로 인정 (비공지성, 경제적 ���치, ���밀관리성 충족)\n→ Agent가 "배타권: Company S (세정 레시피 및 HKMG 공정 기술)" 판정 기대`,
@@ -616,7 +616,7 @@ export const meetingMinutes: MeetingMinute[] = [
     title: "1차 원천 샘플(Ver 1.0) 평가 결과 공유 및 문제점 분석",
     date: "2025-07-08",
     companyS: `현재의 A사 독자 포뮬러만으로는 양산 적용이 절대 불가함. 특히 Cu 막질 표면의 화학적 흡착력 부족으로 연마 효율이 떨어짐. A사의 원천 기술인 입자 자체의 한계라기보다는, 화학적 활성화를 유도하는 첨가제 배합의 문제로 판단됨. 당사 연구소에서 보유한 계면 제어 기술 기반의 솔루션 검토가 필요함.`,
-    companyP: `당사 내부 실험실 데이터 대비 S사 실제 패턴 웨이퍼에서의 연마 속도가 급감한 것을 확인했음. 당사의 원천 Silica 입자 표면 개질 기술만으로는 미세 Cu 배선 공정 특유의 단차를 극복하기에 화학적 촉진력이 부족한 것으로 보임. 자체 촉진제 변경을 시도 중이나 단기간 내 개선이 어려운 상황임.`,
+    companyP: `당사 내부 실험실 데이터 대비 S사 실제 패턴 웨이퍼에서의 연마 속도가 급감한 것을 확인했음. 당사의 원천 Silica 입자 표면 개질 기술만으로는 미세 Cu 배선 공정 특유의 단차를 극복하기에 ���학적 촉진력이 부족한 것으로 보임. 자체 촉진제 변경을 시도 중이나 단기간 내 개선이 어려운 상황임.`,
     articleUrl: "https://www.sedaily.com/article/13774334",
     scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨가제로 원천 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 → 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 기여\n→ Agent가 "배타권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기대`,
   },
@@ -812,7 +812,7 @@ export const meetingMinutes: MeetingMinute[] = [
     title: "웨이퍼 와피지 제어 장비 기술 사양 정의",
     date: "2020-11-20",
     companyS: `와피지 제어 목표: 웨이퍼 휨 범위 ±50μm 이내 유지 (현 해외 장비 대비 동등 수준)\nS사 기술 조언 실시간 모니터링을 위해 열 센서를 웨이퍼 가장자리 3지점에 배치하는 방안 제안\n자동 보정 알고리즘�� PID 제어 방식 기반 권장 - S사 공정 노하우 반��\n300mm 웨이퍼 대��, 처리 속도 시간당 60매 이상`,
-    companyP: `와피지 제어 목표 ±50μm 달성 가능 - 당사 보유 열제어 기술 적용\nS사 제안 수용 센서 3지점 배치 방안 적용, 당사 경험상 4지점 추가 검토\nPID 제어 기반 동의하나, 당사 독자 개발 적응형 알고리즘 병행 적용 제안\n2021년 3월 프로토타입 제작 완료 및 평가용 샘플 제공 예정`,
+    companyP: `와피지 제어 목표 ±50μm 달성 가능 - 당사 보유 열제어 기술 적용\nS사 제안 수용 센서 3지점 배치 방안 적용, 당사 경험상 4지점 추가 검토\nPID 제어 기반 동의하나, 당사 ���자 개발 적응형 알고리즘 병행 적용 제안\n2021년 3월 프로토타입 제작 완료 및 평가용 샘플 제공 예정`,
     articleUrl: "https://v.daum.net/v/6vJbh7TNCr",
     scenarioNote: `[모호한 기여도 판단 시나리오]\n목적: 계측 장비 국산화 과제에서 양측 기여도가 불명확한 경우 배타권 판별 테스트\n- Company S: 사양 정의 + 일부 구체적 기술 조언 (센서 배치, 알고리즘 로직 제안)\n- Company A: 기술 구현 + 독자 개발 부분 (예측 제어 로직)\n→ 공동 기여 vs 개별 기여 경계가 모호한 케이스\n→ Agent가 "기여도 불명확, 추가 증거 필요" 판정 기대`,
   },
@@ -910,10 +910,8 @@ function buildSnpr20e1Facts(): Fact[] {
 export const analysisResults: Record<string, AnalysisResult> = {
   HBM426E1: {
     ...HBM426E1_NEW,
-    key_contributions: {
-      company_s_ideas: [],
-      company_p_ideas: []
-    },
+    facts: []
+  },
     legal_perspective: {
       applicable_laws: [],
       overall_legal_analysis: "",
@@ -1049,17 +1047,6 @@ export const analysisResults: Record<string, AnalysisResult> = {
   },
   SNPR20E1: {
     ...SNPR20E1_NEW,
-    key_contributions: {
-      company_s_ideas: [],
-      company_p_ideas: []
-    },
-    legal_perspective: {
-      applicable_laws: [],
-      overall_legal_analysis: "",
-      risk_factors: [],
-      recommended_actions: []
-    },
-    elapsed_time: 342.83,
     facts: buildSnpr20e1Facts(),
   },
 }
