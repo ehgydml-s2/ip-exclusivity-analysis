@@ -102,11 +102,6 @@ function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
             {judgement.topic}
           </h5>
           <p className="mt-1 text-xs text-muted-foreground">{judgement.issue}</p>
-          {judgement.impact && (
-            <p className="mt-2 text-xs leading-relaxed text-foreground line-clamp-2">
-              {judgement.impact}
-            </p>
-          )}
         </div>
         <ChevronDown
           className={cn(
@@ -315,7 +310,7 @@ export function KeyContributionsView({ contributions, judgements }: KeyContribut
           <div className="mt-4">
             {/* Company S Tab */}
             {activeTab === "company-s" && groupedJudgements["Company S"].length > 0 && (
-              <div className="grid gap-4 lg:grid-cols-2">
+              <div className="space-y-4">
                 {groupedJudgements["Company S"].map((judgement) => (
                   <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
                 ))}
@@ -324,7 +319,7 @@ export function KeyContributionsView({ contributions, judgements }: KeyContribut
 
             {/* Partner Tab */}
             {activeTab === "partner" && groupedJudgements["Partner"].length > 0 && (
-              <div className="grid gap-4 lg:grid-cols-2">
+              <div className="space-y-4">
                 {groupedJudgements["Partner"].map((judgement) => (
                   <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
                 ))}
@@ -333,7 +328,7 @@ export function KeyContributionsView({ contributions, judgements }: KeyContribut
 
             {/* Unclear Tab */}
             {activeTab === "unclear" && groupedJudgements["Unclear"].length > 0 && (
-              <div className="grid gap-4 lg:grid-cols-2">
+              <div className="space-y-4">
                 {groupedJudgements["Unclear"].map((judgement) => (
                   <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
                 ))}
@@ -342,7 +337,7 @@ export function KeyContributionsView({ contributions, judgements }: KeyContribut
 
             {/* No Data Tab */}
             {activeTab === "no-data" && groupedJudgements["No Data"].length > 0 && (
-              <div className="grid gap-4 lg:grid-cols-2">
+              <div className="space-y-4">
                 {groupedJudgements["No Data"].map((judgement) => (
                   <JudgementIdeaCard key={judgement.group_id} judgement={judgement} />
                 ))}
