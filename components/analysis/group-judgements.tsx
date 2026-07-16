@@ -87,14 +87,9 @@ function JudgementGroupCard({ judgement }: { judgement: Judgement }) {
 
           {judgement.supporting_facts.length > 0 && (
             <div className="flex flex-wrap gap-0.5">
-              {judgement.supporting_facts.slice(0, 5).map((fact) => (
+              {judgement.supporting_facts.map((fact) => (
                 <FactRef key={fact} id={fact} />
               ))}
-              {judgement.supporting_facts.length > 5 && (
-                <span className="inline-flex items-center rounded-md border border-border bg-muted px-1.5 py-0.5 align-baseline text-[0.65rem] font-mono font-semibold text-muted-foreground">
-                  +{judgement.supporting_facts.length - 5}
-                </span>
-              )}
             </div>
           )}
         </div>
