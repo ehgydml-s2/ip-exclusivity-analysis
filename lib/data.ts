@@ -197,7 +197,7 @@ export const meetingMinutes: MeetingMinute[] = [
     title: "사양 조정 및 TSV 공정 최적화 논의",
     date: "2020-06-10",
     companyS: `개선 샘플 B-2의 표면 거칠기 0.75nm 달성 - 목표 충족\n구리 제거율 분당 195nm로 소폭 하락, 목표 범위 내 조정 필요\nHBM 12단 적층 공정에서의 안정성 추가 검증 요청\n양산 적용 전 최종 사양 확정을 위한 베이스라인 설정 제안`,
-    companyP: `제거율 상향 조정 가능 - 분산제 농도 2% 증가로 200nm 달성 예상\n12단 적층 공정 대응을 위한 장기 안정성 데이터 제공 (3개월 에이징 테스트)\n베이스라인 확정 시 해당 조성에 대한 배타적 공급 계약 체결 희망\n경쟁사(S사 등) 공급 제한 조건 사전 협의 필요`,
+    companyP: `제거율 상향 조정 가능 - 분산제 농도 2% 증가로 200nm 달성 예상\n12단 적층 공정 대응을 위한 장기 안정성 ���이터 제공 (3개월 에이징 테스트)\n베이스라인 확정 시 해당 조성에 대한 배타적 공급 계약 체결 희망\n경쟁사(S사 등) 공급 제한 조건 사전 협의 필요`,
     articleUrl: "https://www.sedaily.com/article/13774334",
     scenarioNote: `[명확한 배타권 근거 시나리오 - 기술 제안형]\n목적: Company S의 독자적 기술 아이디어가 명확한 케이스\n- Company S: 분지형 부틸 리간드 구조 독자 제안 (회의록 02)\n- Company A: Company S 제안 기반 합성 및 구현\n→ 명확한 배���권 근거 존재\n→ Agent가 "배타권 귀�������: Company S" 판정 기대`,
   },
@@ -270,7 +270,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "설비",
     title: "HBM4 베이스 다이 공동 개발 MOU 체결",
     date: "2024-04-20",
-    companyS: `S사와 A사는 차세대 HBM4 베이스 다이 개선을 위한 전략적 협력 MOU 체결\n기존 HBM3E 대비 제한된 공간에 추가 기능 탑재 필요 - 베이스 다이 고도화 필수\nA사의 첨단 로직 공정 기술과 S사 HBM 메모리 기술 결합 목표\n2026�� HBM4 양산 목표, 경쟁사 대비 기술 우위 확보 전략`,
+    companyS: `S사와 A사는 차세대 HBM4 베이스 다이 개선을 위한 전략적 협력 MOU 체결\n기존 HBM3E 대비 제한된 공간에 추가 기능 탑재 필요 - 베이스 다이 고도화 필수\nA사의 첨단 로직 공정 기술과 S사 HBM 메모리 기술 결합 목표\n2026�� HBM4 양산 목표, 경쟁사 대비 기술 우위 확보 전��`,
     companyP: `A사�� CoWoS 2.5D 패키징 기술 및 첨단 로직 공정으로 HBM 베이스 다이 개선 협력 의향\nS사의 HBM 메모리 기술과 당사 로직 공정 기술 시너지 기대\n공동 기술���발을 통한 ��세�� AI 칩 시장 선도 목표\n초기 기술 로드맵 및 역할 분담 논�� 시작`,
     articleUrl: "https://www.kedglobal.com/korean-chipmakers/newsView/ked202404190012",
     scenarioNote: `[모호한 기여도 판단 시나리오 - 공동 기술 통합형]\n목적: 양사가 각자 핵�� 기술을 보유하고 공동������ 통합 개발, 기여도 ��계 ���명확\n- Company S (SK하이닉스): HBM 메모리 기���, 일부 베이스 다이 구조 제안\n- Company A (TSMC): 로직 공정 기술, 일부 베이스 다이 기능 제��\n→ 양측이 모두 핵심 아이디어 제시, 최종 성과는 통합 결과\n→ 누가 더 큰 기여를 했는지 불명확\n→ Agent가 "기여도 ���명확, 공동 개발 성과, 추가 증거 필요" 판정 기대`,
@@ -392,7 +392,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "설비",
     title: "프로토타입 장비 평가 및 SK하이닉스 레시피 검증",
     date: "2024-10-25",
-    companyS: `협력업체 프로토타입 장비로 당사 세정 레시피 ���용 테스트 완료\nHKMG 공정 세정 효율 95% 달성 - 당사 독자 레시피의 우수성 검증\n다만 ���부 웨이퍼에서 잔류물 발생 - 장비 린스 공정 개선 필요\n당사 레시피���� 그���로 유지, 장비 측면 개선으로 해결 요청`,
+    companyS: `협력업체 프로토��입 장비로 당사 세정 레시피 ���용 테스트 완료\nHKMG 공정 세정 효율 95% 달성 - 당사 독자 레시피의 우수성 검증\n다만 ���부 웨이퍼에서 잔류물 발생 - 장비 린스 공정 개선 필요\n당사 레시피���� 그���로 유지, 장비 측면 개선으로 해결 요청`,
     companyP: `S사 레시피 기반 세정 성능 우수��을 확인\n잔류물 문제�� ��사 장비 린스 공정 미흡으로 판�� - 린스 노����� 배치 개선 예정\nS사 레시피 자체는 변경 없이, 장비만 개선하여 2025년 1월 ��평가\n장비 개선 과��에서도 S사 레시피 보호 최우선`,
     articleUrl: "https://www.daeryunlaw.com/trend/10746",
     scenarioNote: `[명확한 배타권 근거 시나리오 - 레시피 제공형]\n목적: Company S가 핵심 레시피/공정 기술을 독자 개발하여 제���, Company A는 구현만 담당\n- Company S (SK하이닉스): 세정 레시피 독자 개발, HKMG 공정 기술 보유, 장비 사양 정의\n- Company A (협력업체): Company S 제��� 사양대로 세정장비 설계 및 제조\n→ 핵심 기술은 Company S 소유, Company A는 제조 역할만\n→ 대법원 판례에서도 영업비밀로 인정 (비공지성, 경제적 ���치, ���밀관리성 충족)\n→ Agent가 "배타권: Company S (세정 레시피 및 HKMG 공정 기술)" 판정 기대`,
@@ -553,7 +553,7 @@ export const meetingMinutes: MeetingMinute[] = [
     title: "프로토타입 장비 초도 성능 평가",
     date: "2024-02-20",
     companyS: `코비스테크놀로지 프로토타입 장비 S사 평가 라인 투입 테스트 완료\n두께 측정 정밀도: ±0.6μm - 목표 대비 80% 달성, 추가 개선 필요\n표면 결함 검출 감도: 0.12μm - 목표 근접, 광학 센서 해상도 향상 시 목표 달성 가능\n측정 시간 웨이퍼당 28초 - 목표 충족, 다만 자동화 라인 연동 시 통신 지연 현상 발견`,
-    companyP: `프로토타입 평가 결과 피드백 감사 - 개선 방향 명확히 확인\n두께 측정 정밀도 향상을 위해 당사 독자 개발 광학 렌즈 시스템 업그레이드\n자동화 라인 통신 지연은 당사 프로토콜 최적화로 해결 가능\n개선 프로토타입 2024년 7월 제공 예정 - 목표 성능 100% 달성 목표`,
+    companyP: `프로토타입 평가 결과 피드백 감사 - 개선 방향 명확히 확인\n두께 측정 정밀도 향상을 위해 당사 독자 개발 광학 렌즈 시스템 업그레이드\n자동화 라인 통신 지연은 당사 프로토콜 최적화로 해결 가능\n개선 프로토타입 2024년 7월 제공 예정 - 목표 성�� 100% 달성 목표`,
     articleUrl: "https://news.skhynix.co.kr/technology-innovation-7th-2/",
     scenarioNote: `[명확한 독자 개발 시나리오 - 장비 국산화형]\n목적: Company A가 독자 기술로 장비 개발, Company S는 평가/피드백만 제공한 케이스\n- Company S: 사양 정의, 성능 평가, 피드백 제공 (일반적 수요자 역할)\n- Company A: 하이브리드 계측 기술 독자 개발 및 구현 (완전 독자 기술)\n→ Company A 독자 기술, Company S는 수요자 역할만\n→ Agent가 "배타권 없음, 일반 공급 계약" 판정 기대`,
   },
@@ -641,7 +641,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `S사 첨가제로 결함 완전 해결\n당사의 Additive-X 도입을 통해 A사 Silica Slurry의 치명적 결함이 완전히 해결되었음이 증명됨. 이로써 'A사 Silica 입자 + S사 Additive-X' 조합이 차세대 공정의 표준 포뮬러 후보로 지정됨. 본 첨가제 기술 및 최적 배합비(0.15wt%)는 S사의 주도로 도출된 결과이므로, 향후 계약 시 당사의 독점적 권리가 보장되어야 함.`,
     companyP: `Additive-X 적용 후 연마 속도와 선택비(Selectivity)가 획기적으로 개선된 데이터에 동의함. 당사의 Silica 제조 원천 기술과 S사의 첨가제 기술이 시너지를 낸 결과임. 양산 신뢰성 확보를 위해 추가적인 대량 합성 및 장기 저장 안정성 테스트를 공동 진행할 것을 요청함.`,
     articleUrl: "https://www.sedaily.com/article/13774334",
-    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨가제로 원천 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 → 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 ��여\n→ Agent가 "배���권: Company S (Additive-X 적용 제품에 한정, 5년��� 제3자 공급 금지)" 판정 기대`,
+    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨가제로 원�� 기술의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하지만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 → 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 ��여\n→ Agent가 "배���권: Company S (Additive-X 적용 제품에 한정, 5년��� 제3자 공급 금지)" 판정 기대`,
   },
   {
     id: "SCMP26E1_05",
@@ -712,7 +712,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "소재",
     title: "IP-B20 샘플 평가 결과 공유 및 노광 감도(Sensitivity) 개선 방안 논의",
     date: "2020-05-18",
-    companyS: `S사 내부 평가 결과, 분지형 리간드 도입으로 박막 균일도는 30% 이상 개선되었으나, EUV 노광 에너지가 기존 유기물 PR 대비 높게 요구되는 '감도 저하' 현상이 관찰됨\n분지형 리간드의 두께가 Sn 코어의 EUV 반응을 일부 차단하는 것으로 분석됨\n2차 구조 개선 제안 감도를 올리기 위해 리간드 말단에 전자 흡수성(Electron-withdrawing)이 강한 불소(F) 또는 할로겐 원소를 부분 치환하는 구조 변경 제안\n2차 제안 구조(코드명: IP-B21-F) 샘플 합성 요청`,
+    companyS: `S사 내부 평가 결과, 분지형 리간드 도입으로 박막 균일도는 30% 이상 개선되었으나, EUV 노광 에너지가 기존 유기물 PR 대비 높게 요구되는 '감도 저하' 현상이 관찰됨\n분지형 리간드의 두께가 Sn 코어의 EUV 반응을 일부 차단하는 것으로 분석됨\n2차 구조 개선 제안 감도를 올리기 위해 리간드 말단에 전자 흡수성(Electron-withdrawing)이 강한 불소(F) 또는 할로겐 원소를 부분 치환하는 구조 변경 제안\n2차 제안 구���(코드명: IP-B21-F) 샘플 합성 요청`,
     companyP: `말단 할로겐 치환은 Sn-C ���합의 에너지를 약화시켜 EUV 광반응 속도를 획기적으로 올릴 수 있는 우수한 접근법\n삼성의 2차 제안 구조(코드명: IP-B21-F)에 대한 합성 가능성을 확인하고 6주 내��� 샘플을 재공급����겠음\n본 구조 역시 삼성의 독자적 제안이므로 배타적 보호 필요함을 인정\nIP-B21-F는 삼성 전용 개발품으로 관리할 것`,
     articleUrl: "https://www.etnews.com/20251205000260",
     scenarioNote: `[명확한 배타권 근거 시나리오 - 구조 최적화형]\n목적: Company S의 단계적 기술 개선 제안이 핵심 성과로 이어진 케이스\n- Company S: 분지형 리간드 제안 (회의록 02) → 말단 할로겐 치환 제안 (회의록 04)\n- Company A: 원천 Sn 기술 보유, Company S 제안 구조 합��\n→ 양산 성공의 결정적 기여는 Company S의 구조 제안\n→ Agent가 "배타권 귀속: Company S, 특정 구조체(IP-B21-F)에 한정" 판정 기대`,
@@ -751,7 +751,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `정제 공정이 개선된 최신 샘플을 S사 D램 파일럿 라인에 투입하여 12인치 웨이퍼 상에서의 두께 균일성, Defect 밀도, 노광 마진을 종합 평가\n고순도 정제 결과 마이크로 브릿지 결함이 90% 이상 제거됨을 확인\n이로써 삼성이 제안한 '분지형 할로겐 말단 치환 리간드 구조' 기반의 Sn PR이 파일럿 수율 기준을 만족함\n최종 양산화를 위한 안정성(Shelf-life) 검증 단계로 진입 가능`,
     companyP: `삼성과의 긴밀한 협력 덕분에 무기물 PR의 고질적 문제인 Defect를 해결할 수 있었음\nA사 본사 차원에서 양산 공급을 위한 원재료 공급망(SCM) 및 품질 보증(QA) 체계 구축을 시작\n삼성 제안 구조(IP-B21-F)의 배타적 권리를 인정하며, 양산 공급 계약 체결을 위한 법무 검토 착수\n2021년 양산 공급 체제 구축 목표`,
     articleUrl: "https://www.etnews.com/20251205000260",
-    scenarioNote: `[명확한 배타권 근거 시나리오 - 구조 최적화형]\n목적: Company S의 단계적 기술 개선 제안이 핵심 성과로 이어진 케이스\n- Company S: 분지형 리간드 제안 (회의록 02) → 말단 할로겐 치환 제안 (회의록 04)\n- Company A: 원천 Sn 기술 보유, Company S 제안 구조 합성\n→ 양산 성공의 결정적 기여는 Company S의 구조 제안\n→ Agent가 "배타권 귀속: Company S, ���정 구조체(IP-B21-F)에 한정" 판정 기대`,
+    scenarioNote: `[명확한 배타권 근거 시나리오 - 구조 최적화형]\n목적: Company S의 단계적 기술 개선 제안이 핵심 성��로 이어진 케이스\n- Company S: 분지형 리간드 제안 (회의록 02) → 말단 할로겐 치환 제안 (회의록 04)\n- Company A: 원천 Sn 기술 보유, Company S 제안 구조 합성\n→ 양산 성공의 결정적 기여는 Company S의 구조 제안\n→ Agent가 "배타권 귀속: Company S, ���정 구조체(IP-B21-F)에 한정" 판정 기대`,
   },
   {
     id: "SNPR20E1_08",
@@ -763,7 +763,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `양산 적용을 위한 최종 관문인 3개월 이상 장기 보존 시 Sn 클러스터 간의 자발적 겔화(Gellation) 및 침전 현상을 억제하기 위한 방안 논의\n분지형 리간드가 안정성을 높이긴 하나, 금��� 특성상 미량의 수분/산소 노출 ��� 겔화가 가속화됨\n인프리아는 재료 내에 미량의 항산화 안��제를 첨가하고, A사은 특수 차광 및 내벽 코팅이 적용된 전용 캔(Bottle)을 개발하여 공급해야 함\n보존 기간 6개�� 이상 보장 ��구`,
     companyP: `삼성의 지적대로 수분 차단이 핵심임\nA사이 보유한 특수 테프론 코팅 용기를 적용하고, 인프리아 연구소에서 겔화 억제제(Inhibitor) 최적 배합비를 도출\n최종 보존 기간을 6개월 이상으로 보장\n용기 및 안정제 개발 완료 시점: 2020년 12월 말 목표`,
     articleUrl: "https://www.etnews.com/20251205000260",
-    scenarioNote: `[명확한 ���타권 근거 시나리오 - 구조 최적화형]\n목적: Company S의 단계적 기술 개선 제안이 핵심 성과로 이어진 케이스\n- Company S: 분지형 리간드 제안 (회의록 02) → 말단 할로겐 치환 제안 (회의록 04)\n- Company A: 원천 Sn 기술 보유, Company S 제안 구조 합성\n→ 양산 성공의 결정적 기여는 Company S의 구조 제안\n→ Agent가 "배타권 귀속: Company S, 특정 구조체(IP-B21-F)에 한정" 판정 기대`,
+    scenarioNote: `[명확한 ���타권 근거 시나리오 - 구조 최적화형]\n목적: Company S의 단계적 기술 개선 제안이 핵심 성과로 이어진 케이스\n- Company S: 분지형 리간드 제안 (회의록 02) → 말단 할로겐 치환 제안 (회의록 04)\n- Company A: 원천 Sn 기술 보유, Company S 제안 구조 합성\n�� 양산 성공의 결정적 기여는 Company S의 구조 제안\n→ Agent가 "배타권 귀속: Company S, 특정 구조체(IP-B21-F)에 한정" 판정 기대`,
   },
   {
     id: "SNPR20E1_09",
@@ -907,6 +907,148 @@ function buildSnpr20e1Facts(): Fact[] {
 }
 
 export const analysisResults: Record<string, AnalysisResult> = {
+  HBM426E1: {
+    project_code: "HBM426E1",
+    project_type: "설비",
+    overall_conclusion: {
+      summary: "HBM4 베이스 다이 개발 프로젝트는 S사와 A사의 전략적 협력을 통해 성공적으로 양산에 돌입했으며, 경쟁사 대비 뛰어난 성능을 달성했습니다. 핵심 베이스 다이 기술은 양사의 공동 개발 성과물로 정의되었고, 제3자 공급 시 양사 사전 협의가 필수적인 공동 소유 형태로 합의되었습니다. 다만, 각 사의 개별 핵심 기술은 독자 소유로 인정되어 향후 권리 범위에 대한 명확한 정의가 필요합니다.",
+      overall_exclusivity_assessment: "Mixed",
+      key_risks: [
+        "공동 소유 기술과 각 사 독자 소유 기술 간의 경계 불분명으로 인한 향후 분쟁 가능성",
+        "배타권 유효기간 및 위반 시 제재 조항 등 계약서 상 세부 조항 부재",
+        "개발 과정에서의 자원(인력, 비용) 투입 비중에 대한 명확한 기록 부족"
+      ],
+      recommendations: [
+        "HBM4 베이스 다이 관련 최종 계약서(MOU 외)를 면밀히 검토하여 배타권, 독점권, 제3자 공급 금지 조항의 구체적인 내용과 유효기간, 위반 시 제재 조항을 확인해야 합니다.",
+        "공동 소유로 합의된 통합 기술과 각 사가 독자적으로 소유하는 개별 핵심 기술의 범위를 명확히 정의하고, 필요시 특허 출원 전략을 수립해야 합니다.",
+        "향후 공동 개발 프로젝트를 위해 각 사의 개발비, 인력, 설비 투입 비중에 대한 상세한 기록 및 합의 절차를 마련해야 합니다."
+      ]
+    },
+    judgements: [
+      {
+        group_id: "G001",
+        topic: "양사 공동 개발 과정",
+        issue: "개발 주체",
+        impact: "양사 기술 아이디어의 복합적인 결합과 공동 최적화는 HBM4 베이스 다이 개발의 성공에 필수적이었습니다.",
+        reasoning: "양사는 초기 기술 로드맵 및 역할 분담 논의를 시작하고, 기술 통합 시 예상되는 인터페이스 이슈를 사전 논의했습니다.",
+        counter_arguments: "방향성 있는 Fact가 없어 특정 주체에 유리한 주장을 펼치기 어렵습니다.",
+        recommendation: "공동 개발 과정에서 각 사의 구체적인 역할과 기여도를 명확히 문서화해야 합니다.",
+        legal_basis: {
+          applicable_laws: ["CV001"],
+          contract_analysis: {
+            has_exclusivity_clause: true,
+            clause_summary: "공동 개발 성과물의 제3자 공급 시 양사 사전 협의 필요 조항 합의",
+            validity_period: "정보 부족",
+            enforcement_risk: "중간"
+          },
+          inventorship_analysis: "양사의 기술 아이디어가 복합적으로 결합된 결과",
+          contribution_analysis: "양사 공동 최적화 및 기술 통합을 통해 개발 진행",
+          risk_factors: [
+            "공동 개발 과정에서 각 사의 기여도에 대한 정량적 근거 부족",
+            "단독 해결 불가능했던 이슈에 대한 각 사의 구체적인 기술적 기여 범위 불명확"
+          ],
+          recommended_legal_actions: [
+            "공동 개발 계약서에 각 사의 기여도 산정 기준 및 지분 비율을 명확히 명시하도록 검토"
+          ]
+        },
+        evaluation_grade: {
+          tech_effect_grade: "1등급",
+          tech_effect_reasoning: "양사 기술 아이디어의 복합적인 결합과 공동 최적화가 HBM4 베이스 다이 개발에 필수적",
+          competitor_applicability: "정보 부족",
+          competitor_reasoning: "회의록에 경쟁사 적용 가능성에 대한 명시적인 정보가 부족",
+          tech_gap: "대",
+          tech_gap_reasoning: "특정 기술적 난관이 단독으로는 해결 불가능했음을 시사",
+          final_grade: "A1",
+          grade_reasoning: "양사 기술 시너지를 통한 공동 개발 성과"
+        },
+        claimed_holder: "Joint",
+        fact_count: 0,
+        supporting_facts: []
+      },
+      {
+        group_id: "G006",
+        topic: "프로토타입 성능 검증",
+        issue: "기술 성능 개선",
+        impact: "경쟁사 대비 전력 효율 20%, 대역폭 30% 향상 달성은 HBM4 베이스 다이 기술의 핵심적인 경쟁 우위를 확보했음을 입증",
+        reasoning: "S사가 성능 개선 목표를 설정하고 경쟁사 대비 전력 효율 20%, 대역폭 30% 향상을 달성했다고 발표",
+        counter_arguments: "성능 개선이 양사 기술의 통합 결과일 가능성 있음",
+        recommendation: "최종 성능 개선에 대한 S사와 A사의 구체적인 기여도를 정량적으로 분석해야 함",
+        legal_basis: {
+          applicable_laws: ["PL001"],
+          contract_analysis: {
+            has_exclusivity_clause: true,
+            clause_summary: "공동 개발 성과물의 제3자 공급 시 양사 사전 협의 필요",
+            validity_period: "정보 부족",
+            enforcement_risk: "중간"
+          },
+          inventorship_analysis: "성능 개선은 양사의 개별 기술 기여가 통합된 결과",
+          contribution_analysis: "양사의 기술 통합 효과로 평가",
+          risk_factors: [
+            "최종 성능 개선에 대한 S사 단독 기여 주장의 근거 부족",
+            "양사 기술 통합 효과에 대한 명확한 기여도 배분 기준 부재"
+          ],
+          recommended_legal_actions: [
+            "성능 개선 관련 특허 출원 시 발명자 기여도를 명확히 구분하여 등재"
+          ]
+        },
+        evaluation_grade: {
+          tech_effect_grade: "1등급",
+          tech_effect_reasoning: "경쟁사 대비 전력 효율 20%, 대역폭 30% 향상 달성",
+          competitor_applicability: "고",
+          competitor_reasoning: "경쟁사 대비 성능 향상을 명시적으로 언급하여 보호 필요",
+          tech_gap: "대",
+          tech_gap_reasoning: "경쟁사 대비 20-30% 성능 향상은 상당한 기술 격차 의미",
+          final_grade: "A1",
+          grade_reasoning: "경쟁사 대비 성능 향상 달성"
+        },
+        claimed_holder: "Company S",
+        fact_count: 1,
+        supporting_facts: []
+      }
+    ],
+    legal_perspective: {
+      applicable_laws: [
+        { law_id: "CV001", law_name: "기술 협력 계약", relevance: "공동 개발 기술 관련", application_to_project: "양사 기술 기여도 정의" },
+        { law_id: "CL002", law_name: "라이센스 계약", relevance: "제3자 공급 관련", application_to_project: "공동 기술 라이센스 제한" }
+      ],
+      overall_legal_analysis: "HBM4 베이스 다이는 양사의 공동 개발 성과물로서 공동 소유 구조로 합의. 각 사의 개별 기술은 독자 소유 유지.",
+      risk_factors: [
+        "공동 소유 기술과 개별 기술의 경계 불명확",
+        "배타권 유효기간 및 제재 조항 부재",
+        "자원 투입 비중 기록 부족"
+      ],
+      recommended_actions: [
+        "최종 계약서를 면밀히 검토하여 배타권 조항의 구체적 내용 확인",
+        "공동 기술과 개별 기술의 범위를 명확히 정의"
+      ]
+    },
+    key_contributions: {
+      company_s_ideas: [
+        {
+          idea: "HBM4 베이스 다이 고도화 제안",
+          description: "차세대 AI 칩 시장 선도를 위한 HBM4 개발 전략 수립",
+          impact: "프로젝트의 전략적 방향성 결정",
+          supporting_facts: [],
+          exclusivity_status: "Joint",
+          significance: "높음",
+          reasoning: "S사의 전략적 제안이 프로젝트 초기 설정에 중요한 역할"
+        }
+      ],
+      company_p_ideas: [
+        {
+          idea: "CoWoS 2.5D 패키징 기술 적용",
+          description: "첨단 로직 공정 기술을 통한 HBM 베이스 다이 개선",
+          impact: "성능 향상 및 수율 개선",
+          supporting_facts: [],
+          exclusivity_status: "Joint",
+          significance: "높음",
+          reasoning: "A사의 핵심 기술이 공동 개발에 중요하게 기여"
+        }
+      ]
+    },
+    elapsed_time: 0,
+    facts: []
+  },
   SNPR20E1: {
     ...SNPR20E1_NEW,
     key_contributions: {
