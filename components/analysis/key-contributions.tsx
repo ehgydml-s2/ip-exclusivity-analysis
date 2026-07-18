@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Lightbulb, ChevronDown, AlertTriangle, CheckSquare } from "lucide-react"
+import { Lightbulb, ChevronDown, FileText, Scale, AlertTriangle, CheckSquare } from "lucide-react"
 import { FactText, FactRef } from "./fact-ref"
 import { cn } from "@/lib/utils"
 
