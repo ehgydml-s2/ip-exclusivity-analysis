@@ -25,7 +25,6 @@ export type Project = {
 
 export type Confidence = "High" | "Medium" | "Low"
 export type ExclusivityHolder = "Company S" | "Company P" | "Joint" | "Unclear"
-export type FinalGrade = "A1" | "A2" | "B" | "C/D" | "N/A"
 
 export type FactSpeaker = "Company S" | "Company P" | "기타"
 export type ClaimDirection = "S Favorable" | "P Favorable" | "Neutral"
@@ -271,7 +270,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "설비",
     title: "HBM4 베이스 다이 공동 개발 MOU 체결",
     date: "2024-04-20",
-    companyS: `S사와 A사는 차세대 HBM4 베이스 다이 개선을 위한 ���략적 협력 MOU 체결\n기존 HBM3E 대비 제한��� 공간에 추가 기능 탑재 필요 - 베이스 다이 고도화 필수\nA사의 첨단 로직 공정 기술과 S사 HBM 메모리 기술 결합 목표\n2026�� HBM4 양산 목표, 경쟁사 대비 기술 우위 확보 전��`,
+    companyS: `S사와 A사는 차세대 HBM4 베이스 다이 개선을 위한 ����략적 협력 MOU 체결\n기존 HBM3E 대비 제한��� 공간에 추가 기능 탑재 필요 - 베이스 다이 고도화 필수\nA사의 첨단 로직 공정 기술과 S사 HBM 메모리 기술 결합 목���\n2026�� HBM4 양산 목표, 경쟁사 대비 기술 우위 확보 전��`,
     companyP: `A사�� CoWoS 2.5D 패키징 기술 및 첨단 로직 공정으로 HBM 베이스 다이 개선 협력 의향\nS사의 HBM 메모리 기술과 당사 로직 공정 기술 시너지 기대\n공동 기술���발을 통한 ��세�� AI 칩 시장 선도 목표\n초기 기술 로드맵 및 역할 분담 논�� 시작`,
     articleUrl: "https://www.kedglobal.com/korean-chipmakers/newsView/ked202404190012",
     scenarioNote: `[모호한 기여도 판단 시나리오 - 공동 기술 통합형]\n목적: 양사가 각자 핵�� 기술을 보유하고 공동������ 통합 개발, 기여도 ��계 ���명확\n- Company S (SK하이닉스): HBM 메모리 기���, 일부 베이스 다이 구조 제안\n- Company A (TSMC): 로직 공정 기술, 일부 베이스 다이 기능 제��\n→ 양측이 모두 핵심 아이디어 제시, 최종 성과는 통합 결과\n→ 누가 더 큰 기여를 했는지 불명확\n→ Agent가 "기여도 ���명확, 공동 개발 성과, 추가 증거 필요" 판정 기대`,
@@ -331,7 +330,7 @@ export const meetingMinutes: MeetingMinute[] = [
     projectType: "설비",
     title: "HBM4 최종 사양 확정 및 권리 관계 논의",
     date: "2025-11-20",
-    companyS: `HBM4 베이스 다이 최종 사양 확정 - 양사 공동 개발 성과물로 정의\n권리 관계 협의 베이스 다이 기술은 양사 공동 소유, 개별 핵심 기술은 각사 소유 유지\nS사: HBM 메모리 스택 및 인터페이스 설계 독자 소유\n제3자 공급 시 양사 사전 협의 필요 - 공동 개발 성과물 보���`,
+    companyS: `HBM4 베이스 다이 최종 사양 확정 - 양사 공동 개발 성과물로 정의\n권리 관계 협의 베이스 다이 기술은 양사 공동 소유, 개별 핵심 기술은 각사 소유 유지\nS사: HBM 메모리 스택 및 인터페이스 설계 독자 소유\n제3자 ��급 시 양사 사전 협의 필요 - 공동 개발 성과물 보���`,
     companyP: `최종 사양 확정 동의 - 베이스 다이는 양사 공동 개발 성과물\n권리 관계 협의 A사: 로직 공정 기술 및 CoWoS 패키징 독자 소유\n베이스 다이 통합 기술은 양사 공동 소유 - 단독 ��용 불가\n제3자 공급 시 양사 협의 조항 수용 - 공동 개발 성과 보호`,
     articleUrl: "https://www.kedglobal.com/korean-chipmakers/newsView/ked202404190012",
     scenarioNote: `[모호한 기여도 판단 시나리오 - 공동 기술 통합형]\n목적: 양사가 각자 핵심 기술을 보유하고 공동��로 통합 개발, 기여��� 경계 불명확\n- Company S (SK하��닉스): HBM 메모리 기술, 일부 베이스 다이 구조 제안\n- Company A (TSMC): 로직 공정 기술, 일부 베이스 다이 기능 제안\n→ 양측이 모두 핵심 아이디어 제시, 최종 성과는 통합 결과\n→ 누가 더 큰 기여를 했는지 불명확\n→ Agent가 "기여도 불명확, 공동 개발 성과, 추가 증거 필요" 판정 기대`,
@@ -346,7 +345,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `HBM4 양산 공식 개시 - S사+A사 공동 개발 베이스 다이 적용\n경쟁사 대비 전력 효율 20%, 대역폭 30% 향상 달성\n공동 성과 평가 베이스 다이 핵심 기능은 양사가 각각 기여���고 통합한 결과로 평가\n향후 차세대 제품(HBM5) 공동 개발 지속 협력 합의`,
     companyP: `HBM4 양산 성공 - A사+S사 전략적 협력의 성과\nAI 칩 시장에서 경쟁 우위 확보 - Nvidia 등 주요 고객사 긍정 평가\n공동 성과 평가 베이스 다이 기술은 양사 기술 시너지의 결과\n장기 파트너십 강화 - 차세대 제품 공동 개발 지속`,
     articleUrl: "https://www.kedglobal.com/korean-chipmakers/newsView/ked202404190012",
-    scenarioNote: `[모호한 기여도 판단 시나리오 - 공동 기술 통합형]\n목적: 양사가 각자 핵심 기술을 보유하고 공동으로 통합 개발, 기여도 경계 불명확\n- Company S (SK하이닉스): HBM 메모리 기술, 일부 베이스 다이 구조 제안\n- Company A (TSMC): 로직 공정 기술, 일부 베이스 다이 기능 제안\n→ 양측이 모두 핵심 아이디어 제시, 최종 성과는 통합 결과\n→ 누가 더 큰 기여를 했는지 불명확\n→ Agent가 "기여�� 불명확, 공동 개발 성과, 추가 증거 필요" 판정 기대`,
+    scenarioNote: `[모호한 기여도 판단 시나리오 - 공동 기술 통합형]\n목적: 양사가 각자 핵심 기술을 보유하고 공동으로 통합 개발, 기여�� 경계 불명확\n- Company S (SK하이닉스): HBM 메모리 기술, 일부 베이스 다이 구조 제안\n- Company A (TSMC): 로직 공정 기술, 일부 베이스 다이 기능 제안\n→ 양측이 모두 핵심 아이디어 제시, 최종 성과는 통합 결과\n→ 누가 더 큰 기여를 했는지 불명확\n→ Agent가 "기여�� 불명확, 공동 개발 성과, 추가 증거 필요" 판정 기대`,
   },
 
   // ---- HKMG25E1 (설비) ----
@@ -518,7 +517,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `엘티씨에이엠과의 고선택비인산 양산 공급 계약 최종 체결\n2021년 공급 물량: 상반기 월 100톤, 하반기 월 200톤\n수급 다변화 전략 성공 - A사 독점 구도 탈피\n국내 반도체 소재 생태계 강화 및 공급망 안정성 확보 달성`,
     companyP: `S사와의 양산 공급 계약 체결 완료 - 국내 고선택비인산 시장 진입 성공\n연간 2,000억원 규모 시장에서 점유율 확대 목표\nSK머티리얼즈의 투자 및 기술 지원에 감사하며, 장기 파트너십 강화\n차세대 3D 낸드(128단 이상) 대응 고선택비인산 공동 개발 제안`,
     articleUrl: "https://www.etnews.com/20200217000106",
-    scenarioNote: `[수급 다변�� 시나리��� - 기술 육성형]\n목적: Company S의 공급망 리스크 회피를 위한 협력사 육성 케이스\n- Company S: 기존 독점 공급(솔브레인) 구조 탈피 ���표\n- Company A: ��술 보��, Company S 요구 사양 충족\n→ Company A 독자 기술, Company S는 평��� 및 피������백 역할\n→ Agent가 "배타권 없음, 일반 공급 계약" 판정 기대`,
+    scenarioNote: `[수급 다변�� 시나리��� - 기술 육성형]\n목적: Company S의 공급망 리스크 회피를 위한 협력사 육성 ��이스\n- Company S: 기존 독점 공급(솔브레인) 구조 탈피 ���표\n- Company A: ��술 보��, Company S 요구 사양 충족\n→ Company A 독자 기술, Company S는 평��� 및 피������백 역할\n→ Agent가 "배타권 없음, 일반 공급 계약" 판정 기대`,
   },
 
   // ---- HWM25E1 (설비) ----
@@ -580,7 +579,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `양산형 장비 6개월 장기 운영 테스트 완료 - 가동률 99%, 고장률 0.3% 이하\n측정 재현성 검증 완료 - 동일 웨이퍼 100회 반복 측정 시 표준편차 0.05μm 이내\n유지보수 편의성 우수 - 정기 점검 주기 1년, 부품 교체 시간 1시간 이내\n국산화 목표 달성 확인 - 해외 장비 대비 동등 이상 성능 및 30% 비용 절감`,
     companyP: `양산 적합성 평가 통과 - 코비스테크놀로지 하이브리드 계측 장비 국산화 성공\n당사 독자 개발 하이브리드 센서 기술 및 알고리즘으로 목표 달성\nS사 기술혁신기업 프로그램 3년 협력 기간 동안의 지원에 깊이 감사\n국산 장비 공급 계약 체결 준비 완료 - 2025년 하반기 본격 공급 개시`,
     articleUrl: "https://news.skhynix.co.kr/technology-innovation-7th-2/",
-    scenarioNote: `[명확한 독자 개발 시나리오 - 장비 국산화형]\n목적: Company A가 독자 기술로 장비 개발, Company S는 평가/피드백만 제공한 케이스\n- Company S: 사양 정의, 성능 평가, 피드백 제공 (일반적 수요자 역할)\n- Company A: 하이브리드 계측 기술 독자 개발 및 구현 (완전 독자 기술)\n→ Company A 독�� 기술, Company S는 수요자 역할만\n→ Agent가 "배타권 없음, 일반 공급 계약" 판정 기대`,
+    scenarioNote: `[명확한 독자 개발 시나리오 - 장비 국산화형]\n목적: Company A가 독자 기술로 장비 개발, Company S는 평가/피드백만 제공한 케이스\n- Company S: 사양 정의, 성능 평가, 피드백 제공 (일반적 수요자 역���)\n- Company A: 하이브리드 계측 기술 독자 개발 및 구현 (완전 독자 기술)\n→ Company A 독�� 기술, Company S는 수요자 역할만\n→ Agent가 "배타권 없음, 일반 공급 계약" 판정 기대`,
   },
   {
     id: "HWM25E1_06",
@@ -654,7 +653,7 @@ export const meetingMinutes: MeetingMinute[] = [
     companyS: `배타권 계약 체결\n당사가 제���한 Additive-X의 메커니즘 및 'Silica + Additive-X'�� 최적 조성비는 당사의 배타적 권리 자산임. 따라서 A사��� 본 ��술이 적용된 Slurry 완제품 또는 동일 ���커니즘을 가진 제품을 S사의 사전 서면 동의 ��이 글로벌 경쟁사를 포함한 제3자에게 판매, 양도, 또는 기술 이전할 수 없�� (배타권 ��정 기간: 양산 보급 후 최소 5년).`,
     companyP: `당사 고유의 Silica 입자 기술 자체를 타 제품에 활용하는 것은 제한이 없어야 한다는 전제하에, S사가 독자 개발하여 제공한 Additive-X 및 이를 통해 도출된 최종 혼합 Slurry 제품(Soul-S2)에 대한 S사 측의 배타적 사용 권리와 제3자 공급 금지 조항을 수용함. 상호 간 특허 유출 ��지를 위한 보안 서약서를 갱신하겠음.`,
     articleUrl: "https://www.sedaily.com/article/13774334",
-    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨��제로 원천 기��의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하��만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 �� 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 기여\n→ Agent가 "배���권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기대`,
+    scenarioNote: `[명확한 배타권 근거 시나리오 - 첨가제 제안형]\n목적: Company S가 독자 개발한 첨��제로 원천 ����의 결함을 해결하여 배타권 확보\n- Company A: Silica 입자 원천 기술 보유 (하��만 성능 부족으로 양산 불가)\n- Company S: 독자 개발 첨가제(Additive-X) 제안 �� 성능 결함 완전 해결\n→ Company S의 첨가제가 양산 성공의 핵심 기여\n→ Agent가 "배���권: Company S (Additive-X 적용 제품에 한정, 5년간 제3자 공급 금지)" 판정 기대`,
   },
   {
     id: "SCMP26E1_06",

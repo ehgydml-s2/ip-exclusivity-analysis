@@ -60,7 +60,7 @@ export function buildReportText(result: AnalysisResult, projectName?: string) {
     p.push(sub)
     p.push(`${j.group_id} ${j.topic}`)
     p.push(`이슈       : ${j.issue}`)
-    p.push(`권리 귀속  : ${j.exclusivity_holder} | 신뢰도: ${j.confidence} | 등급: ${j.evaluation_grade.final_grade}`)
+    p.push(`권리 귀속  : ${j.exclusivity_holder} | 신뢰도: ${j.confidence}`)
     p.push("")
     p.push(`판단 근거  : ${j.reasoning}`)
     p.push(`근거 사실  : ${j.supporting_facts.join(", ")}`)
@@ -78,12 +78,6 @@ export function buildReportText(result: AnalysisResult, projectName?: string) {
     p.push(`  기여도    : ${j.legal_basis.contribution_analysis}`)
     p.push(`  Risk      : ${j.legal_basis.risk_factors.join(" / ")}`)
     p.push(`  법적 조치 : ${j.legal_basis.recommended_legal_actions.join(" / ")}`)
-    p.push("")
-    p.push("  < 평가 등급 >")
-    p.push(
-      `  최종 ${j.evaluation_grade.final_grade} | 기술효과 ${j.evaluation_grade.tech_effect_grade} | 경쟁사적용 ${j.evaluation_grade.competitor_applicability} | 기술격차 ${j.evaluation_grade.tech_gap}`,
-    )
-    p.push(`  등급 근거 : ${j.evaluation_grade.grade_reasoning}`)
     p.push("")
   })
 

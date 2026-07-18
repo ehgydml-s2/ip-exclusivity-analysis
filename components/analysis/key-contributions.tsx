@@ -54,11 +54,6 @@ function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
             <span className="shrink-0 rounded-md bg-secondary/50 px-2 py-1 font-mono text-xs font-bold text-muted-foreground">
               Fact {factCount}
             </span>
-            {grade && grade.final_grade && (
-              <span className="shrink-0 rounded-md bg-secondary/50 px-2 py-1 font-mono text-xs font-bold text-muted-foreground">
-                {grade.final_grade}
-              </span>
-            )}
           </div>
           <h5 className="text-sm font-semibold leading-snug text-foreground">
             {judgement.topic}
@@ -100,17 +95,6 @@ function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
               }`}
             >
               법적 근거
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveDetailTab("grade")}
-              className={`px-3 py-1.5 text-xs font-medium transition-colors border-b-2 ${
-                activeDetailTab === "grade"
-                  ? "border-primary text-primary"
-                  : "border-transparent text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              평가 등급
             </button>
           </div>
 
@@ -207,31 +191,7 @@ function JudgementIdeaCard({ judgement }: { judgement: Judgement }) {
               </div>
             )}
 
-            {/* Evaluation Grade Tab */}
-            {activeDetailTab === "grade" && grade && (
-              <div className="space-y-5">
-                <dl className="space-y-3">
-                  {[
-                    { label: "기술 효과", value: grade.tech_effect_reasoning, grade: grade.tech_effect_grade },
-                    { label: "경쟁사 적용", value: grade.competitor_reasoning, grade: grade.competitor_applicability },
-                    { label: "기술 격차", value: grade.tech_gap_reasoning, grade: grade.tech_gap },
-                  ].map((row) => (
-                    <div key={row.label} className="flex gap-2.5">
-                      <div className="flex-1 rounded-lg border border-border bg-secondary/40 p-3">
-                        <dt className="mb-1 text-xs font-semibold text-primary">{row.label} 근거</dt>
-                        <dd className="text-sm leading-relaxed text-foreground">{row.value}</dd>
-                      </div>
-                      {row.grade && (
-                        <div className="w-24 shrink-0 rounded-lg border border-border bg-secondary/40 p-3">
-                          <dt className="mb-1 text-xs font-semibold text-primary">등급</dt>
-                          <dd className="text-sm font-medium text-foreground">{row.grade}</dd>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            )}
+
           </div>
         </div>
       )}
